@@ -1,4 +1,5 @@
 import './App.css';
+import Swiper from './components/Swiper'
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
                 </div>
             </div>
         </header>
+        <div className="slider-swiper">
+            <Swiper/>
+        </div>
       </div>
     </div>
   );
