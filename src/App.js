@@ -35,6 +35,19 @@ function App() {
         <div className="slider-swiper">
             <Swiper/>
         </div>
+        <div className="goods">
+            <div className="goods__item item">
+                <div className="item__image">
+                    <img src="" alt="image"/>
+                </div>
+                <div className="item__title">
+
+                </div>
+                <div className="item__price">
+
+                </div>
+            </div>
+        </div>
       </div>
     </div>
   );
