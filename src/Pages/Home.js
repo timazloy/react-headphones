@@ -4,6 +4,7 @@ import Header from '../components/Header/Header'
 import React from "react";
 import Cart from '../components/Cart/Cart'
 import SearchGoods from "../components/SearchGoods";
+import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 
 function Home({items}) {
     const [searchValue, setSearchValue] = React.useState('');
@@ -36,7 +37,7 @@ function Home({items}) {
                                 .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
                                 .map((item, index) => (
                                     <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl}/>
-                                )) : <h1>По вашему запросу ничего не нашлось</h1>
+                                )) : <SearchEmpty setSearchValue={setSearchValue}/>
                         }
 
                     </div>

@@ -54,6 +54,10 @@ body {
     margin-bottom: 40px;
   }
 
+  &__search-empty {
+    margin: 200px auto;
+  }
+
 }
 
 .slider-swiper {
@@ -191,4 +195,35 @@ body {
   top: 6px;
   right: 10px;
   cursor: pointer;
+}
+
+
+.search-empty {
+  &__image {
+    margin: 0 auto 40px;
+    display: flex;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+}
+
+.button-back {
+  cursor: pointer;
+  background: #9DD458;
+  border-radius: 18px;
+  padding: 15px 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 0 auto;
+
+  &__text {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #FFFFFF;
+  }
 }
