@@ -5,6 +5,7 @@ import Home from './Pages/Home'
 
 function App() {
     const [items, setItems] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(true);
 
 
 
@@ -13,6 +14,10 @@ function App() {
             const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones');
 
             setItems(itemsResponse.data)
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 3000);
+            // setIsLoading(false)
         }
 
         fetchData();
@@ -20,7 +25,7 @@ function App() {
 
 
   return (
-    <Home items={items}/>
+    <Home items={items} isLoading={isLoading}/>
   );
 }
 
