@@ -1,20 +1,19 @@
 import React from "react";
 
-function Cart(props) {
+function Cart({name, price, imageUrl}) {
 
     return (
-
         <div className="goods__item item">
             <div className="item__wrapper">
-                <img className="item__image" src="img/headphone/1.jpg" alt="image"/>
+                <img className="item__image" src={imageUrl} alt="image"/>
             </div>
             <div className="item__title">
-                Радиочастотная гарнитура Astro A50
+                {name}
             </div>
             <div className="item__price item-price">
                 <div className="item-price__section">
                     <div className="item-price__title">Цена:</div>
-                    <div className="item-price__text">12 999 руб.</div>
+                    <div className="item-price__text">{price} руб.</div>
                 </div>
                 <button className="button-add">
                     <img src="/img/btn-add.svg" alt="button-add"/>

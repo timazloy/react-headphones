@@ -1,9 +1,6 @@
 import './App.css';
-import Swiper from './components/Swiper'
-import Header from './components/Header/Header'
 import React from "react";
 import axios from "axios";
-import Cart from './components/Cart/Cart'
 import Home from './Pages/Home'
 
 function App() {
