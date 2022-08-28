@@ -5,11 +5,7 @@ import Home from './Pages/Home'
 
 function App() {
     const [items, setItems] = React.useState([]);
-    const [searchValue, setSearchValue] = React.useState('');
 
-    const onChangeSearchInput = (e) => {
-        setSearchValue(e.target.value)
-    }
 
 
     React.useEffect(() => {
@@ -24,7 +20,7 @@ function App() {
 
 
   return (
-    <Home items={items} searchValue={searchValue} onChangeSearchInput={onChangeSearchInput} setSearchValue={setSearchValue}/>
+    <Home items={items}/>
   );
 }
 
