@@ -86,6 +86,7 @@ body {
 }
 
 .search-input {
+  position: relative;
   border: 1px solid #F3F3F3;
   border-radius: 10px;
   padding: 13px 18px;
@@ -96,6 +97,7 @@ body {
 
 
   &__input {
+    max-width: 150px;
     outline: none;
     background: none;
     border: none;
@@ -181,5 +183,12 @@ body {
   position: absolute;
   top: 30px;
   left: 30px;
+  cursor: pointer;
+}
+
+.button-delete {
+  position: absolute;
+  top: 6px;
+  right: 10px;
   cursor: pointer;
 }
