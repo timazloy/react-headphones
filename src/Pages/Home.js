@@ -18,8 +18,9 @@ function Home({items}) {
                         <div className="search__title">
                             Все наушники
                         </div>
-                        <div className="search__input">
-
+                        <div className="search__input search-input">
+                            <img className="search-input__img" src="/img/search.svg" alt="Search"/>
+                            <input type="text" className="search-input__input" placeholder="Поиск..."/>
                         </div>
                     </div>
                     <div className="main-block__goods goods">

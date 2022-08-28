@@ -73,11 +73,32 @@ body {
 
 
 .search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   &__title {
     font-weight: 700;
     font-size: 32px;
     line-height: 39px;
     color: #000000;
+  }
+}
+
+.search-input {
+  border: 1px solid #F3F3F3;
+  border-radius: 10px;
+  padding: 13px 18px;
+  display: flex;
+  gap: 13px;
+  max-width: 250px;
+  width: 100%;
+
+
+  &__input {
+    outline: none;
+    background: none;
+    border: none;
   }
 }
 
