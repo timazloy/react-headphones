@@ -13,7 +13,9 @@ function Home({items}) {
     const onChangeSearchInput = (e) => {
         setSearchValue(e.target.value)
     }
-    
+
+    const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+
     return (
         <div className="main-block">
             <div className="main-block__wrapper">
@@ -24,12 +26,18 @@ function Home({items}) {
                     </div>
                     <SearchGoods onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
                     <div className="main-block__goods goods">
-                        {items
-                            .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-                            .map((item, index) => (
-                            <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl}/>
-                        ))}
-
+                        {/*{items*/}
+                        {/*    .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))*/}
+                        {/*    .map((item, index) => (*/}
+                        {/*    <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl}/>*/}
+                        {/*))}*/}
+                        {
+                            filtredItems.length > 0 ? items
+                                .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+                                .map((item, index) => (
+                                    <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl}/>
+                                )) : <h1>По вашему запросу ничего не нашлось</h1>
+                        }
 
                     </div>
                 </div>
