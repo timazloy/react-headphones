@@ -49,9 +49,7 @@ function Home({items, isLoading}) {
                     </div>
                     <SearchGoods onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
                     <div className="main-block__goods goods">
-
                         {renderItemsHome()}
-
                     </div>
                 </div>
 

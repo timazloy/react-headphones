@@ -87,6 +87,19 @@ body {
     line-height: 39px;
     color: #000000;
   }
+
+  &__section{
+    display: flex;
+    gap: 20px;
+    max-width: 500px;
+    width: 100%;
+    align-items: center;
+  }
+
+  &__select {
+    max-width: 240px;
+    width: 100%;
+  }
 }
 
 .search-input {
@@ -225,5 +238,19 @@ body {
     line-height: 19px;
     text-align: center;
     color: #FFFFFF;
+  }
+}
+
+.custom-select {
+  &__control {
+    border: 1px solid #F3F3F3 !important;
+  }
+  &__placeholder {
+    font-size: 13px !important;
+    padding: 10px !important;
+  }
+
+  &__indicator-separator {
+    background-color: #F3F3F3 !important;
   }
 }
