@@ -10,11 +10,21 @@ const options = [
 function SelectPrice() {
     const [selectedOption, setSelectedOption] = useState(null);
 
+    const getValue = () => {
+        return selectedOption ? options.find(c => c.value === selectedOption) : ''
+    }
+
+    getValue()
+
+    const selectChange = (e) => {
+        setSelectedOption(e.value)
+    }
+
     return (
         <Select
             classNamePrefix='custom-select'
-            defaultValue={selectedOption}
-            onChange={setSelectedOption}
+            currentValue={getValue}
+            onChange={selectChange}
             options={options}
             placeholder='Сортировка по цене'
         />

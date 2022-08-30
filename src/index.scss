@@ -242,9 +242,15 @@ body {
 }
 
 .custom-select {
+  font-size: 13px !important;
+  color: #a2a2a2 !important;
+
   &__control {
     border: 1px solid #F3F3F3 !important;
+    box-shadow: none !important;
+    width: 210px;
   }
+
   &__placeholder {
     font-size: 13px !important;
     padding: 10px !important;
@@ -252,5 +258,16 @@ body {
 
   &__indicator-separator {
     background-color: #F3F3F3 !important;
+  }
+
+  &__menu {
+
+    //background: red !important;
+  }
+
+  &__single-value,
+  &__menu {
+    font-size: 13px !important;
+    color: #a2a2a2 !important;
   }
 }
