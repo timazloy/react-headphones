@@ -7,8 +7,8 @@ const options = [
 ];
 
 
-function SelectPrice() {
-    const [selectedOption, setSelectedOption] = useState(null);
+function SelectPrice({selectedOption, setSelectedOption}) {
+    // const [selectedOption, setSelectedOption] = useState(null);
 
     const getValue = () => {
         return selectedOption ? options.find(c => c.value === selectedOption) : ''
@@ -18,7 +18,10 @@ function SelectPrice() {
 
     const selectChange = (e) => {
         setSelectedOption(e.value)
+        // console.log(selectedOption)
     }
+
+
 
     return (
         <Select

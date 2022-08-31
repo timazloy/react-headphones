@@ -6,7 +6,7 @@ import Cart from '../components/Cart/Cart'
 import SearchGoods from "../components/SearchGoods";
 import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 
-function Home({items, isLoading}) {
+function Home({items, isLoading, setSelectedOption, selectedOption}) {
     const [searchValue, setSearchValue] = React.useState('');
     const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
 
@@ -47,7 +47,7 @@ function Home({items, isLoading}) {
                     <div className="main-block__slider slider-swiper">
                         <Swiper/>
                     </div>
-                    <SearchGoods onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
+                    <SearchGoods setSelectedOption={setSelectedOption} selectedOption={selectedOption} onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
                     <div className="main-block__goods goods">
                         {renderItemsHome()}
                     </div>
