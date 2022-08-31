@@ -28,23 +28,24 @@ function App() {
                 const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones');
                 const filterResponse = itemsResponse.data.filter((item) => item.type.includes('bluetooth'))
                 setItems(filterResponse)
+            } else if (selectedOption === 'all') {
+                const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones');
+                setItems(itemsResponse.data)
             }
         }
         fetchData();
     }, [selectedOption]);
 
-
+    // Основной запрос на сервер
     React.useEffect(() => {
         async function fetchData() {
             const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones');
 
-            // itemsResponse.data.sort((a, b) => a.price > b.price ? 1 : -1 )
 
             setItems(itemsResponse.data)
             setTimeout(() => {
                 setIsLoading(false)
             }, 3000);
-            // setIsLoading(false)
         }
 
         fetchData();

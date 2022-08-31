@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 
 const options = [
+    { value: 'all', label: 'Все' },
     { value: 'expensive', label: 'Сначала дороже' },
     { value: 'cheap', label: 'Сначала дешевле' },
     { value: 'wired', label: 'Проводные наушники' },
