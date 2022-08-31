@@ -8,6 +8,20 @@ import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 
 function Home({items, isLoading, setSelectedOption, selectedOption}) {
     const [searchValue, setSearchValue] = React.useState('');
+
+    const [countries, setCountries] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const [goodsPage] = React.useState(4);
+
+    const lastGoodsIndex = currentPage * goodsPage;
+    const firstGoodsIndex = lastGoodsIndex - goodsPage;
+    const currentGoods = items.slice(firstGoodsIndex, lastGoodsIndex);
+    const pageNumbers = [];
+
+    const paginate = pageNumber => setCurrentPage(pageNumber)
+
+
     const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
 
 
@@ -15,7 +29,6 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
         setSearchValue(e.target.value)
     }
 
-    // console.log(isLoading)
 
     const renderItemsHome = () => {
         return (
@@ -29,7 +42,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
 
             // isLoading ? [...Array(10)] : filtredItems
 
-            filtredItems.length > 0 ? items
+            filtredItems.length > 0 ? currentGoods
                 .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
                 .map((item, index) => (
                     <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
@@ -38,6 +51,9 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
 
     }
 
+    for (let i = 1; i <= Math.ceil(items.length / goodsPage); i++) {
+        pageNumbers.push(i);
+    }
 
     return (
         <div className="main-block">
@@ -51,8 +67,18 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
                     <div className="main-block__goods goods">
                         {renderItemsHome()}
                     </div>
+                    <ul>
+                        {
+                            pageNumbers.map(number => (
+                                <li key={number}>
+                                    <a href="#" onClick={() => paginate(number)}>
+                                        {number}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
                 </div>
-
             </div>
         </div>
     );
