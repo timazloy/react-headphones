@@ -4,6 +4,8 @@ import Select from 'react-select';
 const options = [
     { value: 'expensive', label: 'Сначала дороже' },
     { value: 'cheap', label: 'Сначала дешевле' },
+    { value: 'wired', label: 'Проводные наушники' },
+    { value: 'bluetooth', label: 'Bluetooth гарнитуры' },
 ];
 
 
@@ -29,7 +31,7 @@ function SelectPrice({selectedOption, setSelectedOption}) {
             currentValue={getValue}
             onChange={selectChange}
             options={options}
-            placeholder='Сортировка по цене'
+            placeholder='Сортировка'
         />
     );
 }
