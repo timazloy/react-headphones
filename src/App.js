@@ -43,9 +43,9 @@ function App() {
 
 
             setItems(itemsResponse.data)
-            setTimeout(() => {
+            // setTimeout(() => {
                 setIsLoading(false)
-            }, 3000);
+            // }, 3000);
         }
 
         fetchData();

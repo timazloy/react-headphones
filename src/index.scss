@@ -55,7 +55,7 @@ body {
   }
 
   &__search-empty {
-    margin: 200px auto;
+    margin: 140px auto;
   }
 
 }
@@ -270,4 +270,8 @@ body {
     font-size: 13px !important;
     color: #a2a2a2 !important;
   }
+}
+
+.swiper {
+  border-radius: 20px
 }

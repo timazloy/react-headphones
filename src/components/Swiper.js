@@ -22,16 +22,13 @@ export default () => {
             // onSlideChange={() => console.log('slide change')}
         >
             <SwiperSlide>
-                <img src="/slide.png" alt="slide"/>
+                <img src="img/slider/1.png" alt="slide"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img src="/slide.png" alt="slide"/>
+                <img src="img/slider/2.png" alt="slide"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img src="/slide.png" alt="slide"/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src="/slide.png" alt="slide"/>
+                <img src="img/slider/3.png" alt="slide"/>
             </SwiperSlide>
 
         </Swiper>
