@@ -28,7 +28,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
 
     const clearValue = () => {
         setSearchValue('')
-        // setNotFound('')
+        setNotFound('')
     }
 
     const showNotFound = () => {
@@ -38,6 +38,8 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
 
     const onChangeSearchInput = (e) => {
         setSearchValue(e.target.value)
+        console.log(searchValue)
+
         if (filtredItems.length === 0) {
             showNotFound()
         }
@@ -77,7 +79,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
                     <div className="main-block__slider slider-swiper">
                         <Swiper/>
                     </div>
-                    <SearchGoods setSelectedOption={setSelectedOption} selectedOption={selectedOption} onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
+                    <SearchGoods clearValue={clearValue} setSelectedOption={setSelectedOption} selectedOption={selectedOption} onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
                     <div className="main-block__goods goods">
                         {renderItemsHome()}
                         {notFound}
