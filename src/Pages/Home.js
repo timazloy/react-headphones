@@ -8,11 +8,12 @@ import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 
 function Home({items, isLoading, setSelectedOption, selectedOption}) {
     const [searchValue, setSearchValue] = React.useState('');
+    const [notFound, setNotFound] = React.useState('');
 
     const [countries, setCountries] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
     const [currentPage, setCurrentPage] = React.useState(1);
-    const [goodsPage] = React.useState(4);
+    const [goodsPage] = React.useState(12);
 
     const lastGoodsIndex = currentPage * goodsPage;
     const firstGoodsIndex = lastGoodsIndex - goodsPage;
@@ -25,8 +26,21 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
     const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
 
 
+    const clearValue = () => {
+        setSearchValue('')
+        // setNotFound('')
+    }
+
+    const showNotFound = () => {
+        setNotFound(<SearchEmpty setSearchValue={setSearchValue} setNotFound={setNotFound} clearValue={clearValue}/>)
+    }
+
+
     const onChangeSearchInput = (e) => {
         setSearchValue(e.target.value)
+        if (filtredItems.length === 0) {
+            showNotFound()
+        }
     }
 
 
@@ -42,11 +56,11 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
 
             // isLoading ? [...Array(10)] : filtredItems
 
-            filtredItems.length > 0 ? currentGoods
+            filtredItems.length > 0 && currentGoods
                 .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
                 .map((item, index) => (
                     <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
-                )) : <SearchEmpty setSearchValue={setSearchValue}/>
+                ))
         )
 
     }
@@ -66,6 +80,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
                     <SearchGoods setSelectedOption={setSelectedOption} selectedOption={selectedOption} onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
                     <div className="main-block__goods goods">
                         {renderItemsHome()}
+                        {notFound}
                     </div>
                     <ul>
                         {
