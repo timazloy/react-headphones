@@ -5,8 +5,9 @@ import React from "react";
 import Cart from '../components/Cart/Cart'
 import SearchGoods from "../components/SearchGoods";
 import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
+import axios from "axios";
 
-function Home({items, isLoading, setSelectedOption, selectedOption}) {
+function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading}) {
     const [searchValue, setSearchValue] = React.useState('');
     const [notFound, setNotFound] = React.useState('');
 
@@ -32,17 +33,55 @@ function Home({items, isLoading, setSelectedOption, selectedOption}) {
     }
 
     const showNotFound = () => {
-        setNotFound(<SearchEmpty setSearchValue={setSearchValue} setNotFound={setNotFound} clearValue={clearValue}/>)
+        if (filtredItems.length === 0) {
+            setNotFound(<SearchEmpty setSearchValue={setSearchValue} setNotFound={setNotFound} clearValue={clearValue}/>)
+        } else {
+            setNotFound('')
+        }
+
     }
+
+    // const [loaded, setLoaded] = React.useState(false)
+    // useEffect(() => {
+    //     if (loaded) return ;
+    //     //получение data
+    //     setCartData(new_data)
+    //     setLoaded(true)
+    // }, [loaded])
+
+    React.useEffect(() => {
+        // if (filtredItems.length === 0) {
+
+        // if (isLoading) return ;
+
+        if (notFound !== '') return;
+
+        if (isLoading === false) {
+            showNotFound()
+        }
+
+        // console.log(notFound)
+
+
+        // setIsLoading(false)
+        // setTimeout(() => {
+        //     showNotFound()
+        // }, 1000);
+
+        // }
+    }, [filtredItems]);
 
 
     const onChangeSearchInput = (e) => {
         setSearchValue(e.target.value)
-        console.log(searchValue)
-
-        if (filtredItems.length === 0) {
+        // console.log(filtredItems)
+        if (isLoading === false) {
             showNotFound()
         }
+
+        // if (filtredItems.length === 0) {
+        //     showNotFound()
+        // }
     }
 
 
