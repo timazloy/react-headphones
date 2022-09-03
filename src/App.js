@@ -2,6 +2,7 @@ import './App.css';
 import React from "react";
 import axios from "axios";
 import Home from './Pages/Home'
+import BrandsFilter from './components/BrandsFilter/BrandsFilter'
 
 function App() {
     const [items, setItems] = React.useState([]);
@@ -59,8 +60,14 @@ function App() {
 
 
   return (
+    <div className="main-wrapper">
+        <div className="main-wrapper__section">
+            <BrandsFilter/>
+        </div>
 
-    <Home selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading}/>
+        <Home selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading}/>
+    </div>
+
   );
 }
 

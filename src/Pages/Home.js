@@ -96,7 +96,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
     }
 
     return (
-        <div className="main-block">
+        <div className="main-wrapper__goods main-block">
             <div className="main-block__wrapper">
                 <Header/>
                 <div className="main-block__body">

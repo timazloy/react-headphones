@@ -3,8 +3,8 @@ import Select from 'react-select';
 
 const options = [
     { value: 'all', label: 'Все' },
-    { value: 'expensive', label: 'Сначала дороже' },
-    { value: 'cheap', label: 'Сначала дешевле' },
+    { value: 'expensive', label: 'Сначала дорогие' },
+    { value: 'cheap', label: 'Сначала недорогие' },
     { value: 'wired', label: 'Проводные наушники' },
     { value: 'bluetooth', label: 'Bluetooth гарнитуры' },
 ];
