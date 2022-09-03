@@ -59,6 +59,7 @@ function App() {
 
 
   return (
+
     <Home selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading}/>
   );
 }

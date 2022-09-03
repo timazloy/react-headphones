@@ -11,7 +11,7 @@ function Cart({name, price, imageUrl, isLoading=true}) {
             {isLoading ?  <ContentLoader
                 speed={2}
                 width={150}
-                height={220}
+                height={260}
                 viewBox="0 0 150 187"
                 backgroundColor="#f3f3f3"
                 foregroundColor="#ecebeb"

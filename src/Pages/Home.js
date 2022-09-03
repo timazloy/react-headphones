@@ -26,12 +26,13 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
 
     const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
 
-
+    // Очистка поиска
     const clearValue = () => {
         setSearchValue('')
         setNotFound('')
     }
 
+    // условие для картинки "Такой товар не найден"
     const showNotFound = () => {
         if (filtredItems.length === 0) {
             setNotFound(<SearchEmpty setSearchValue={setSearchValue} setNotFound={setNotFound} clearValue={clearValue}/>)
@@ -41,18 +42,8 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
 
     }
 
-    // const [loaded, setLoaded] = React.useState(false)
-    // useEffect(() => {
-    //     if (loaded) return ;
-    //     //получение data
-    //     setCartData(new_data)
-    //     setLoaded(true)
-    // }, [loaded])
-
+    // отслеживаем фильтрацию чтобы выводить "Такой товар не найден"
     React.useEffect(() => {
-        // if (filtredItems.length === 0) {
-
-        // if (isLoading) return ;
 
         if (notFound !== '') return;
 
@@ -60,28 +51,22 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
             showNotFound()
         }
 
-        // console.log(notFound)
-
-
-        // setIsLoading(false)
-        // setTimeout(() => {
-        //     showNotFound()
-        // }, 1000);
-
-        // }
     }, [filtredItems]);
+
+    // отслеживаем инпут поиска
+    React.useEffect(() => {
+       if (searchValue.length === 0) {
+           setNotFound('')
+       }
+    }, [searchValue]);
 
 
     const onChangeSearchInput = (e) => {
         setSearchValue(e.target.value)
-        // console.log(filtredItems)
         if (isLoading === false) {
             showNotFound()
         }
 
-        // if (filtredItems.length === 0) {
-        //     showNotFound()
-        // }
     }
 
 
