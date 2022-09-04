@@ -7,7 +7,7 @@ import SearchGoods from "../components/SearchGoods";
 import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 import axios from "axios";
 
-function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading}) {
+function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu}) {
     const [searchValue, setSearchValue] = React.useState('');
     const [notFound, setNotFound] = React.useState('');
 
@@ -103,7 +103,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
                     <div className="main-block__slider slider-swiper">
                         <Swiper/>
                     </div>
-                    <SearchGoods clearValue={clearValue} setSelectedOption={setSelectedOption} selectedOption={selectedOption} onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
+                    <SearchGoods showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter} clearValue={clearValue} setSelectedOption={setSelectedOption} selectedOption={selectedOption} onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
                     <div className="main-block__goods goods">
                         {renderItemsHome()}
                         {notFound}

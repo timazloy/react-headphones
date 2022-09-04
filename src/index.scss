@@ -79,13 +79,20 @@ body {
 .search {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 
   &__title {
     font-weight: 700;
     font-size: 32px;
     line-height: 39px;
     color: #000000;
+    max-width: 500px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   &__section{
@@ -104,12 +111,12 @@ body {
 
 .search-input {
   position: relative;
-  border: 1px solid #F3F3F3;
+  border: 1px solid #e9e6e6;
   border-radius: 10px;
   padding: 13px 18px;
   display: flex;
   gap: 13px;
-  max-width: 250px;
+  //max-width: 250px;
   width: 100%;
 
 
@@ -129,7 +136,7 @@ body {
   max-width: 210px;
   width: 100%;
   background: #FFFFFF;
-  border: 1px solid #F3F3F3;
+  border: 1px solid #e9e6e6;
   border-radius: 40px;
   padding: 30px;
   transition: 0.2s ease-in-out;
@@ -246,7 +253,7 @@ body {
   color: #a2a2a2 !important;
 
   &__control {
-    border: 1px solid #F3F3F3 !important;
+    border: 1px solid #e9e6e6 !important;
     box-shadow: none !important;
     width: 210px;
   }
@@ -257,7 +264,7 @@ body {
   }
 
   &__indicator-separator {
-    background-color: #F3F3F3 !important;
+    background-color: #e9e6e6 !important;
   }
 
   &__menu {
@@ -285,5 +292,15 @@ body {
   &__section {
     max-width: 300px;
     width: 100%;
+    //display: none;
   }
+}
+
+
+.btn-brand {
+  border: 1px solid #e9e6e6;
+  border-radius: 10px;
+  padding: 13px 18px;
+  color: #968e8e;
+  cursor: pointer;
 }

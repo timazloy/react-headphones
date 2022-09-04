@@ -7,8 +7,14 @@ import BrandsFilter from './components/BrandsFilter/BrandsFilter'
 function App() {
     const [items, setItems] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
+    const [fixedFilter, setFixedFilter] = React.useState(false);
 
     const [selectedOption, setSelectedOption] = React.useState(null);
+
+    const showBrandMenu = () => {
+        setFixedFilter(true)
+        console.log(fixedFilter)
+    }
 
     // Сортировка товаров по цене
     React.useEffect(() => {
@@ -61,11 +67,10 @@ function App() {
 
   return (
     <div className="main-wrapper">
-        <div className="main-wrapper__section">
-            <BrandsFilter/>
-        </div>
 
-        <Home selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading}/>
+        {fixedFilter && <BrandsFilter/>}
+
+        <Home showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading}/>
     </div>
 
   );

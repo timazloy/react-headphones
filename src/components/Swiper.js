@@ -19,7 +19,7 @@ export default () => {
             spaceBetween={50}
             slidesPerView={1}
             autoplay={{
-                delay: 5000,
+                delay: 4000,
             }}
             speed={1500}
             // navigation
@@ -29,13 +29,13 @@ export default () => {
             // onSlideChange={() => console.log('slide change')}
         >
             <SwiperSlide>
-                <img src="img/slider/1.1.png" alt="slide"/>
+                <img src="img/slider/1.png" alt="slide"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img src="img/slider/2.2.png" alt="slide"/>
+                <img src="img/slider/2.png" alt="slide"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img src="img/slider/2.3.png" alt="slide"/>
+                <img src="img/slider/3.png" alt="slide"/>
             </SwiperSlide>
 
         </Swiper>
