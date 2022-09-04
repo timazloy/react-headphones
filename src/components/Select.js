@@ -5,7 +5,7 @@ const options = [
     { value: 'all', label: 'Все' },
     { value: 'expensive', label: 'Сначала дорогие' },
     { value: 'cheap', label: 'Сначала недорогие' },
-    { value: 'wired', label: 'Проводные наушники' },
+    { value: 'wired', label: 'Проводные гарнитуры' },
     { value: 'bluetooth', label: 'Bluetooth гарнитуры' },
 ];
 
