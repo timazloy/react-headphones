@@ -21,9 +21,21 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
     const currentGoods = items.slice(firstGoodsIndex, lastGoodsIndex);
     const pageNumbers = [];
 
-    const paginate = pageNumber => {
-        setCurrentPage(pageNumber)
 
+    const paginate = (event, pageNumber) => {
+        event.preventDefault()
+        let items = document.querySelectorAll('.pagination__link');
+
+
+        items.forEach(item => {
+            item.classList.remove('pagination__link--active')
+        })
+
+
+
+
+        setCurrentPage(pageNumber)
+        event.target.classList.add('pagination__link--active')
     }
 
 
@@ -34,14 +46,14 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
             items[0].classList.add('pagination__link--active')
         }
 
-        console.log(items)
 
         items.forEach(item => {
             item.addEventListener('click', () => {
                 items.forEach(item => {
                     item.classList.remove('pagination__link--active')
                 })
-                item.classList.add('pagination__link--active')
+
+
             })
         })
     }
@@ -136,7 +148,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
                         {
                             pageNumbers.map(number => (
                                 <li className="pagination__item" key={number}>
-                                    <a className="pagination__link" href="#" onClick={() => paginate(number)}>
+                                    <a className="pagination__link" href="#"  onClick={(event) => paginate(event, number)}>
                                         {number}
                                     </a>
                                 </li>
