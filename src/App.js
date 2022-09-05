@@ -68,7 +68,7 @@ function App() {
   return (
     <div className="main-wrapper">
 
-        {fixedFilter && <BrandsFilter/>}
+        {/*{fixedFilter && <BrandsFilter/>}*/}
 
         <Home showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading}/>
     </div>

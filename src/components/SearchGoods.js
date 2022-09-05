@@ -18,7 +18,7 @@ function SearchGoods({onChangeSearchInput, searchValue, setSearchValue, selected
                 </div>
                 <div className="search__section">
                     <SelectPrice selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
-                    <button onClick={showBrandMenu} className="btn-brand">Сортировка по брендам</button>
+                    <button className="btn-brand">Сортировка по брендам</button>
                 </div>
             </div>
 
