@@ -58,6 +58,10 @@ body {
     margin: 140px auto;
   }
 
+  &__pagination {
+    margin-top: 40px;
+  }
+
 }
 
 .slider-swiper {
@@ -303,4 +307,29 @@ body {
   padding: 13px 18px;
   color: #968e8e;
   cursor: pointer;
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+
+  &__link {
+    text-decoration: none;
+    //color: black;
+
+    display: flex;
+    padding: 5px 10px;
+    border: 1px solid #9babd0;
+    border-radius: 10px;
+    color: #9babd0;
+  }
+
+  &__item {
+    list-style-type: none;
+
+
+
+  }
 }

@@ -108,11 +108,11 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
                         {renderItemsHome()}
                         {notFound}
                     </div>
-                    <ul>
+                    <ul className="main-block__pagination pagination">
                         {
                             pageNumbers.map(number => (
-                                <li key={number}>
-                                    <a href="#" onClick={() => paginate(number)}>
+                                <li className="pagination__item" key={number}>
+                                    <a className="pagination__link" href="#" onClick={() => paginate(number)}>
                                         {number}
                                     </a>
                                 </li>
