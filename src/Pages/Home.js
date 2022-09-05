@@ -21,8 +21,32 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
     const currentGoods = items.slice(firstGoodsIndex, lastGoodsIndex);
     const pageNumbers = [];
 
-    const paginate = pageNumber => setCurrentPage(pageNumber)
+    const paginate = pageNumber => {
+        setCurrentPage(pageNumber)
 
+    }
+
+
+    const activePagePagination = () => {
+        let items = document.querySelectorAll('.pagination__link');
+
+        if (items.length > 0) {
+            items[0].classList.add('pagination__link--active')
+        }
+
+        console.log(items)
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(item => {
+                    item.classList.remove('pagination__link--active')
+                })
+                item.classList.add('pagination__link--active')
+            })
+        })
+    }
+
+    activePagePagination()
 
     const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
 

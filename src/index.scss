@@ -317,13 +317,16 @@ body {
 
   &__link {
     text-decoration: none;
-    //color: black;
+    color: black;
 
     display: flex;
     padding: 5px 10px;
-    border: 1px solid #9babd0;
-    border-radius: 10px;
-    color: #9babd0;
+
+    &--active {
+      border: 1px solid #9babd0;
+      border-radius: 10px;
+      color: #9babd0;
+    }
   }
 
   &__item {
