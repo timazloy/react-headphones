@@ -21,44 +21,10 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
     const currentGoods = items.slice(firstGoodsIndex, lastGoodsIndex);
     const pageNumbers = [];
 
-
     const paginate = (event, pageNumber) => {
         event.preventDefault()
-        let items = document.querySelectorAll('.pagination__link');
-
-
-        items.forEach(item => {
-            item.classList.remove('pagination__link--active')
-        })
-
-
-
-
         setCurrentPage(pageNumber)
-        event.target.classList.add('pagination__link--active')
     }
-
-
-    const activePagePagination = () => {
-        let items = document.querySelectorAll('.pagination__link');
-
-        if (items.length > 0) {
-            items[0].classList.add('pagination__link--active')
-        }
-
-
-        items.forEach(item => {
-            item.addEventListener('click', () => {
-                items.forEach(item => {
-                    item.classList.remove('pagination__link--active')
-                })
-
-
-            })
-        })
-    }
-
-    activePagePagination()
 
     const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
 
@@ -81,6 +47,8 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
     // отслеживаем фильтрацию чтобы выводить "Такой товар не найден"
     React.useEffect(() => {
 
+        console.log(filtredItems)
+
         if (notFound !== '') return;
 
         if (isLoading === false) {
@@ -91,9 +59,9 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
 
     // отслеживаем инпут поиска
     React.useEffect(() => {
-       if (searchValue.length === 0) {
-           setNotFound('')
-       }
+        if (searchValue.length === 0) {
+            setNotFound('')
+        }
     }, [searchValue]);
 
 
@@ -102,7 +70,6 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
         if (isLoading === false) {
             showNotFound()
         }
-
     }
 
 
@@ -124,12 +91,13 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
                     <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
                 ))
         )
-
     }
 
     for (let i = 1; i <= Math.ceil(items.length / goodsPage); i++) {
         pageNumbers.push(i);
     }
+
+    const paginationClasses = (number) => number === currentPage ? "pagination__link--active" : "";
 
     return (
         <div className="main-wrapper__goods main-block">
@@ -148,7 +116,14 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
                         {
                             pageNumbers.map(number => (
                                 <li className="pagination__item" key={number}>
-                                    <a className="pagination__link" href="#"  onClick={(event) => paginate(event, number)}>
+                                    <a
+                                        className={[
+                                            "pagination__link",
+                                            paginationClasses(number)
+                                        ].join(' ')}
+                                        href="#"
+                                        onClick={(event) => paginate(event, number)}
+                                    >
                                         {number}
                                     </a>
                                 </li>
