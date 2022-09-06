@@ -85,11 +85,32 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
 
             // isLoading ? [...Array(10)] : filtredItems
 
-            filtredItems.length > 0 && currentGoods
+
+
+            // {this.props.conditionA ? "Condition A"
+            //         : this.props.conditionB ? "Condition B"
+            //             : "Neither"}
+
+            // [...Array(12)].map((item, index) => (
+            //     <Cart/>
+            // ))
+
+            // (isLoading ? [...Array(8)] : filtredItems)
+
+            // isLoading ? [...Array(12)] :
+            isLoading ? [...Array(12)].map((item, index) => (
+                <Cart/>
+            )) : filtredItems.length > 0 && currentGoods
                 .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
                 .map((item, index) => (
                     <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
                 ))
+
+            // filtredItems.length > 0 && currentGoods
+            //     .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+            //     .map((item, index) => (
+            //         <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
+            //     ))
         )
     }
 
