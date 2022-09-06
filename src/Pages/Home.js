@@ -99,7 +99,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
 
             // isLoading ? [...Array(12)] :
             isLoading ? [...Array(12)].map((item, index) => (
-                <Cart/>
+                <Cart key={index} />
             )) : filtredItems.length > 0 && currentGoods
                 .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
                 .map((item, index) => (
