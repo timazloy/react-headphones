@@ -11,9 +11,10 @@ function SearchGoods({onChangeSearchInput, searchValue, setSearchValue, selected
             <div className="search__block">
                 <div className="search__section">
                     <div className="search__input search-input">
-                        <img className="search-input__img" src="/img/search.svg" alt="Search"/>
-                        <input type="text" className="search-input__input" placeholder="Поиск..."  onChange={onChangeSearchInput} value={searchValue}/>
-                        {searchValue && <img onClick={clearValue} className="button-delete" src="/img/btn-remove.svg" alt="Remove"/>}
+
+                        <input type="text" className="search-input__input" placeholder="Поиск по сайту"  onChange={onChangeSearchInput} value={searchValue}/>
+                        <button className="button-search"><img className="search-input__img" src="/img/search.svg" alt="Search"/></button>
+                        {searchValue && <button className="button-delete"><img onClick={clearValue} src="/img/btn-remove.svg" alt="Remove"/></button>}
                     </div>
                 </div>
                 <div className="search__section">

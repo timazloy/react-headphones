@@ -119,6 +119,7 @@ body {
   border-radius: 10px;
   padding: 13px 18px;
   display: flex;
+  justify-content: space-between;
   gap: 13px;
   //max-width: 250px;
   width: 100%;
@@ -218,7 +219,7 @@ body {
 .button-delete {
   position: absolute;
   top: 6px;
-  right: 10px;
+  right: 50px;
   cursor: pointer;
 }
 
