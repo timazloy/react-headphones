@@ -5,7 +5,7 @@ import SearchName from "./SearchName";
 import axios from "axios";
 import SearchEmpty from "./SearchEmpty/SearchEmpty";
 
-function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption, setFixedFilter, showBrandMenu}) {
+function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
 
     const [sortName, setSortName] = React.useState('')
     const [sortPrice, setSortPrice] = React.useState('')
@@ -18,9 +18,6 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNot
         setSortName('')
         setNotFound('')
     }
-
-
-    // const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
 
     // условие для картинки "Такой товар не найден"
     const showNotFound = () => {
@@ -35,8 +32,6 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNot
     // отслеживаем фильтрацию чтобы выводить "Такой товар не найден"
     React.useEffect(() => {
 
-        // console.log(filtredItems)
-
         if (notFound !== '') return;
 
         if (isLoading === false) {
@@ -44,9 +39,6 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNot
         }
 
     }, [items]);
-
-
-
 
     React.useEffect(() => {
         async function fetchData() {
@@ -62,7 +54,6 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNot
             setNotFound('')
         }
     }, [sortName,sortPrice]);
-
 
     return (
         <div className="main-block__search search">
