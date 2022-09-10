@@ -8,7 +8,7 @@ import SearchEmpty from "./SearchEmpty/SearchEmpty";
 function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption, setFixedFilter, showBrandMenu}) {
 
     const [sortName, setSortName] = React.useState('')
-    const [sortPrice, setSortPrice] = React.useState(null)
+    const [sortPrice, setSortPrice] = React.useState('')
 
     const setNameValue = (e) =>{
         setSortName(e.target.value)
@@ -51,9 +51,13 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNot
     React.useEffect(() => {
         async function fetchData() {
             setIsLoading(true)
-
-            const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?sortBy=price&order=' + sortPrice+ '&search=' + sortName);
-            setItems(itemsResponse.data)
+            if (sortPrice === '') {
+                const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones');
+                setItems(itemsResponse.data)
+            } else {
+                const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?sortBy=price&order=' + sortPrice+ '&search=' + sortName);
+                setItems(itemsResponse.data)
+            }
             setIsLoading(false)
 
         }

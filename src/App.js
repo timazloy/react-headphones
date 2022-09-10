@@ -50,19 +50,19 @@ function App() {
     // }, [selectedOption]);
 
     // Основной запрос на сервер
-    React.useEffect(() => {
-        async function fetchData() {
-            const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones');
-
-
-            setItems(itemsResponse.data)
-            // setTimeout(() => {
-                setIsLoading(false)
-            // }, 3000);
-        }
-
-        fetchData();
-    }, []);
+    // React.useEffect(() => {
+    //     async function fetchData() {
+    //         const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones');
+    //
+    //
+    //         setItems(itemsResponse.data)
+    //         // setTimeout(() => {
+    //             setIsLoading(false)
+    //         // }, 3000);
+    //     }
+    //
+    //     fetchData();
+    // }, []);
 
 
   return (
