@@ -7,7 +7,7 @@ import SearchGoods from "../components/SearchGoods";
 import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 import axios from "axios";
 
-function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu}) {
+function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
     const [searchValue, setSearchValue] = React.useState('');
     const [notFound, setNotFound] = React.useState('');
 
@@ -25,51 +25,62 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
         event.preventDefault()
         setCurrentPage(pageNumber)
     }
-
-    const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+    //
+    // const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
 
     // Очистка поиска
-    const clearValue = () => {
-        setSearchValue('')
-        setNotFound('')
-    }
+    // const clearValue = () => {
+    //     setSearchValue('')
+    //     setNotFound('')
+    // }
 
-    // условие для картинки "Такой товар не найден"
-    const showNotFound = () => {
-        if (filtredItems.length === 0) {
-            setNotFound(<SearchEmpty setSearchValue={setSearchValue} setNotFound={setNotFound} clearValue={clearValue}/>)
-        } else {
-            setNotFound('')
-        }
+    // // условие для картинки "Такой товар не найден"
+    // const showNotFound = () => {
+    //     if (filtredItems.length === 0) {
+    //         setNotFound(<SearchEmpty setSearchValue={setSearchValue} setNotFound={setNotFound} clearValue={clearValue}/>)
+    //     } else {
+    //         setNotFound('')
+    //     }
+    //
+    // }
 
-    }
-
-    // отслеживаем фильтрацию чтобы выводить "Такой товар не найден"
-    React.useEffect(() => {
-
-        console.log(filtredItems)
-
-        if (notFound !== '') return;
-
-        if (isLoading === false) {
-            showNotFound()
-        }
-
-    }, [filtredItems]);
+    // // отслеживаем фильтрацию чтобы выводить "Такой товар не найден"
+    // React.useEffect(() => {
+    //
+    //     console.log(filtredItems)
+    //
+    //     if (notFound !== '') return;
+    //
+    //     if (isLoading === false) {
+    //         showNotFound()
+    //     }
+    //
+    // }, [filtredItems]);
 
     // отслеживаем инпут поиска
-    React.useEffect(() => {
-        if (searchValue.length === 0) {
-            setNotFound('')
-        }
-    }, [searchValue]);
+    // React.useEffect(() => {
+    //     async function fetchData() {
+    //         setIsLoading(true)
+    //
+    //         const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones');
+    //         const fliterAnswer = itemsResponse.data.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+    //         setItems(fliterAnswer)
+    //         setIsLoading(false)
+    //
+    //     }
+    //     fetchData();
+    //     if (searchValue.length === 0) {
+    //         setNotFound('')
+    //     }
+    // }, [searchValue]);
 
 
     const onChangeSearchInput = (e) => {
-        setSearchValue(e.target.value)
-        if (isLoading === false) {
-            showNotFound()
-        }
+        // setSearchValue(e.target.value)
+        // if (isLoading === false) {
+        //     showNotFound()
+        // }
+        console.log(123)
     }
 
 
@@ -100,8 +111,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
             // isLoading ? [...Array(12)] :
             isLoading ? [...Array(12)].map((item, index) => (
                 <Cart key={index} />
-            )) : filtredItems.length > 0 && currentGoods
-                .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+            )) : items.length > 0 && currentGoods
                 .map((item, index) => (
                     <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
                 ))
@@ -128,7 +138,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
                     <div className="main-block__slider slider-swiper">
                         <Swiper/>
                     </div>
-                    <SearchGoods showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter} clearValue={clearValue} setSelectedOption={setSelectedOption} selectedOption={selectedOption} onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
+                    <SearchGoods isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} onChangeSearchInput={onChangeSearchInput} searchValue={searchValue} setSearchValue={setSearchValue}/>
                     <div className="main-block__goods goods">
                         {renderItemsHome()}
                         {notFound}

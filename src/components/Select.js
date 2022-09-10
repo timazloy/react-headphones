@@ -2,26 +2,21 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 
 const options = [
-    { value: 'all', label: 'Все' },
-    { value: 'expensive', label: 'Сначала дорогие' },
-    { value: 'cheap', label: 'Сначала недорогие' },
-    { value: 'wired', label: 'Проводные гарнитуры' },
-    { value: 'bluetooth', label: 'Bluetooth гарнитуры' },
+    { value: 'desc', label: 'Сначала дорогие' },
+    { value: 'asc', label: 'Сначала недорогие' }
 ];
 
 
-function SelectPrice({selectedOption, setSelectedOption}) {
-    // const [selectedOption, setSelectedOption] = useState(null);
+function SelectPrice({ setSortPrice , sortPrice}) {
 
     const getValue = () => {
-        return selectedOption ? options.find(c => c.value === selectedOption) : ''
+        return sortPrice ? options.find(c => c.value === sortPrice) : ''
     }
 
     getValue()
 
     const selectChange = (e) => {
-        setSelectedOption(e.value)
-        // console.log(selectedOption)
+        setSortPrice(e.value)
     }
 
 
@@ -32,7 +27,7 @@ function SelectPrice({selectedOption, setSelectedOption}) {
             currentValue={getValue}
             onChange={selectChange}
             options={options}
-            placeholder='Сортировка'
+            placeholder='Сортировка по цене'
         />
     );
 }
