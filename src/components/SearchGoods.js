@@ -4,8 +4,11 @@ import SelectPrice from "./Select";
 import SearchName from "./SearchName";
 import axios from "axios";
 import SearchEmpty from "./SearchEmpty/SearchEmpty";
+import ModalSearch from "./ModalSearch";
 
 function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
+
+    const [modalActive, setModalActive] = React.useState(false)
 
     const [sortName, setSortName] = React.useState('')
     const [sortPrice, setSortPrice] = React.useState('')
@@ -66,7 +69,10 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNot
                 </div>
                 <div className="search__section">
                     <SelectPrice sortPrice={sortPrice} setSortPrice={setSortPrice} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
-                    <button className="btn-brand">Сортировка по брендам</button>
+                    <button className="btn-brand" onClick={() =>setModalActive(true) } >Сортировка по брендам</button>
+                    <ModalSearch modalActive={modalActive} setModalActive={setModalActive}>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda autem consequatur, dolorum ducimus excepturi expedita hic maiores modi nihil provident quas quis recusandae rem soluta tempora tenetur ut voluptatem?</p>
+                    </ModalSearch>
                 </div>
             </div>
 
