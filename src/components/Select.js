@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 
 const options = [
-    { value: 'desc', label: 'Сначала дорогие' },
-    { value: 'asc', label: 'Сначала недорогие' }
+    { value: 'sortBy=price&order=desc', label: 'Сначала дорогие' },
+    { value: 'sortBy=price&order=asc', label: 'Сначала недорогие' }
 ];
 
 

@@ -51,13 +51,9 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNot
     React.useEffect(() => {
         async function fetchData() {
             setIsLoading(true)
-            if (sortPrice === '') {
-                const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones');
-                setItems(itemsResponse.data)
-            } else {
-                const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?sortBy=price&order=' + sortPrice+ '&search=' + sortName);
-                setItems(itemsResponse.data)
-            }
+
+            const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice+ '&search=' + sortName);
+            setItems(itemsResponse.data)
             setIsLoading(false)
 
         }
