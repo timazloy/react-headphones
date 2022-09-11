@@ -71,7 +71,74 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNot
                     <SelectPrice sortPrice={sortPrice} setSortPrice={setSortPrice} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
                     <button className="btn-brand" onClick={() =>setModalActive(true) } >Сортировка по брендам</button>
                     <ModalSearch modalActive={modalActive} setModalActive={setModalActive}>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda autem consequatur, dolorum ducimus excepturi expedita hic maiores modi nihil provident quas quis recusandae rem soluta tempora tenetur ut voluptatem?</p>
+                        <div className="modal-search__filters modal-filter">
+                            <div className="modal-filter__brands">
+                                <div className="modal-filter__title">Производители</div>
+                                <label className="modal-filter__item">
+                                    <input type="checkbox"/>
+                                    <p>Astro</p>
+                                </label>
+                                <label className="modal-filter__item">
+                                    <input type="checkbox"/>
+                                    <p>Razer</p>
+                                </label>
+                                <label className="modal-filter__item">
+                                    <input type="checkbox"/>
+                                    <p>HyperX</p>
+                                </label>
+                                <label className="modal-filter__item">
+                                    <input type="checkbox"/>
+                                    <p>EPOS</p>
+                                </label>
+                                <label className="modal-filter__item">
+                                    <input type="checkbox"/>
+                                    <p>ASUS</p>
+                                </label>
+                                <label className="modal-filter__item">
+                                    <input type="checkbox"/>
+                                    <p>SteelSeries</p>
+                                </label>
+                                <label className="modal-filter__item">
+                                    <input type="checkbox"/>
+                                    <p>JETACCESS</p>
+                                </label>
+                                <label className="modal-filter__item">
+                                    <input type="checkbox"/>
+                                    <p>Sharkoon</p>
+                                </label>
+                                <label className="modal-filter__item">
+                                    <input type="checkbox"/>
+                                    <p>Edifier</p>
+                                </label>
+                            </div>
+                            <div className="modal-filter__other">
+                                <div className="modal-filter__title">Способ передачи сигнала</div>
+                                <div className="modal-filter__type">
+                                    <label className="modal-filter__item">
+                                        <input type="checkbox"/>
+                                        <p>Проводные гарнитуры</p>
+                                    </label>
+                                    <label className="modal-filter__item">
+                                        <input type="checkbox"/>
+                                        <p>bluetooth гарнитуры</p>
+                                    </label>
+                                </div>
+                                <div className="modal-filter__stock">
+                                    <div className="modal-filter__title">Наличие в магазинах</div>
+                                    <label className="modal-filter__item">
+                                        <input type="checkbox"/>
+                                        <p>В наличии</p>
+                                    </label>
+                                    <label className="modal-filter__item">
+                                        <input type="checkbox"/>
+                                        <p>Нет в наличии</p>
+                                    </label>
+                                </div>
+
+                                <button className="modal-filter__button button-modal-search">Поиск</button>
+                            </div>
+
+                        </div>
                     </ModalSearch>
                 </div>
             </div>
