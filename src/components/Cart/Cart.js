@@ -51,20 +51,6 @@ function Cart({name, price, imageUrl, isLoading=true}) {
                 </div>
 
             </>}
-            {/*<ContentLoader*/}
-            {/*    speed={2}*/}
-            {/*    width={150}*/}
-            {/*    height={220}*/}
-            {/*    viewBox="0 0 150 187"*/}
-            {/*    backgroundColor="#f3f3f3"*/}
-            {/*    foregroundColor="#ecebeb"*/}
-            {/*>*/}
-            {/*    <rect x="0" y="0" rx="10" ry="10" width="150" height="91" />*/}
-            {/*    <rect x="0" y="107" rx="7" ry="7" width="150" height="15" />*/}
-            {/*    <rect x="0" y="126" rx="6" ry="6" width="93" height="15" />*/}
-            {/*    <rect x="0" y="162" rx="0" ry="0" width="80" height="24" />*/}
-            {/*    <rect x="114" y="155" rx="12" ry="12" width="32" height="32" />*/}
-            {/*</ContentLoader>*/}
         </>
 
 

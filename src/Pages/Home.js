@@ -43,39 +43,31 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
     const paginationClasses = (number) => number === currentPage ? "pagination__link--active" : "";
 
     return (
-        <div className="main-wrapper__goods main-block">
-            <div className="main-block__wrapper">
-                <Header/>
-                <div className="main-block__body">
-                    <div className="main-block__slider slider-swiper">
-                        <Swiper/>
-                    </div>
-                    <SearchGoods isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} searchValue={searchValue} setSearchValue={setSearchValue}/>
-                    <div className="main-block__goods goods">
-                        {renderItemsHome()}
-                        {notFound}
-                    </div>
-                    <ul className="main-block__pagination pagination">
-                        {
-                            pageNumbers.map(number => (
-                                <li className="pagination__item" key={number}>
-                                    <a
-                                        className={[
-                                            "pagination__link",
-                                            paginationClasses(number)
-                                        ].join(' ')}
-                                        href="#"
-                                        onClick={(event) => paginate(event, number)}
-                                    >
-                                        {number}
-                                    </a>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div>
+        <>
+            <SearchGoods isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <div className="main-block__goods goods">
+                {renderItemsHome()}
+                {notFound}
             </div>
-        </div>
+            <ul className="main-block__pagination pagination">
+                {
+                    pageNumbers.map(number => (
+                        <li className="pagination__item" key={number}>
+                            <a
+                                className={[
+                                    "pagination__link",
+                                    paginationClasses(number)
+                                ].join(' ')}
+                                href="#"
+                                onClick={(event) => paginate(event, number)}
+                            >
+                                {number}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </>
     );
 }
 
