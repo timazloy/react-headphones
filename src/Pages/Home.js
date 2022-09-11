@@ -11,8 +11,6 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
     const [searchValue, setSearchValue] = React.useState('');
     const [notFound, setNotFound] = React.useState('');
 
-    const [countries, setCountries] = React.useState([]);
-    const [loading, setLoading] = React.useState(false);
     const [currentPage, setCurrentPage] = React.useState(1);
     const [goodsPage] = React.useState(12);
 
@@ -25,6 +23,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
         event.preventDefault()
         setCurrentPage(pageNumber)
     }
+
 
     const renderItemsHome = () => {
         return (

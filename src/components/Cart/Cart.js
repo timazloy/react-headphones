@@ -5,6 +5,12 @@ import ContentLoader from "react-content-loader";
 
 function Cart({name, price, imageUrl, isLoading=true}) {
 
+    const [favorite, setFavorite] = React.useState(false);
+
+    const addToFavorite = () => {
+        setFavorite(!favorite)
+    }
+
     // console.log(isLoading)
     return (
         <>
@@ -37,8 +43,9 @@ function Cart({name, price, imageUrl, isLoading=true}) {
                         <button className="button-add">
                             <img src="/img/btn-add.svg" alt="button-add"/>
                         </button>
-                        <button className="button-favorite">
-                            <img src="/img/btn-favorite.svg" alt="button-favorite"/>
+                        <button className="button-favorite" onClick={addToFavorite}>
+
+                            <img src={favorite ? "/img/like.svg" : "/img/btn-favorite.svg"  } alt="button-favorite"/>
                         </button>
                     </div>
                 </div>
