@@ -1,14 +1,25 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
+import axios from "axios";
 // import 'react-loading-skeleton/dist/skeleton.css'
 
 
-function Cart({name, price, imageUrl, isLoading=true}) {
+function Cart({item, name, price, imageUrl, isLoading=true}) {
 
     const [favorite, setFavorite] = React.useState(false);
 
     const addToFavorite = () => {
         setFavorite(!favorite)
+        console.log(item)
+        async function fetchData() {
+
+
+        const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', item);
+
+
+        }
+        fetchData();
+
     }
 
     // console.log(isLoading)

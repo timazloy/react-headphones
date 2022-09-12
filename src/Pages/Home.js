@@ -31,7 +31,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
                 <Cart key={index} />
             )) : items.length > 0 && currentGoods
                 .map((item, index) => (
-                    <Cart key={index} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
+                    <Cart item={item} key={index} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
                 ))
         )
     }
