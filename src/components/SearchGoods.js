@@ -6,7 +6,7 @@ import axios from "axios";
 import SearchEmpty from "./SearchEmpty/SearchEmpty";
 import ModalSearch from "./ModalSearch";
 
-function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
+function SearchGoods({isLoading,  items, notFound, setIsLoading, setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
 
     const mainSearch = []
 
@@ -75,12 +75,25 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNot
     }
 
     const test2 = (event,item) => {
-        let b = ''
-        const a = mainSearch.map(item => {
-           b += '&search=' + item
+        let b = []
+        // const a = mainSearch.map(item => {
+        //    b += '&search=' + item
+        // })
+        // const a = mainSearch.join(',')
+        console.log(mainSearch)
+        // setSortBrand(b)
+        // console.log(b)
+        items.forEach(item => {
+            mainSearch.forEach(brand => {
+                item.name === brand && b.push(item)
+            })
         })
-        setSortBrand(b)
-        console.log(b)
+        // mainSearch.forEach(brand => {
+        //     items.filter((item) => item.name.toLowerCase().includes(brand.toLowerCase())) && b.push(item)
+        //
+        // })
+        setItems(b)
+
     }
 
     return (
@@ -146,7 +159,7 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading,setItems, setNot
             <div className="main-block__checkbox checkbox-filer">
                 {
                     brandHeadphone.map(item => (
-                        <button className='button-brand'>{item}</button>
+                        <button key={item} className='button-brand'>{item}</button>
                     ))
                 }
             </div>
