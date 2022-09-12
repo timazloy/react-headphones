@@ -4,6 +4,7 @@ import Header from '../components/Header/Header'
 import React from "react";
 import Cart from '../components/Cart/Cart'
 import SearchGoods from "../components/SearchGoods";
+import Pagination from '../components/Pagination'
 import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 import axios from "axios";
 
@@ -11,7 +12,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
     const [searchValue, setSearchValue] = React.useState('');
     const [notFound, setNotFound] = React.useState('');
 
-    const [currentPage, setCurrentPage] = React.useState(1);
+    const [currentPage, setCurrentPage] = React.useState(2);
     const [goodsPage] = React.useState(12);
 
     const lastGoodsIndex = currentPage * goodsPage;
@@ -44,29 +45,13 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
 
     return (
         <>
-            <SearchGoods isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <SearchGoods currentPage={currentPage} isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} searchValue={searchValue} setSearchValue={setSearchValue}/>
             <div className="main-block__goods goods">
                 {renderItemsHome()}
                 {notFound}
             </div>
-            <ul className="main-block__pagination pagination">
-                {
-                    pageNumbers.map(number => (
-                        <li className="pagination__item" key={number}>
-                            <a
-                                className={[
-                                    "pagination__link",
-                                    paginationClasses(number)
-                                ].join(' ')}
-                                href="#"
-                                onClick={(event) => paginate(event, number)}
-                            >
-                                {number}
-                            </a>
-                        </li>
-                    ))
-                }
-            </ul>
+            <Pagination onChangePage={(number) => setCurrentPage(number)}/>
+
         </>
     );
 }
