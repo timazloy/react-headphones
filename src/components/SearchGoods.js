@@ -8,7 +8,7 @@ import ModalSearch from "./ModalSearch";
 
 function SearchGoods({isLoading,  items, notFound, setIsLoading, setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
 
-    const mainSearch = []
+    let mainSearch = []
 
     const brandHeadphone = ['Astro', 'Razer', 'HyperX', 'EPOS', 'ASUS', 'SteelSeries','JETACCESS', 'Sharkoon', 'Edifier']
     const typeHeadphone = ['Проводные гарнитуры', 'Bluetooth гарнитуры']
@@ -50,6 +50,7 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading, setItems, setNo
 
     }, [items]);
 
+
     React.useEffect(() => {
         async function fetchData() {
             setIsLoading(true)
@@ -66,33 +67,71 @@ function SearchGoods({isLoading,  items, notFound, setIsLoading, setItems, setNo
     }, [sortName,sortPrice,sortBrand]);
 
     const test = (event,item) => {
+        event.preventDefault();
         if (!mainSearch.includes(item)) {
             mainSearch.push(item)
+            // console.log(event.target)
+            // console.log(mainSearch.indexOf(item))
             console.log(mainSearch)
-            // console.log(event.target.checked)
+        } else if (mainSearch.includes(item)) {
+            let num = mainSearch.indexOf(item)
+            mainSearch.splice(num, 1);
+            console.log(mainSearch)
         }
+
+
 
     }
 
     const test2 = (event,item) => {
-        let b = []
-        // const a = mainSearch.map(item => {
-        //    b += '&search=' + item
-        // })
-        // const a = mainSearch.join(',')
-        console.log(mainSearch)
-        // setSortBrand(b)
-        // console.log(b)
-        items.forEach(item => {
-            mainSearch.forEach(brand => {
-                item.name === brand && b.push(item)
+
+        // setIsLoading(true)
+        // console.log(mainSearch)
+        setIsLoading(true)
+        const itemsResponse = axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName);
+        // setItems(itemsResponse)
+        itemsResponse.then((response)=> {
+            // console.log(response.data)
+            // setItems(response.data)
+
+            let b = []
+
+            // console.log(mainSearch)
+
+            response.data.forEach(item => {
+                mainSearch.forEach(brand => {
+                    item.name === brand && b.push(item)
+                })
             })
+
+            setItems(b)
+            setIsLoading(false)
+
+            // console.log(mainSearch)
+            // mainSearch = []
+            console.log(mainSearch)
         })
-        // mainSearch.forEach(brand => {
-        //     items.filter((item) => item.name.toLowerCase().includes(brand.toLowerCase())) && b.push(item)
+
+        // console.log(itemsResponse)
+        // setIsLoading(false)
+
+
+
+        // let b = []
         //
+        // // console.log(mainSearch)
+        //
+        // items.forEach(item => {
+        //     mainSearch.forEach(brand => {
+        //         item.name === brand && b.push(item)
+        //     })
         // })
-        setItems(b)
+        //
+        // setItems(b)
+        //
+        // // console.log(mainSearch)
+        // mainSearch = []
+        // console.log(items)
 
     }
 
