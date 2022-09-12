@@ -32,7 +32,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
         return (
             isLoading ? [...Array(12)].map((item, index) => (
                 <Cart key={index} />
-            )) : items.length > 0 && currentGoods
+            )) : items.length > 0 && items
                 .map((item, index) => (
                     <Cart item={item} key={index} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
                 ))
