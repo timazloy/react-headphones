@@ -12,7 +12,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
     const [searchValue, setSearchValue] = React.useState('');
     const [notFound, setNotFound] = React.useState('');
 
-    const [currentPage, setCurrentPage] = React.useState(2);
+    const [currentPage, setCurrentPage] = React.useState(1);
     const [goodsPage] = React.useState(12);
 
     const lastGoodsIndex = currentPage * goodsPage;

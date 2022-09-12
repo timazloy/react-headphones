@@ -55,13 +55,14 @@ function SearchGoods({currentPage, isLoading,  items, notFound, setIsLoading, se
         async function fetchData() {
             setIsLoading(true)
 
-            const itemsResponse = await axios.get(`https://62f2672bb1098f15081212c2.mockapi.io/headphones?page=2&limit=8` + sortPrice + '&search=' + sortName);
+            const itemsResponse = await axios.get(`https://62f2672bb1098f15081212c2.mockapi.io/headphones?page=${currentPage}&limit=8`);
             setItems(itemsResponse.data)
             setIsLoading(false)
 
         }
 
         console.log(currentPage)
+        console.log(items)
         fetchData();
         if (searchValue.length === 0) {
             setNotFound('')
