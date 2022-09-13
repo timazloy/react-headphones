@@ -6,7 +6,7 @@ import axios from "axios";
 import SearchEmpty from "./SearchEmpty/SearchEmpty";
 import ModalSearch from "./ModalSearch";
 
-function SearchGoods({currentPage, isLoading,  items, notFound, setIsLoading, setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
+function SearchGoods({isLoading,  items, notFound, setIsLoading, setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
 
     let mainSearch = []
 
@@ -55,8 +55,7 @@ function SearchGoods({currentPage, isLoading,  items, notFound, setIsLoading, se
         async function fetchData() {
             setIsLoading(true)
 
-            console.log(currentPage)
-            const itemsResponse = await axios.get(`https://62f2672bb1098f15081212c2.mockapi.io/headphones?page=${currentPage}&limit=8` + sortPrice + '&search=' + sortName);
+            const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName);
             setItems(itemsResponse.data)
             setIsLoading(false)
 
@@ -65,7 +64,7 @@ function SearchGoods({currentPage, isLoading,  items, notFound, setIsLoading, se
         if (searchValue.length === 0) {
             setNotFound('')
         }
-    }, [sortName,sortPrice,sortBrand,currentPage]);
+    }, [sortName,sortPrice,sortBrand]);
 
     const test = (event,item) => {
         event.preventDefault();

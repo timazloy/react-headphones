@@ -24,15 +24,13 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
         setCurrentPage(pageNumber)
     }
 
-    const testzxc = () => {
-        setCurrentPage(currentPage + 1)
-    }
+
 
     const renderItemsHome = () => {
         return (
             isLoading ? [...Array(12)].map((item, index) => (
                 <Cart key={index} />
-            )) : items.length > 0 && items
+            )) : items.length > 0 && currentGoods
                 .map((item, index) => (
                     <Cart item={item} key={index} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
                 ))
@@ -47,13 +45,12 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
 
     return (
         <>
-            <SearchGoods currentPage={currentPage} isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <SearchGoods isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} searchValue={searchValue} setSearchValue={setSearchValue}/>
             <div className="main-block__goods goods">
                 {renderItemsHome()}
                 {notFound}
             </div>
             <ul className="main-block__pagination pagination">
-                <button onClick={testzxc}>e boy</button>
                 {
                     pageNumbers.map(number => (
                         <li className="pagination__item" key={number}>
