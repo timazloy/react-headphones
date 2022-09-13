@@ -9,6 +9,7 @@ import Swiper from "./components/Swiper";
 
 function App() {
     const [items, setItems] = React.useState([]);
+    const [favorites, setFavorites] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
 
     const [selectedOption, setSelectedOption] = React.useState(null);
@@ -26,8 +27,8 @@ function App() {
                             <Swiper/>
                         </div>
                         <Routes>
-                            <Route exact path="/" element={<Home selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
-                            <Route exact path="/favorites" element={<Favorites/>}/>
+                            <Route exact path="/" element={<Home favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
+                            <Route exact path="/favorites" element={<Favorites isLoading={isLoading} favorites={favorites} setFavorites={setFavorites} />}/>
                         </Routes>
                     </div>
                 </Router>

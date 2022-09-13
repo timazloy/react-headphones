@@ -7,7 +7,7 @@ import SearchGoods from "../components/SearchGoods";
 import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 import axios from "axios";
 
-function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
+function Home({favorites, setFavorites, items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
     const [searchValue, setSearchValue] = React.useState('');
     const [notFound, setNotFound] = React.useState('');
 
@@ -45,7 +45,7 @@ function Home({items, isLoading, setSelectedOption, selectedOption, setIsLoading
 
     return (
         <>
-            <SearchGoods isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <SearchGoods favorites={favorites} setFavorites={setFavorites} isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} searchValue={searchValue} setSearchValue={setSearchValue}/>
             <div className="main-block__goods goods">
                 {renderItemsHome()}
                 {notFound}
