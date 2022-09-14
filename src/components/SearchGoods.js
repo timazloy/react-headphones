@@ -6,7 +6,7 @@ import axios from "axios";
 import SearchEmpty from "./SearchEmpty/SearchEmpty";
 import ModalSearch from "./ModalSearch";
 
-function SearchGoods({favorites, setFavorites, isLoading,  items, notFound, setIsLoading, setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
+function SearchGoods({setNameValue, clearValue, sortPrice, setSortPrice, setSortName, sortName, favorites, setFavorites, isLoading,  items, notFound, setIsLoading, setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
 
     let mainSearch = []
 
@@ -16,57 +16,57 @@ function SearchGoods({favorites, setFavorites, isLoading,  items, notFound, setI
 
     const [modalActive, setModalActive] = React.useState(false)
 
-    const [sortName, setSortName] = React.useState('')
-    const [sortPrice, setSortPrice] = React.useState('')
-    const [sortBrand, setSortBrand] = React.useState([])
+    // const [sortName, setSortName] = React.useState('')
+    // const [sortPrice, setSortPrice] = React.useState('')
+    // const [sortBrand, setSortBrand] = React.useState([])
 
-    const setNameValue = (e) =>{
-        setSortName(e.target.value)
-    }
-
-    const clearValue = () => {
-        setSortName('')
-        setNotFound('')
-    }
-
-    // условие для картинки "Такой товар не найден"
-    const showNotFound = () => {
-        if (items.length === 0) {
-            setNotFound(<SearchEmpty setSearchValue={setSearchValue} setNotFound={setNotFound} clearValue={clearValue}/>)
-        } else {
-            setNotFound('')
-        }
-
-    }
-
-    // отслеживаем фильтрацию чтобы выводить "Такой товар не найден"
-    React.useEffect(() => {
-
-        if (notFound !== '') return;
-
-        if (isLoading === false) {
-            showNotFound()
-        }
-
-    }, [items]);
-
-
-    React.useEffect(() => {
-        async function fetchData() {
-            setIsLoading(true)
-
-            const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName);
-            const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
-            setItems(itemsResponse.data)
-            setFavorites(favoriteResponse.data)
-            setIsLoading(false)
-
-        }
-        fetchData();
-        if (searchValue.length === 0) {
-            setNotFound('')
-        }
-    }, [sortName,sortPrice,sortBrand]);
+    // const setNameValue = (e) =>{
+    //     setSortName(e.target.value)
+    // }
+    //
+    // const clearValue = () => {
+    //     setSortName('')
+    //     setNotFound('')
+    // }
+    //
+    // // условие для картинки "Такой товар не найден"
+    // const showNotFound = () => {
+    //     if (items.length === 0) {
+    //         setNotFound(<SearchEmpty setSearchValue={setSearchValue} setNotFound={setNotFound} clearValue={clearValue}/>)
+    //     } else {
+    //         setNotFound('')
+    //     }
+    //
+    // }
+    //
+    // // отслеживаем фильтрацию чтобы выводить "Такой товар не найден"
+    // React.useEffect(() => {
+    //
+    //     if (notFound !== '') return;
+    //
+    //     if (isLoading === false) {
+    //         showNotFound()
+    //     }
+    //
+    // }, [items]);
+    //
+    //
+    // React.useEffect(() => {
+    //     async function fetchData() {
+    //         setIsLoading(true)
+    //
+    //         const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName);
+    //         const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
+    //         setItems(itemsResponse.data)
+    //         setFavorites(favoriteResponse.data)
+    //         setIsLoading(false)
+    //
+    //     }
+    //     fetchData();
+    //     if (searchValue.length === 0) {
+    //         setNotFound('')
+    //     }
+    // }, [sortName,sortPrice,sortBrand]);
 
     const test = (event,item) => {
         event.preventDefault();
@@ -114,26 +114,6 @@ function SearchGoods({favorites, setFavorites, isLoading,  items, notFound, setI
             console.log(mainSearch)
         })
 
-        // console.log(itemsResponse)
-        // setIsLoading(false)
-
-
-
-        // let b = []
-        //
-        // // console.log(mainSearch)
-        //
-        // items.forEach(item => {
-        //     mainSearch.forEach(brand => {
-        //         item.name === brand && b.push(item)
-        //     })
-        // })
-        //
-        // setItems(b)
-        //
-        // // console.log(mainSearch)
-        // mainSearch = []
-        // console.log(items)
 
     }
 

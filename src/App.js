@@ -6,6 +6,7 @@ import Home from './Pages/Home'
 import Favorites from "./Pages/Favorites";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Swiper from "./components/Swiper";
+import SearchEmpty from "./components/SearchEmpty/SearchEmpty";
 
 function App() {
     const [items, setItems] = React.useState([]);
@@ -14,7 +15,64 @@ function App() {
 
     const [selectedOption, setSelectedOption] = React.useState(null);
 
-  return (
+    const [searchValue, setSearchValue] = React.useState('');
+
+    const [sortName, setSortName] = React.useState('')
+    const [sortPrice, setSortPrice] = React.useState('')
+    const [sortBrand, setSortBrand] = React.useState([])
+
+    const [notFound, setNotFound] = React.useState('');
+
+    const setNameValue = (e) =>{
+        setSortName(e.target.value)
+    }
+
+    const clearValue = () => {
+        setSortName('')
+        setNotFound('')
+    }
+
+    // условие для картинки "Такой товар не найден"
+    const showNotFound = () => {
+        if (items.length === 0) {
+            setNotFound(<SearchEmpty setSearchValue={setSearchValue} setNotFound={setNotFound} clearValue={clearValue}/>)
+        } else {
+            setNotFound('')
+        }
+
+    }
+
+    // отслеживаем фильтрацию чтобы выводить "Такой товар не найден"
+    React.useEffect(() => {
+
+        if (notFound !== '') return;
+
+        if (isLoading === false) {
+            showNotFound()
+        }
+
+    }, [items]);
+
+
+    React.useEffect(() => {
+        async function fetchData() {
+            setIsLoading(true)
+
+            const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName);
+            const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
+            setItems(itemsResponse.data)
+            setFavorites(favoriteResponse.data)
+            setIsLoading(false)
+
+        }
+        fetchData();
+        if (searchValue.length === 0) {
+            setNotFound('')
+        }
+    }, [sortName,sortPrice,sortBrand]);
+
+
+    return (
     <div className="main-wrapper">
 
 
@@ -23,11 +81,8 @@ function App() {
                 <Router>
                     <Header/>
                     <div className="main-block__body">
-                        <div className="main-block__slider slider-swiper">
-                            <Swiper/>
-                        </div>
                         <Routes>
-                            <Route exact path="/" element={<Home favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
+                            <Route exact path="/" element={<Home setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
                             <Route exact path="/favorites" element={<Favorites isLoading={isLoading} favorites={favorites} setFavorites={setFavorites} />}/>
                         </Routes>
                     </div>

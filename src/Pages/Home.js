@@ -7,9 +7,9 @@ import SearchGoods from "../components/SearchGoods";
 import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 import axios from "axios";
 
-function Home({favorites, setFavorites, items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
-    const [searchValue, setSearchValue] = React.useState('');
-    const [notFound, setNotFound] = React.useState('');
+function Home({setNameValue, clearValue, setNotFound, setSearchValue, searchValue, sortPrice, setSortPrice, sortName, setSortName, notFound, favorites, setFavorites, items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
+    // const [searchValue, setSearchValue] = React.useState('');
+    // const [notFound, setNotFound] = React.useState('');
 
     const [currentPage, setCurrentPage] = React.useState(1);
     const [goodsPage] = React.useState(12);
@@ -32,7 +32,7 @@ function Home({favorites, setFavorites, items, isLoading, setSelectedOption, sel
                 <Cart key={index} />
             )) : items.length > 0 && currentGoods
                 .map((item, index) => (
-                    <Cart item={item} key={item.id} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
+                    <Cart setFavorites={setFavorites} setIsLoading={setIsLoading} item={item} key={item.id} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
                 ))
         )
     }
@@ -45,7 +45,10 @@ function Home({favorites, setFavorites, items, isLoading, setSelectedOption, sel
 
     return (
         <>
-            <SearchGoods favorites={favorites} setFavorites={setFavorites} isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <div className="main-block__slider slider-swiper">
+                <Swiper/>
+            </div>
+            <SearchGoods setNameValue={setNameValue} clearValue={clearValue}  setSortPrice={setSortPrice} sortPrice={sortPrice} sortName={sortName} setSortName={setSortName} favorites={favorites} setFavorites={setFavorites} isLoading={isLoading} items={items} notFound={notFound} setNotFound={setNotFound} setItems={setItems} setIsLoading={setIsLoading} showBrandMenu={showBrandMenu} setFixedFilter={setFixedFilter}  setSelectedOption={setSelectedOption} selectedOption={selectedOption} searchValue={searchValue} setSearchValue={setSearchValue}/>
             <div className="main-block__goods goods">
                 {renderItemsHome()}
                 {notFound}

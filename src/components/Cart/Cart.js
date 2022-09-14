@@ -4,7 +4,7 @@ import axios from "axios";
 // import 'react-loading-skeleton/dist/skeleton.css'
 
 
-function Cart({item, name, price, imageUrl, isLoading=true}) {
+function Cart({setIsLoadingFavorite, setFavorites,item, name, price, imageUrl, isLoading=true}) {
 
     const [favorite, setFavorite] = React.useState(false);
 
@@ -13,9 +13,9 @@ function Cart({item, name, price, imageUrl, isLoading=true}) {
         console.log(item)
         async function fetchData() {
 
-
-        const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', item);
-
+            const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', item);
+            const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
+            setFavorites(favoriteResponse.data)
 
         }
         fetchData();
