@@ -85,6 +85,10 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
+
+  &__favorite-title {
+    margin-bottom: 40px;
+  }
 }
 
 
@@ -93,13 +97,13 @@ body {
   justify-content: space-between;
   align-items: flex-start;
 
-  &__title {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 39px;
-    color: #000000;
-    max-width: 500px;
-  }
+  //&__title {
+  //  font-weight: 700;
+  //  font-size: 32px;
+  //  line-height: 39px;
+  //  color: #000000;
+  //  max-width: 500px;
+  //}
 
   &__block {
     display: flex;
@@ -453,4 +457,12 @@ body {
   border: 1px solid #e9e6e6;
   border-radius: 12px;
   cursor: pointer;
+}
+
+.main-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  color: #000000;
+  max-width: 500px;
 }

@@ -72,6 +72,21 @@ function App() {
     }, [sortName,sortPrice,sortBrand]);
 
 
+    // const [favorite, setFavorite] = React.useState(isFavorite);
+
+    const addToFavorite = (obj) => {
+        async function fetchData() {
+
+            const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
+            const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
+            // setFavorites(favoriteResponse.data)
+            setFavorites((prev) => [...prev,  favoriteResponse])
+        }
+        fetchData();
+
+    }
+
+
     return (
     <div className="main-wrapper">
 
@@ -83,7 +98,7 @@ function App() {
                     <div className="main-block__body">
                         <Routes>
                             <Route exact path="/" element={<Home setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
-                            <Route exact path="/favorites" element={<Favorites isLoading={isLoading} favorites={favorites} setFavorites={setFavorites} />}/>
+                            <Route exact path="/favorites" element={<Favorites addToFavorite={addToFavorite} isLoading={isLoading} favorites={favorites} setFavorites={setFavorites} />}/>
                         </Routes>
                     </div>
                 </Router>

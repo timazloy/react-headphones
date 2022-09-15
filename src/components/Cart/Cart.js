@@ -4,23 +4,28 @@ import axios from "axios";
 // import 'react-loading-skeleton/dist/skeleton.css'
 
 
-function Cart({setIsLoadingFavorite, setFavorites,item, name, price, imageUrl, isLoading=true}) {
+function Cart({addToFavorite, setIsLoadingFavorite, setFavorites,item, name, price, imageUrl, isLoading=true, isFavorite}) {
 
-    const [favorite, setFavorite] = React.useState(false);
+    const [favorite, setFavorite] = React.useState(isFavorite);
 
-    const addToFavorite = () => {
-        setFavorite(!favorite)
-        console.log(item)
-        async function fetchData() {
-
-            const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', item);
-            const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
-            setFavorites(favoriteResponse.data)
-
-        }
-        fetchData();
-
+    const addToFavoriteIcon = () => {
+        addToFavorite(item)
+        setFavorite(true)
     }
+    //
+    // const addToFavorite = () => {
+    //     setFavorite(!favorite)
+    //     console.log(item)
+    //     async function fetchData() {
+    //
+    //         const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', item);
+    //         const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
+    //         setFavorites(favoriteResponse.data)
+    //
+    //     }
+    //     fetchData();
+    //
+    // }
 
     // console.log(isLoading)
     return (
@@ -56,7 +61,7 @@ function Cart({setIsLoadingFavorite, setFavorites,item, name, price, imageUrl, i
                         </button>
                         <button className="button-favorite" onClick={addToFavorite}>
 
-                            <img src={favorite ? "/img/like.svg" : "/img/btn-favorite.svg"  } alt="button-favorite"/>
+                            <img onClick={addToFavoriteIcon} src={favorite ? "/img/like.svg" : "/img/btn-favorite.svg"  } alt="button-favorite"/>
                         </button>
                     </div>
                 </div>
