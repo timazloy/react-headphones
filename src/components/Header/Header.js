@@ -1,7 +1,13 @@
 import {Link, NavLink} from "react-router-dom";
 import './Header.scss';
+import React from 'react'
+import ModalBasket from "../ModalBasket";
+
+
 
 function Header() {
+    const [modalBasketActive, setModalBasketActive] = React.useState(false)
+
     return (
         <header className="header">
             <div className="header__column">
@@ -19,10 +25,11 @@ function Header() {
             </div>
             <div className="header__column">
                 <div className="personal-section">
-                    <div className="personal-section__item basket-section">
+                    <button onClick={() =>setModalBasketActive(true)} className="personal-section__item basket-section">
                         <img className="basket" src="/img/basket.svg" alt="basket"/>
                         <p className="basket-section__text">1205 руб.</p>
-                    </div>
+                    </button>
+                    <ModalBasket modalBasketActive={modalBasketActive} setModalBasketActive={setModalBasketActive}/>
                     <Link to="/favorites">
                         <div className="personal-section__item">
                             <img className="favorites" src="/img/favorites.svg" alt="favorites"/>

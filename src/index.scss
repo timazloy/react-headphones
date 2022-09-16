@@ -348,7 +348,7 @@ body {
 
 
 
-.modal-search {
+.modal {
   height: 100vh;
   width: 100vw;
   background-color: rgba(0,0,0,0.4);
@@ -363,6 +363,10 @@ body {
   pointer-events: none;
   transition: 0.5s;
 
+  &--basket {
+    justify-content: flex-end;
+  }
+
   &--active {
     opacity: 1;
     pointer-events: all;
@@ -376,9 +380,18 @@ body {
     transform: scale(0,1);
     transition: 0.4s all;
 
+    &--basket {
+      height: 100%;
+      overflow: auto;
+    }
+
     &--active {
       transform: scale(1);
     }
+  }
+
+  &__title {
+    margin-bottom: 30px;
   }
 }
 
@@ -486,5 +499,41 @@ body {
     color: #000000;
     opacity: 0.4;
     margin-bottom: 40px;
+  }
+}
+
+.basket-section {
+  cursor: pointer;
+}
+
+
+.basket-goods {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+ }
+
+.basket-item {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #e9e6e6;
+  border-radius: 20px;
+
+  &__wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__description {
+    max-width: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 }
