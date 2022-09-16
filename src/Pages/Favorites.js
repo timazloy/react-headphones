@@ -1,12 +1,16 @@
 import React from "react";
 // import 'react-loading-skeleton/dist/skeleton.css'
-import Card from '../components/Cart/Cart'
 import Cart from "../components/Cart/Cart";
+import FavoritesEmpty from "../components/FavoritesEmpty";
+
 
 
 function Favorites({addToFavorite, favorites, setFavorites, isLoading}) {
 
 
+    // favorites.forEach(item => {
+    //     console.log(item.favorite)
+    // })
 
     return (
         <>
@@ -16,13 +20,21 @@ function Favorites({addToFavorite, favorites, setFavorites, isLoading}) {
                     {
 
                         isLoading ? [...Array(12)].map((item, index) => (
-                            <Cart key={index} />
+                            <Cart key={index} isFavorite={true} />
                         )) : favorites
                             .map((item, index) => (
-                                <Card addToFavorite={addToFavorite} isFavorite={true}  item={item} key={item.id} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}
+                                <Cart addToFavorite={addToFavorite}
+                                      isFavorite={true}
+                                      item={item}
+                                      key={item.id}
+                                      name={item.title}
+                                      price={item.price}
+                                      imageUrl={item.imageUrl}
+                                      isLoading={isLoading}
                                 />
                             ))
                     }
+                    {favorites.length === 0 && <FavoritesEmpty/>}
             </div>
 
         </>

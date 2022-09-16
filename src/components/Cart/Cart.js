@@ -4,30 +4,36 @@ import axios from "axios";
 // import 'react-loading-skeleton/dist/skeleton.css'
 
 
-function Cart({addToFavorite, setIsLoadingFavorite, setFavorites,item, name, price, imageUrl, isLoading=true, isFavorite}) {
+function Cart({setIsLoadingFavorite, setFavorites,item, name, price, imageUrl, isLoading=true, isFavorite}) {
 
     const [favorite, setFavorite] = React.useState(isFavorite);
+
+    // React.useEffect(() => {
+    //     setFavorite(isFavorite)
+    // }, [favorite]);
 
     const addToFavoriteIcon = () => {
         addToFavorite(item)
         setFavorite(true)
     }
-    //
-    // const addToFavorite = () => {
-    //     setFavorite(!favorite)
-    //     console.log(item)
-    //     async function fetchData() {
-    //
-    //         const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', item);
-    //         const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
-    //         setFavorites(favoriteResponse.data)
-    //
-    //     }
-    //     fetchData();
-    //
-    // }
 
-    // console.log(isLoading)
+    const addToFavorite = (obj) => {
+        async function fetchData() {
+            // if(favorite) {
+            //     const itemsResponse = await axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.favorite}`)
+            // }
+            // console.log(obj)
+
+            const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
+            const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
+            setFavorites(favoriteResponse.data)
+            // setFavorites((prev) => [...prev,  favoriteResponse])
+        }
+        fetchData();
+
+    }
+
+
     return (
         <>
             {isLoading ?  <ContentLoader
