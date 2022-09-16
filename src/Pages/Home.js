@@ -7,7 +7,7 @@ import SearchGoods from "../components/SearchGoods";
 import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 import axios from "axios";
 
-function Home({setNameValue, clearValue, setNotFound, setSearchValue, searchValue, sortPrice, setSortPrice, sortName, setSortName, notFound, favorites, setFavorites, items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
+function Home({addToFavorite, setNameValue, clearValue, setNotFound, setSearchValue, searchValue, sortPrice, setSortPrice, sortName, setSortName, notFound, favorites, setFavorites, items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
     // const [searchValue, setSearchValue] = React.useState('');
     // const [notFound, setNotFound] = React.useState('');
 
@@ -24,6 +24,22 @@ function Home({setNameValue, clearValue, setNotFound, setSearchValue, searchValu
         setCurrentPage(pageNumber)
     }
 
+    // const addToFavorite = (obj) => {
+    //     async function fetchData() {
+    //         // if(favorite) {
+    //         //     const itemsResponse = await axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.favorite}`)
+    //         // }
+    //         // console.log(obj)
+    //
+    //         const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
+    //         const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
+    //         setFavorites(favoriteResponse.data)
+    //         // setFavorites((prev) => [...prev,  favoriteResponse])
+    //     }
+    //     fetchData();
+    //
+    // }
+
 
 
     const renderItemsHome = () => {
@@ -32,7 +48,7 @@ function Home({setNameValue, clearValue, setNotFound, setSearchValue, searchValu
                 <Cart key={index} />
             )) : items.length > 0 && currentGoods
                 .map((item, index) => (
-                    <Cart setFavorites={setFavorites} setIsLoading={setIsLoading} item={item} key={item.id} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
+                    <Cart addToFavorite={addToFavorite} setFavorites={setFavorites} setIsLoading={setIsLoading} item={item} key={item.id} name={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
                 ))
         )
     }
