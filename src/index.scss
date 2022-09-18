@@ -252,6 +252,12 @@ body {
   align-items: center;
   margin: 0 auto;
 
+  &--basket {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   &__text {
     font-weight: 600;
     font-size: 16px;
@@ -372,6 +378,14 @@ body {
     pointer-events: all;
   }
 
+  &__section {
+    height: calc(100vh - 120px);
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   &__content {
     padding: 30px;
     border-radius: 12px;
@@ -383,6 +397,8 @@ body {
     &--basket {
       height: 100%;
       overflow: auto;
+      max-width: 460px;
+      width: 100%;
     }
 
     &--active {
@@ -536,4 +552,16 @@ body {
     flex-direction: column;
     gap: 8px;
   }
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.basket-total {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
