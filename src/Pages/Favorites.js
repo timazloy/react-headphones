@@ -33,9 +33,7 @@ function Favorites({onPlus, addToFavorite, favorites, setFavorites, isLoading}) 
         <>
             <div className="goods__favorite-title main-title">Избранное</div>
             <div className="main-block__goods goods">
-
                     {
-
                         isLoading ? [...Array(12)].map((item, index) => (
                             <Cart key={index} isFavorite={true} />
                         )) : favorites

@@ -5,7 +5,7 @@ import ModalBasket from "../ModalBasket";
 
 
 
-function Header({cartItems}) {
+function Header({OnRemoveItem, cartItems}) {
     const [modalBasketActive, setModalBasketActive] = React.useState(false)
 
     return (
@@ -29,7 +29,7 @@ function Header({cartItems}) {
                         <img className="basket" src="/img/basket.svg" alt="basket"/>
                         <p className="basket-section__text">1205 руб.</p>
                     </button>
-                    <ModalBasket items={cartItems} modalBasketActive={modalBasketActive} setModalBasketActive={setModalBasketActive}/>
+                    <ModalBasket OnRemoveItem={OnRemoveItem} items={cartItems} modalBasketActive={modalBasketActive} setModalBasketActive={setModalBasketActive}/>
                     <Link to="/favorites">
                         <div className="personal-section__item">
                             <img className="favorites" src="/img/favorites.svg" alt="favorites"/>

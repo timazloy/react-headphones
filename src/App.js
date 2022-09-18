@@ -109,9 +109,13 @@ function App() {
 
     const onPlus = (obj) => {
         axios.post('https://62f2672bb1098f15081212c2.mockapi.io/cart', obj)
-        console.log(cartItems)
         setCartItems(prev => [...prev, obj]);
+    }
 
+    const OnRemoveItem = (id) => {
+        // axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/cart/${id}`)
+        console.log(id)
+        setCartItems(prev => prev.filter(item => item.id !== id));
     }
 
     // console.log(cartItems)
@@ -124,7 +128,7 @@ function App() {
         <div className="main-wrapper__goods main-block">
             <div className="main-block__wrapper">
                 <Router>
-                    <Header cartItems={cartItems} />
+                    <Header OnRemoveItem={OnRemoveItem} cartItems={cartItems} />
                     <div className="main-block__body">
                         <Routes>
                             <Route exact path="/" element={<Home onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
