@@ -1,11 +1,12 @@
 import React from "react";
 
 
-function ModalBasket({modalBasketActive, setModalBasketActive}) {
+function ModalBasket({items, modalBasketActive, setModalBasketActive}) {
 
     React.useEffect(() => {
         modalBasketActive ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto"
     }, [modalBasketActive]);
+
 
     return (
         <div className={modalBasketActive ? "modal modal--basket modal--active" : "modal modal--basket"} onClick={() => setModalBasketActive(false)}>
@@ -13,42 +14,21 @@ function ModalBasket({modalBasketActive, setModalBasketActive}) {
                 <h2 className="modal__title">Корзина</h2>
                 <div className="modal__section">
                     <div className="modal__goods basket-goods">
-                        <div className="basket-goods__item basket-item">
-                            <div className="basket-item__wrapper">
-                                <img className="basket-item__img" src="/img/headphone/1.jpg" alt="good"/>
+                        {items.map((item) => (
+                            <div key={item.imageUrl} className="basket-goods__item basket-item">
+                                <div className="basket-item__wrapper">
+                                    <img className="basket-item__img" src={item.imageUrl} alt="good"/>
+                                </div>
+                                <div className="basket-item__description">
+                                    <div className="basket-item__title">{item.title}</div>
+                                    <div className="basket-item__text">{item.price}</div>
+                                </div>
+                                <button className="basket-item__button">
+                                    <img src="/img/btn-remove.svg" alt="close"/>
+                                </button>
                             </div>
-                            <div className="basket-item__description">
-                                <div className="basket-item__title">Мужские Кроссовки Nike Air Max 270</div>
-                                <div className="basket-item__text">12 999 руб.</div>
-                            </div>
-                            <button className="basket-item__button">
-                                <img src="/img/btn-remove.svg" alt="close"/>
-                            </button>
-                        </div>
-                        <div className="basket-goods__item basket-item">
-                            <div className="basket-item__wrapper">
-                                <img className="basket-item__img" src="/img/headphone/1.jpg" alt="good"/>
-                            </div>
-                            <div className="basket-item__description">
-                                <div className="basket-item__title">Мужские Кроссовки Nike Air Max 270</div>
-                                <div className="basket-item__text">12 999 руб.</div>
-                            </div>
-                            <button className="basket-item__button">
-                                <img src="/img/btn-remove.svg" alt="close"/>
-                            </button>
-                        </div>
-                        <div className="basket-goods__item basket-item">
-                            <div className="basket-item__wrapper">
-                                <img className="basket-item__img" src="/img/headphone/1.jpg" alt="good"/>
-                            </div>
-                            <div className="basket-item__description">
-                                <div className="basket-item__title">Мужские Кроссовки Nike Air Max 270</div>
-                                <div className="basket-item__text">12 999 руб.</div>
-                            </div>
-                            <button className="basket-item__button">
-                                <img src="/img/btn-remove.svg" alt="close"/>
-                            </button>
-                        </div>
+                        ))}
+
                     </div>
                     <div className="modal__total basket-total">
                         <div className="basket-total__price total-price">

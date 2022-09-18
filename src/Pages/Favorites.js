@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 
-function Favorites({addToFavorite, favorites, setFavorites, isLoading}) {
+function Favorites({onPlus, addToFavorite, favorites, setFavorites, isLoading}) {
 
 
     // const addToFavorite = (obj) => {
@@ -41,6 +41,7 @@ function Favorites({addToFavorite, favorites, setFavorites, isLoading}) {
                         )) : favorites
                             .map((item, index) => (
                                 <Cart addToFavorite={addToFavorite}
+                                      onPlus={onPlus}
                                       isFavorite={true}
                                       item={item}
                                       key={item.id}

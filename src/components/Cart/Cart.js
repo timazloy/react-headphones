@@ -4,7 +4,7 @@ import axios from "axios";
 // import 'react-loading-skeleton/dist/skeleton.css'
 
 
-function Cart({setIsLoadingFavorite, setFavorites,item, name, price, imageUrl, isLoading=true, isFavorite, addToFavorite}) {
+function Cart({setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus}) {
 
     const [favorite, setFavorite] = React.useState(isFavorite);
 
@@ -33,6 +33,12 @@ function Cart({setIsLoadingFavorite, setFavorites,item, name, price, imageUrl, i
     //
     // }
 
+    const [isAdded, setIsAdded] = React.useState(false);
+
+    const onClickPlus = () => {
+        setIsAdded(!isAdded)
+        onPlus({title, price, imageUrl})
+    }
 
     return (
         <>
@@ -55,18 +61,17 @@ function Cart({setIsLoadingFavorite, setFavorites,item, name, price, imageUrl, i
                         <img className="item__image" src={imageUrl} alt="image"/>
                     </div>
                     <div className="item__title">
-                        {name}
+                        {title}
                     </div>
                     <div className="item__price item-price">
                         <div className="item-price__section">
                             <div className="item-price__title">Цена:</div>
                             <div className="item-price__text">{price} руб.</div>
                         </div>
-                        <button className="button-add">
-                            <img src="/img/btn-add.svg" alt="button-add"/>
+                        <button onClick={onClickPlus} className="button-add">
+                            <img src={isAdded ? "/img/Add-basket.svg" : "/img/btn-add.svg"} alt="button-add"/>
                         </button>
                         <button className="button-favorite" onClick={addToFavorite}>
-
                             <img onClick={addToFavoriteIcon} src={favorite ? "/img/like.svg" : "/img/btn-favorite.svg"  } alt="button-favorite"/>
                         </button>
                     </div>

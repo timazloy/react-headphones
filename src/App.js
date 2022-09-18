@@ -10,6 +10,9 @@ import SearchEmpty from "./components/SearchEmpty/SearchEmpty";
 
 function App() {
     const [items, setItems] = React.useState([]);
+
+    const [cartItems, setCartItems] = React.useState([]);
+
     const [favorites, setFavorites] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
 
@@ -60,8 +63,10 @@ function App() {
 
             const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName);
             const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
+            const cartResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/cart');
             setItems(itemsResponse.data)
             setFavorites(favoriteResponse.data)
+            setCartItems(cartResponse.data)
             setIsLoading(false)
 
         }
@@ -102,6 +107,15 @@ function App() {
 
     }
 
+    const onPlus = (obj) => {
+        axios.post('https://62f2672bb1098f15081212c2.mockapi.io/cart', obj)
+        console.log(cartItems)
+        setCartItems(prev => [...prev, obj]);
+
+    }
+
+    // console.log(cartItems)
+
 
     return (
     <div className="main-wrapper">
@@ -110,11 +124,11 @@ function App() {
         <div className="main-wrapper__goods main-block">
             <div className="main-block__wrapper">
                 <Router>
-                    <Header/>
+                    <Header cartItems={cartItems} />
                     <div className="main-block__body">
                         <Routes>
-                            <Route exact path="/" element={<Home addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
-                            <Route exact path="/favorites" element={<Favorites addToFavorite={addToFavorite} isLoading={isLoading} favorites={favorites} setFavorites={setFavorites} />}/>
+                            <Route exact path="/" element={<Home onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
+                            <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading} favorites={favorites} setFavorites={setFavorites} />}/>
                         </Routes>
                     </div>
                 </Router>
