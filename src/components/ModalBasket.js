@@ -35,7 +35,7 @@ function ModalBasket({OnRemoveItem, items, modalBasketActive, setModalBasketActi
                                 </div>
                                 <div className="basket-empty__title">Корзина пуста</div>
                                 <div className="basket-empty__text">Добавьте хотя бы одну пару наушников, чтобы сделать заказ.</div>
-                                <button className="basket-empty__button button-back">
+                                <button onClick={() => setModalBasketActive(false)} className="basket-empty__button button-back">
                                     <img className="button-back__icon" src="/img/arrow-back.svg" alt="back"/>
                                     <p className="button-back__text">Вернуться назад</p>
                                 </button>

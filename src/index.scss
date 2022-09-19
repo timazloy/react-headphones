@@ -252,10 +252,19 @@ body {
   align-items: center;
   margin: 0 auto;
 
+
+  &:hover .button-back__icon{
+    transform: translate(-4px);
+  }
+
   &--basket {
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+
+  &__icon {
+    transition: .3s;
   }
 
   &__text {
