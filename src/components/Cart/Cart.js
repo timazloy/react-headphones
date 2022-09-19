@@ -44,17 +44,18 @@ function Cart({setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, 
         <>
             {isLoading ?  <ContentLoader
                 speed={2}
-                width={150}
-                height={260}
-                viewBox="0 0 150 187"
+                width={210}
+                height={303}
+                viewBox="0 0 210 260"
                 backgroundColor="#f3f3f3"
                 foregroundColor="#ecebeb"
+                border="1px solid black"
             >
-                <rect x="0" y="0" rx="10" ry="10" width="150" height="91" />
-                <rect x="0" y="107" rx="7" ry="7" width="150" height="15" />
-                <rect x="0" y="126" rx="6" ry="6" width="93" height="15" />
-                <rect x="0" y="162" rx="0" ry="0" width="80" height="24" />
-                <rect x="114" y="155" rx="12" ry="12" width="32" height="32" />
+                <rect x="221" y="58" rx="16" ry="16" width="148" height="113" />
+                <rect x="29" y="15" rx="8" ry="8" width="151" height="109" />
+                <rect x="29" y="148" rx="8" ry="8" width="151" height="46" />
+                <rect x="149" y="220" rx="8" ry="8" width="32" height="30" />
+                <rect x="28" y="220" rx="0" ry="0" width="95" height="30" />
             </ContentLoader> : <>
                 <div className="goods__item item">
                     <div className="item__wrapper">
