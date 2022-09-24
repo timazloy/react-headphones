@@ -93,15 +93,11 @@ function App() {
 
     const addToFavorite = (obj) => {
         async function fetchData() {
-            // if(favorite) {
-            //     const itemsResponse = await axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.favorite}`)
-            // }
-            // console.log(obj)
 
             const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
             const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
             setFavorites(favoriteResponse.data)
-            // setFavorites((prev) => [...prev,  favoriteResponse])
+         
         }
         fetchData();
 
@@ -113,13 +109,9 @@ function App() {
     }
 
     const OnRemoveItem = (id) => {
-        // axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/cart/${id}`)
-        console.log(id)
+        axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/cart/${id}`)
         setCartItems(prev => prev.filter(item => item.id !== id));
     }
-
-    // console.log(cartItems)
-
 
     return (
     <div className="main-wrapper">

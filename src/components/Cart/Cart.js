@@ -7,6 +7,7 @@ import axios from "axios";
 function Cart({setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus}) {
 
     const [favorite, setFavorite] = React.useState(isFavorite);
+    const [isAdded, setIsAdded] = React.useState(false);
 
     // React.useEffect(() => {
     //     setFavorite(isFavorite)
@@ -14,26 +15,8 @@ function Cart({setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, 
 
     const addToFavoriteIcon = () => {
         addToFavorite(item)
-        setFavorite(true)
+        setFavorite(!favorite)
     }
-
-    // const addToFavorite = (obj) => {
-    //     async function fetchData() {
-    //         // if(favorite) {
-    //         //     const itemsResponse = await axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.favorite}`)
-    //         // }
-    //         // console.log(obj)
-    //
-    //         const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
-    //         const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
-    //         setFavorites(favoriteResponse.data)
-    //         // setFavorites((prev) => [...prev,  favoriteResponse])
-    //     }
-    //     fetchData();
-    //
-    // }
-
-    const [isAdded, setIsAdded] = React.useState(false);
 
     const onClickPlus = () => {
         setIsAdded(!isAdded)
