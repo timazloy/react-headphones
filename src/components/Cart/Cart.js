@@ -42,10 +42,10 @@ function Cart({setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, 
 
     return (
         <>
-            {isLoading ?  <ContentLoader
+            {isLoading ?  <div className="load-wrapper"><ContentLoader
                 speed={2}
-                width={210}
-                height={303}
+                width={208}
+                height={300}
                 viewBox="0 0 210 260"
                 backgroundColor="#f3f3f3"
                 foregroundColor="#ecebeb"
@@ -56,7 +56,7 @@ function Cart({setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, 
                 <rect x="29" y="148" rx="8" ry="8" width="151" height="46" />
                 <rect x="149" y="220" rx="8" ry="8" width="32" height="30" />
                 <rect x="28" y="220" rx="0" ry="0" width="95" height="30" />
-            </ContentLoader> : <>
+            </ContentLoader></div> : <>
                 <div className="goods__item item">
                     <div className="item__wrapper">
                         <img className="item__image" src={imageUrl} alt="image"/>

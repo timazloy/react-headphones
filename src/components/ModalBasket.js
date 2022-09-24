@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function ModalBasket({OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
+function ModalBasket({isLoading, OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
 
     React.useEffect(() => {
         modalBasketActive ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto"

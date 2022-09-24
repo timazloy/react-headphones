@@ -128,7 +128,7 @@ function App() {
         <div className="main-wrapper__goods main-block">
             <div className="main-block__wrapper">
                 <Router>
-                    <Header OnRemoveItem={OnRemoveItem} cartItems={cartItems} />
+                    <Header isLoading={isLoading} OnRemoveItem={OnRemoveItem} cartItems={cartItems} />
                     <div className="main-block__body">
                         <Routes>
                             <Route exact path="/" element={<Home onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
