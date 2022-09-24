@@ -14,8 +14,9 @@ function Cart({setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, 
     // }, [favorite]);
 
     const addToFavoriteIcon = () => {
-        addToFavorite(item)
         setFavorite(!favorite)
+        addToFavorite({title, price, imageUrl})
+
     }
 
     const onClickPlus = () => {

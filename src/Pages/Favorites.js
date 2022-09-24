@@ -43,7 +43,7 @@ function Favorites({onPlus, addToFavorite, favorites, setFavorites, isLoading}) 
                                       isFavorite={true}
                                       item={item}
                                       key={item.id}
-                                      name={item.title}
+                                      title={item.title}
                                       price={item.price}
                                       imageUrl={item.imageUrl}
                                       isLoading={isLoading}

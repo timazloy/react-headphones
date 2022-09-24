@@ -92,15 +92,16 @@ function App() {
     // }
 
     const addToFavorite = (obj) => {
-        async function fetchData() {
-
-            const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
-            const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
-            setFavorites(favoriteResponse.data)
-         
-        }
-        fetchData();
-
+        // async function fetchData() {
+        //
+        //     const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
+        //     const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
+        //     setFavorites(favoriteResponse.data)
+        //
+        // }
+        // fetchData();
+        axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
+        setFavorites((prev) => [...prev, obj])
     }
 
     const onPlus = (obj) => {
