@@ -3,10 +3,10 @@ import React from "react";
 import Cart from "../components/Cart/Cart";
 import FavoritesEmpty from "../components/FavoritesEmpty";
 import axios from "axios";
+import AppContext from "./context";
 
-
-
-function Favorites({onPlus, addToFavorite, favorites, isLoading}) {
+function Favorites({onPlus, addToFavorite, isLoading}) {
+    const {favorites} = React.useContext(AppContext);
 
     return (
         <>

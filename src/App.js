@@ -7,8 +7,9 @@ import Favorites from "./Pages/Favorites";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Swiper from "./components/Swiper";
 import SearchEmpty from "./components/SearchEmpty/SearchEmpty";
+import AppContext from "./Pages/context";
 
-const AppContext = React.createContext({});
+// export const AppContext = React.createContext({});
 
 function App() {
     const [items, setItems] = React.useState([]);
@@ -118,7 +119,7 @@ function App() {
                             <div className="main-block__body">
                                 <Routes>
                                     <Route exact path="/" element={<Home cartItems={cartItems} onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
-                                    <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading} favorites={favorites} />}/>
+                                    <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading}/>}/>
                                 </Routes>
                             </div>
                         </Router>
