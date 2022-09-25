@@ -91,7 +91,7 @@ function App() {
     //
     // }
 
-    const addToFavorite = (obj) => {
+    const addToFavorite = async (obj) => {
         // async function fetchData() {
         //
         //     const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
@@ -100,8 +100,18 @@ function App() {
         //
         // }
         // fetchData();
-        axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
-        setFavorites((prev) => [...prev, obj])
+        try {
+            if (favorites.find(favObj => favObj.id === obj.id)) {
+                axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.id}`)
+            } else {
+                const {data} = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
+                setFavorites((prev) => [...prev, data])
+            }
+        } catch (error) {
+            alert('Не удалось добавить в избранное')
+        }
+
+
     }
 
     const onPlus = (obj) => {

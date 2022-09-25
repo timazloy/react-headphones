@@ -48,7 +48,17 @@ function Home({onPlus, addToFavorite, setNameValue, clearValue, setNotFound, set
                 <Cart key={index} />
             )) : items.length > 0 && currentGoods
                 .map((item, index) => (
-                    <Cart onPlus={onPlus} addToFavorite={addToFavorite} setFavorites={setFavorites} setIsLoading={setIsLoading} item={item} key={item.id} title={item.title} price={item.price} imageUrl={item.imageUrl} isLoading={isLoading}/>
+                    <Cart onPlus={onPlus}
+                          addToFavorite={addToFavorite}
+                          setFavorites={setFavorites}
+                          setIsLoading={setIsLoading}
+                          {...item}
+                          // item={item}
+                          // key={item.id}
+                          // title={item.title}
+                          // price={item.price}
+                          imageUrl={item.imageUrl}
+                          isLoading={isLoading}/>
                 ))
         )
     }
