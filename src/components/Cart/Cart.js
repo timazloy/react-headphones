@@ -4,10 +4,11 @@ import axios from "axios";
 // import 'react-loading-skeleton/dist/skeleton.css'
 
 
-function Cart({id, setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus}) {
+function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus}) {
 
     const [favorite, setFavorite] = React.useState(isFavorite);
-    const [isAdded, setIsAdded] = React.useState(false);
+    const [isAdded, setIsAdded] = React.useState(added);
+
 
     // React.useEffect(() => {
     //     setFavorite(isFavorite)
@@ -15,13 +16,13 @@ function Cart({id, setIsLoadingFavorite, setFavorites,item, title, price, imageU
 
     const addToFavoriteIcon = () => {
         setFavorite(!favorite)
-        addToFavorite({id, title, price, imageUrl})
+        addToFavorite({id, parentId, title, price, imageUrl})
 
     }
 
     const onClickPlus = () => {
         setIsAdded(!isAdded)
-        onPlus({title, price, imageUrl})
+        onPlus({id, parentId, title, price, imageUrl})
     }
 
     return (

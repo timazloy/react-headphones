@@ -30,6 +30,7 @@ function App() {
         setSortName(e.target.value)
     }
 
+
     const clearValue = () => {
         setSortName('')
         setNotFound('')
@@ -102,21 +103,26 @@ function App() {
         // fetchData();
         try {
             if (favorites.find(favObj => favObj.id === obj.id)) {
-                axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.id}`)
+                await axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.id}`)
             } else {
                 const {data} = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
                 setFavorites((prev) => [...prev, data])
             }
         } catch (error) {
-            alert('Не удалось добавить в избранное')
+            // alert('Не удалось добавить в избранное')
         }
 
 
     }
 
     const onPlus = (obj) => {
-        axios.post('https://62f2672bb1098f15081212c2.mockapi.io/cart', obj)
-        setCartItems(prev => [...prev, obj]);
+        if (cartItems.find(item => Number(item.parentId) === Number(obj.parentId))) {
+            axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/cart/${obj.parentId}`)
+            setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(item.parentId)))
+        } else {
+            axios.post('https://62f2672bb1098f15081212c2.mockapi.io/cart', obj)
+            setCartItems(prev => [...prev, obj]);
+        }
     }
 
     const OnRemoveItem = (id) => {
@@ -134,7 +140,7 @@ function App() {
                     <Header isLoading={isLoading} OnRemoveItem={OnRemoveItem} cartItems={cartItems} />
                     <div className="main-block__body">
                         <Routes>
-                            <Route exact path="/" element={<Home onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
+                            <Route exact path="/" element={<Home cartItems={cartItems} onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
                             <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading} favorites={favorites} setFavorites={setFavorites} />}/>
                         </Routes>
                     </div>

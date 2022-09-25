@@ -41,7 +41,9 @@ function Favorites({onPlus, addToFavorite, favorites, setFavorites, isLoading}) 
                                 <Cart addToFavorite={addToFavorite}
                                       onPlus={onPlus}
                                       isFavorite={true}
-                                      // item={item}
+                                      // added={true}
+
+                                    // item={item}
                                       key={item.id}
                                       // title={item.title}
                                       // price={item.price}

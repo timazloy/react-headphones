@@ -7,7 +7,7 @@ import SearchGoods from "../components/SearchGoods";
 import SearchEmpty from "../components/SearchEmpty/SearchEmpty";
 import axios from "axios";
 
-function Home({onPlus, addToFavorite, setNameValue, clearValue, setNotFound, setSearchValue, searchValue, sortPrice, setSortPrice, sortName, setSortName, notFound, favorites, setFavorites, items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
+function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNotFound, setSearchValue, searchValue, sortPrice, setSortPrice, sortName, setSortName, notFound, favorites, setFavorites, items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
     // const [searchValue, setSearchValue] = React.useState('');
     // const [notFound, setNotFound] = React.useState('');
 
@@ -52,6 +52,8 @@ function Home({onPlus, addToFavorite, setNameValue, clearValue, setNotFound, set
                           addToFavorite={addToFavorite}
                           setFavorites={setFavorites}
                           setIsLoading={setIsLoading}
+                          isFavorite={favorites.some(obj => Number(obj.parentId) === Number(item.parentId))}
+                          added={cartItems.some(obj => Number(obj.parentId) === Number(item.parentId))}
                           {...item}
                           // item={item}
                           // key={item.id}
