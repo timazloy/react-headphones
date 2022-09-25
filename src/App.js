@@ -8,6 +8,8 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Swiper from "./components/Swiper";
 import SearchEmpty from "./components/SearchEmpty/SearchEmpty";
 
+const AppContext = React.createContext({});
+
 function App() {
     const [items, setItems] = React.useState([]);
 
@@ -29,7 +31,6 @@ function App() {
     const setNameValue = (e) =>{
         setSortName(e.target.value)
     }
-
 
     const clearValue = () => {
         setSortName('')
@@ -77,30 +78,7 @@ function App() {
         }
     }, [sortName,sortPrice,sortBrand]);
 
-
-    // const [favorite, setFavorite] = React.useState(isFavorite);
-
-    // const addToFavorite = (obj) => {
-    //     async function fetchData() {
-    //
-    //         const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
-    //         const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
-    //         setFavorites(favoriteResponse.data)
-    //         // setFavorites((prev) => [...prev,  favoriteResponse])
-    //     }
-    //     fetchData();
-    //
-    // }
-
     const addToFavorite = async (obj) => {
-        // async function fetchData() {
-        //
-        //     const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
-        //     const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
-        //     setFavorites(favoriteResponse.data)
-        //
-        // }
-        // fetchData();
         try {
             if (favorites.find(favObj => favObj.id === obj.id)) {
                 await axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.id}`)
@@ -131,24 +109,25 @@ function App() {
     }
 
     return (
-    <div className="main-wrapper">
-
-
-        <div className="main-wrapper__goods main-block">
-            <div className="main-block__wrapper">
-                <Router>
-                    <Header isLoading={isLoading} OnRemoveItem={OnRemoveItem} cartItems={cartItems} />
-                    <div className="main-block__body">
-                        <Routes>
-                            <Route exact path="/" element={<Home cartItems={cartItems} onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
-                            <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading} favorites={favorites} setFavorites={setFavorites} />}/>
-                        </Routes>
+        <AppContext.Provider value={{cartItems, favorites, items}}>
+            <div className="main-wrapper">
+                <div className="main-wrapper__goods main-block">
+                    <div className="main-block__wrapper">
+                        <Router>
+                            <Header isLoading={isLoading} OnRemoveItem={OnRemoveItem} cartItems={cartItems} />
+                            <div className="main-block__body">
+                                <Routes>
+                                    <Route exact path="/" element={<Home cartItems={cartItems} onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
+                                    <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading} favorites={favorites} />}/>
+                                </Routes>
+                            </div>
+                        </Router>
                     </div>
-                </Router>
-            </div>
-        </div>
+                </div>
 
-    </div>
+            </div>
+
+        </AppContext.Provider>
 
   );
 }

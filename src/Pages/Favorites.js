@@ -6,28 +6,7 @@ import axios from "axios";
 
 
 
-function Favorites({onPlus, addToFavorite, favorites, setFavorites, isLoading}) {
-
-
-    // const addToFavorite = (obj) => {
-    //     async function fetchData() {
-    //         // if(favorite) {
-    //         //     const itemsResponse = await axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.favorite}`)
-    //         // }
-    //         // console.log(obj)
-    //
-    //         const itemsResponse = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
-    //         const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
-    //         setFavorites(favoriteResponse.data)
-    //         // setFavorites((prev) => [...prev,  favoriteResponse])
-    //     }
-    //     fetchData();
-    //
-    // }
-
-    // favorites.forEach(item => {
-    //     console.log(item.favorite)
-    // })
+function Favorites({onPlus, addToFavorite, favorites, isLoading}) {
 
     return (
         <>
