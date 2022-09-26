@@ -1,5 +1,6 @@
 import React from "react";
 import BasketItem from "./BasketItem";
+import Cart from "./Cart/Cart";
 
 function ModalBasket({isLoading, OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
 
@@ -14,10 +15,11 @@ function ModalBasket({isLoading, OnRemoveItem, items, modalBasketActive, setModa
                 <div className={items.length > 0 ? "modal__section" : "modal__section modal__section--active"}>
                     <h2 className="modal__title">Корзина</h2>
                     <div className="modal__goods basket-goods">
-
                         {
-                            items.length > 0 ? items.map((item, index) => (
-                                <BasketItem OnRemoveItem={OnRemoveItem} id={item.id} image={item.imageUrl} title={item.title} price={item.price}/>
+                            isLoading ? [...Array(3)].map((item, index) => (
+                                    <BasketItem  isLoading={isLoading}/>
+                                )) : items.length > 0 ? items.map((item, index) => (
+                                <BasketItem isLoading={isLoading} OnRemoveItem={OnRemoveItem} id={item.id} image={item.imageUrl} title={item.title} price={item.price}/>
                             )) : <div className="basket-empty">
                                 <div className="basket-empty__img">
                                     <img src="/img/basket-empty.png" alt="empty-basket"/>
@@ -30,11 +32,7 @@ function ModalBasket({isLoading, OnRemoveItem, items, modalBasketActive, setModa
                                 </button>
                             </div>
                         }
-
-
-
                     </div>
-
                 </div>
 
                 {
