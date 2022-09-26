@@ -109,6 +109,10 @@ function App() {
         setCartItems(prev => prev.filter(item => item.id !== id));
     }
 
+    // const isItemAdded = (id) => {
+    //     return cartItems.some((obj) => Number(obj.id) === Number(id));
+    // }
+
     return (
         <AppContext.Provider value={{cartItems, favorites, items}}>
             <div className="main-wrapper">

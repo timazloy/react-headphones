@@ -1,5 +1,5 @@
 import React from "react";
-
+import BasketItem from "./BasketItem";
 
 function ModalBasket({isLoading, OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
 
@@ -17,18 +17,7 @@ function ModalBasket({isLoading, OnRemoveItem, items, modalBasketActive, setModa
 
                         {
                             items.length > 0 ? items.map((item, index) => (
-                                <div key={index} className="basket-goods__item basket-item">
-                                    <div className="basket-item__wrapper">
-                                        <img className="basket-item__img" src={item.imageUrl} alt="good"/>
-                                    </div>
-                                    <div className="basket-item__description">
-                                        <div className="basket-item__title">{item.title}</div>
-                                        <div className="basket-item__text">{item.price} руб.</div>
-                                    </div>
-                                    <button onClick={() => OnRemoveItem(item.id)} className="basket-item__button">
-                                        <img src="/img/btn-remove.svg" alt="close"/>
-                                    </button>
-                                </div>
+                                <BasketItem OnRemoveItem={OnRemoveItem} id={item.id} image={item.imageUrl} title={item.title} price={item.price}/>
                             )) : <div className="basket-empty">
                                 <div className="basket-empty__img">
                                     <img src="/img/basket-empty.png" alt="empty-basket"/>
