@@ -10,7 +10,7 @@ function ModalBasket({isLoading, OnRemoveItem, items, modalBasketActive, setModa
 
 
     return (
-        <div className={modalBasketActive ? "modal modal--basket modal--active" : "modal modal--basket"} onClick={() => setModalBasketActive(false)}>
+        <div className={modalBasketActive ? "modal modal--basket modal--active" : "modal modal--basket "} onClick={() => setModalBasketActive(false)}>
             <div className={modalBasketActive ? "modal__content modal__content--basket modal__content--active" : "modal__content modal__content--basket"} onClick={e => e.stopPropagation()}>
                 <div className={items.length > 0 ? "modal__section" : "modal__section modal__section--active"}>
                     <h2 className="modal__title">Корзина</h2>

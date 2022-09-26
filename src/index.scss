@@ -635,4 +635,8 @@ body {
 .load-wrapper {
   border: 1px solid #e9e6e6;
   border-radius: 40px;
+
+  &--basket {
+    border-radius: 20px;
+  }
 }
