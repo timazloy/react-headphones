@@ -56,7 +56,7 @@ function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNo
                           added={cartItems.some(obj => Number(obj.parentId) === Number(item.parentId))}
                           {...item}
                           // item={item}
-                          // key={item.id}
+                          key={item.imageUrl}
                           // title={item.title}
                           // price={item.price}
                           imageUrl={item.imageUrl}

@@ -12,18 +12,19 @@ function ModalBasket({isLoading, OnRemoveItem, items, modalBasketActive, setModa
     return (
         <div className={modalBasketActive ? "modal modal--basket modal--active" : "modal modal--basket "} onClick={() => setModalBasketActive(false)}>
             <div className={modalBasketActive ? "modal__content modal__content--basket modal__content--active" : "modal__content modal__content--basket"} onClick={e => e.stopPropagation()}>
+
+                <div className="modal-top">
+                    <h2 className="modal__title">Корзина</h2>
+                    <button onClick={() => setModalBasketActive(false)} className="modal-top__close"><img src="/img/close.svg" alt="close"/></button>
+                </div>
                 <div className={items.length > 0 ? "modal__section" : "modal__section modal__section--active"}>
-                    <div className="modal-top">
-                        <h2 className="modal__title">Корзина</h2>
-                        <button onClick={() => setModalBasketActive(false)} className="modal-top__close"><img src="/img/close.svg" alt="close"/></button>
-                    </div>
                     <div className="modal__goods basket-goods">
                         {
-                            isLoading ? [...Array(4)].map((item, index) => (
+                            isLoading ? [...Array(3)].map((item, index) => (
                                     <BasketItem  isLoading={isLoading}/>
                                 )) : items.length > 0 ? items.map((item, index) => (
                                 <BasketItem isLoading={isLoading} OnRemoveItem={OnRemoveItem} id={item.id} image={item.imageUrl} title={item.title} price={item.price}/>
-                            )) : <div className="basket-empty">
+                            )) : <div className="modal__empty basket-empty">
                                 <div className="basket-empty__img">
                                     <img src="/img/basket-empty.png" alt="empty-basket"/>
                                 </div>
