@@ -389,6 +389,7 @@ body {
 
   &__section {
     //height: calc(100vh - 120px);
+    overflow: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -402,7 +403,7 @@ body {
 
   &__content {
     padding: 30px;
-    border-radius: 12px;
+    border-radius: 12px 0 0 12px;
     background-color: white;
     width: 30vw;
     transform: scale(0,1);
@@ -410,7 +411,6 @@ body {
 
     &--basket {
       height: 100%;
-      overflow: auto;
       max-width: 460px;
       width: 100%;
       display: flex;
@@ -638,5 +638,17 @@ body {
 
   &--basket {
     border-radius: 20px;
+  }
+}
+
+.modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  &__close {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
   }
 }
