@@ -81,8 +81,9 @@ function App() {
 
     const addToFavorite = async (obj) => {
         try {
-            if (favorites.find(favObj => favObj.id === obj.id)) {
+            if (favorites.find(favObj => Number(favObj.parentId) === Number(obj.parentId))) {
                 await axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.id}`)
+                setFavorites((prev) => prev.filter((item) => Number(item.parentId) !== Number(item.parentId)))
             } else {
                 const {data} = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
                 setFavorites((prev) => [...prev, data])
