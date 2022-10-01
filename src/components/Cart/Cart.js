@@ -1,10 +1,13 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 import axios from "axios";
+import AppContext from "../../Pages/context";
 // import 'react-loading-skeleton/dist/skeleton.css'
 
 
 function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus}) {
+
+    const {isItemAdded} = React.useContext(AppContext);
 
     const [favorite, setFavorite] = React.useState(isFavorite);
     const [isAdded, setIsAdded] = React.useState(added);
@@ -21,7 +24,7 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
     }
 
     const onClickPlus = () => {
-        setIsAdded(!isAdded)
+        // setIsAdded(!isAdded)
         onPlus({id, parentId, title, price, imageUrl})
     }
 
@@ -55,7 +58,7 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
                             <div className="item-price__text">{price} руб.</div>
                         </div>
                         <button onClick={onClickPlus} className="button-add">
-                            <img src={isAdded ? "/img/Add-basket.svg" : "/img/btn-add.svg"} alt="button-add"/>
+                            <img src={isItemAdded(parentId) ? "/img/Add-basket.svg" : "/img/btn-add.svg"} alt="button-add"/>
                         </button>
                         <button className="button-favorite" onClick={addToFavorite}>
                             <img onClick={addToFavoriteIcon} src={favorite ? "/img/like.svg" : "/img/btn-favorite.svg"  } alt="button-favorite"/>
