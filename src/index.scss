@@ -561,6 +561,29 @@ body {
 
 .basket-section {
   cursor: pointer;
+  position: relative;
+
+  &__count {
+    position: absolute;
+    top: -7px;
+    left: 15px;
+
+    &--hide {
+      display: none !important;
+    }
+  }
+}
+
+.counter {
+  background: #b7d9ee;
+  width: 20px;
+  height: 20px;
+  border-radius: 25px;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

@@ -107,10 +107,7 @@ function App() {
             setCartItems((prev) =>
                 prev.map((item) => {
                     if (item.parentId === data.parentId) {
-                        return {
-                            ...item,
-                            id: data.id,
-                        };
+                        return {...item, id: data.id,};
                     }
                     return item;
                 }),

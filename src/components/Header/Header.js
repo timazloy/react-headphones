@@ -2,11 +2,15 @@ import {Link, NavLink} from "react-router-dom";
 import './Header.scss';
 import React from 'react'
 import ModalBasket from "../ModalBasket";
+import AppContext from "../../Pages/context";
+
 
 
 
 function Header({isLoading, OnRemoveItem, cartItems}) {
     const [modalBasketActive, setModalBasketActive] = React.useState(false)
+
+    const {favorites} = React.useContext(AppContext);
 
     return (
         <header className="header">
@@ -28,11 +32,13 @@ function Header({isLoading, OnRemoveItem, cartItems}) {
                     <button onClick={() =>setModalBasketActive(true)} className="personal-section__item basket-section">
                         <img className="basket" src="/img/basket.svg" alt="basket"/>
                         <p className="basket-section__text">1205 руб.</p>
+                        {cartItems.length ? <div className="basket-section__count counter">{cartItems.length}</div> : <div className="basket-section__count basket-section__count--hide counter">{cartItems.length}</div>}
                     </button>
                     <ModalBasket isLoading={isLoading} OnRemoveItem={OnRemoveItem} items={cartItems} modalBasketActive={modalBasketActive} setModalBasketActive={setModalBasketActive}/>
                     <Link to="/favorites">
-                        <div className="personal-section__item">
+                        <div className="personal-section__item basket-section">
                             <img className="favorites" src="/img/favorites.svg" alt="favorites"/>
+                            {favorites.length ? <div className="basket-section__count counter">{favorites.length}</div> : <div className="basket-section__count basket-section__count--hide counter">{favorites.length}</div>}
                         </div>
                     </Link>
                     <div className="personal-section__item">
