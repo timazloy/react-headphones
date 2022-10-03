@@ -30,7 +30,7 @@ function BasketItem({isLoading, OnRemoveItem, id, price, title, image}) {
                     </div>
                     <div className="basket-item__description">
                         <div className="basket-item__title">{title}</div>
-                        <div className="basket-item__text">{price} руб.</div>
+                        <div className="basket-item__text">{price.toString().replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ')} руб.</div>
                     </div>
                     <button onClick={() => OnRemoveItem(id)} className="basket-item__button">
                         <img src="/img/btn-remove.svg" alt="close"/>

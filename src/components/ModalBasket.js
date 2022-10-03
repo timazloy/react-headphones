@@ -2,7 +2,7 @@ import React from "react";
 import BasketItem from "./BasketItem";
 import Cart from "./Cart/Cart";
 
-function ModalBasket({isLoading, OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
+function ModalBasket({totalPrice, isLoading, OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
 
     React.useEffect(() => {
         modalBasketActive ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto"
@@ -43,7 +43,7 @@ function ModalBasket({isLoading, OnRemoveItem, items, modalBasketActive, setModa
                     items.length > 0 ? <div className="modal__total basket-total">
                         <div className="basket-total__price total-price">
                             <div className="total-price__column">Итого: </div>
-                            <div className="total-price__column">21 498 руб. </div>
+                            <div className="total-price__column">{totalPrice} руб. </div>
                         </div>
                         <button className="favorites-empty__button button-back button-back--basket">
                             <p className="button-back__text">Оформить заказ</p>

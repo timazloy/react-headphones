@@ -55,7 +55,7 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
                     <div className="item__price item-price">
                         <div className="item-price__section">
                             <div className="item-price__title">Цена:</div>
-                            <div className="item-price__text">{price} руб.</div>
+                            <div className="item-price__text">{price.toString().replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ')} руб.</div>
                         </div>
                         <button onClick={onClickPlus} className="button-add">
                             <img src={isItemAdded(parentId) ? "/img/Add-basket.svg" : "/img/btn-add.svg"} alt="button-add"/>
