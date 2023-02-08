@@ -1,8 +1,8 @@
 # React Headphones
 
-версия node 14.17.1
-npm install
-npm start
+- Версия node 14.17.1
+- npm install
+- npm start
 
 ## Используемые технологии:
 
