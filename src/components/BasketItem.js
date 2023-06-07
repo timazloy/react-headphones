@@ -3,11 +3,9 @@ import ContentLoader from "react-content-loader";
 
 function BasketItem({isLoading, OnRemoveItem, id, price, title, image}) {
 
-
     return (
         <>
             {
-
                 isLoading ? <div className="load-wrapper load-wrapper--basket">
                     <ContentLoader
                         speed={2}

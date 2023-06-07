@@ -3,8 +3,6 @@ import {Link, NavLink} from "react-router-dom";
 
 function FavoritesEmpty() {
 
-
-
     return (
         <div className="main-block__favorites-empty favorites-empty">
             <div className="favorites-empty__image">

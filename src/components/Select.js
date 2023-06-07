@@ -6,7 +6,6 @@ const options = [
     { value: 'sortBy=price&order=asc', label: 'Сначала недорогие' }
 ];
 
-
 function SelectPrice({ setSortPrice , sortPrice}) {
 
     const getValue = () => {
@@ -18,8 +17,6 @@ function SelectPrice({ setSortPrice , sortPrice}) {
     const selectChange = (e) => {
         setSortPrice(e.value)
     }
-
-
 
     return (
         <Select

@@ -5,8 +5,6 @@ import ModalBasket from "../ModalBasket";
 import AppContext from "../../Pages/context";
 
 
-
-
 function Header({isLoading, OnRemoveItem, cartItems}) {
     const [modalBasketActive, setModalBasketActive] = React.useState(false)
 

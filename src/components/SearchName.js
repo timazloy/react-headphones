@@ -3,8 +3,6 @@ import React from "react";
 
 function SearchName({setNameValue,sortName, clearValue}) {
 
-
-
     return (
         <>
             <input type="text" className="search-input__input" placeholder="Поиск по сайту"  onChange={setNameValue} value={sortName}/>
