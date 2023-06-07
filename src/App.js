@@ -4,12 +4,10 @@ import axios from "axios";
 import Header from './components/Header/Header'
 import Home from './Pages/Home'
 import Favorites from "./Pages/Favorites";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import Swiper from "./components/Swiper";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SearchEmpty from "./components/SearchEmpty/SearchEmpty";
 import AppContext from "./Pages/context";
 
-// export const AppContext = React.createContext({});
 
 function App() {
     const [items, setItems] = React.useState([]);
@@ -81,19 +79,24 @@ function App() {
 
     const addToFavorite = async (obj) => {
         try {
-            if (favorites.find(favObj => Number(favObj.parentId) === Number(obj.parentId))) {
-                await axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${obj.id}`)
-                setFavorites((prev) => prev.filter((item) => Number(item.parentId) !== Number(item.parentId)))
+            const findItem = favorites.find((favObj) => Number(favObj.parentId) === Number(obj.parentId))
+            if (favorites.find((favObj) => Number(favObj.parentId) === Number(obj.parentId))) {
+                axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/favorites/${findItem.id}`);
+                setFavorites((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.parentId)));
             } else {
-                const {data} = await axios.post('https://62f2672bb1098f15081212c2.mockapi.io/favorites', obj);
-                setFavorites((prev) => [...prev, data])
+
+                const { data } = await axios.post(
+                    'https://62f2672bb1098f15081212c2.mockapi.io/favorites',
+                    obj,
+                );
+                setFavorites((prev) => [...prev, data]);
             }
         } catch (error) {
-            // alert('Не удалось добавить в избранное')
+            console.error(error);
         }
+    };
 
 
-    }
 
     const onPlus = async (obj) => {
 
@@ -113,18 +116,6 @@ function App() {
                 }),
             );
         }
-
-
-        //
-        // if (cartItems.find(item => Number(item.parentId) === Number(obj.parentId))) {
-        //     axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/cart/${obj.parentId}`)
-        //     setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(item.parentId)))
-        //     console.log('del')
-        // } else {
-        //     axios.post('https://62f2672bb1098f15081212c2.mockapi.io/cart', obj)
-        //     setCartItems(prev => [...prev, obj]);
-        //     console.log('add')
-        // }
     }
 
     const OnRemoveItem = (id) => {

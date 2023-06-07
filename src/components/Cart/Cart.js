@@ -13,10 +13,6 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
     const [isAdded, setIsAdded] = React.useState(added);
 
 
-    // React.useEffect(() => {
-    //     setFavorite(isFavorite)
-    // }, [favorite]);
-
     const addToFavoriteIcon = () => {
         setFavorite(!favorite)
         addToFavorite({id, parentId, title, price, imageUrl})
@@ -24,7 +20,6 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
     }
 
     const onClickPlus = () => {
-        // setIsAdded(!isAdded)
         onPlus({id, parentId, title, price, imageUrl})
     }
 
