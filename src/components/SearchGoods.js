@@ -3,7 +3,6 @@ import React from "react";
 import SelectPrice from "./Select";
 import SearchName from "./SearchName";
 import axios from "axios";
-import SearchEmpty from "./SearchEmpty/SearchEmpty";
 import ModalSearch from "./ModalSearch";
 
 function SearchGoods({setNameValue, clearValue, sortPrice, setSortPrice, setSortName, sortName, favorites, setFavorites, isLoading,  items, notFound, setIsLoading, setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
@@ -21,8 +20,6 @@ function SearchGoods({setNameValue, clearValue, sortPrice, setSortPrice, setSort
         event.preventDefault();
         if (!mainSearch.includes(item)) {
             mainSearch.push(item)
-            // console.log(event.target)
-            // console.log(mainSearch.indexOf(item))
             console.log(mainSearch)
         } else if (mainSearch.includes(item)) {
             let num = mainSearch.indexOf(item)
@@ -36,18 +33,11 @@ function SearchGoods({setNameValue, clearValue, sortPrice, setSortPrice, setSort
 
     const test2 = (event,item) => {
 
-        // setIsLoading(true)
-        // console.log(mainSearch)
         setIsLoading(true)
         const itemsResponse = axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName);
-        // setItems(itemsResponse)
         itemsResponse.then((response)=> {
-            // console.log(response.data)
-            // setItems(response.data)
 
             let b = []
-
-            // console.log(mainSearch)
 
             response.data.forEach(item => {
                 mainSearch.forEach(brand => {
@@ -58,8 +48,6 @@ function SearchGoods({setNameValue, clearValue, sortPrice, setSortPrice, setSort
             setItems(b)
             setIsLoading(false)
 
-            // console.log(mainSearch)
-            // mainSearch = []
             console.log(mainSearch)
         })
 

@@ -1,8 +1,6 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
-import axios from "axios";
 import AppContext from "../../Pages/context";
-// import 'react-loading-skeleton/dist/skeleton.css'
 
 
 function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus}) {

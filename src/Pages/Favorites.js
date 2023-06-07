@@ -1,8 +1,6 @@
 import React from "react";
-// import 'react-loading-skeleton/dist/skeleton.css'
 import Cart from "../components/Cart/Cart";
 import FavoritesEmpty from "../components/FavoritesEmpty";
-import axios from "axios";
 import AppContext from "./context";
 
 function Favorites({onPlus, addToFavorite, isLoading}) {

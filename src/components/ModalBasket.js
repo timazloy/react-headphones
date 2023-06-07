@@ -1,6 +1,5 @@
 import React from "react";
 import BasketItem from "./BasketItem";
-import Cart from "./Cart/Cart";
 
 function ModalBasket({totalPrice, isLoading, OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
 
