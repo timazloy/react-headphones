@@ -184,6 +184,12 @@ body {
     line-height: 17px;
     color: #000000;
     margin-bottom: 14px;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+
+    &:hover {
+      color: #9babd0;
+    }
   }
 }
 

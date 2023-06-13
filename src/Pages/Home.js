@@ -3,6 +3,7 @@ import Swiper from '../components/Swiper'
 import React from "react";
 import Cart from '../components/Cart/Cart'
 import SearchGoods from "../components/SearchGoods";
+import Modal from "../components/Modal/Modal";
 
 function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNotFound, setSearchValue, searchValue, sortPrice, setSortPrice, sortName, setSortName, notFound, favorites, setFavorites, items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
 
@@ -18,6 +19,14 @@ function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNo
         event.preventDefault()
         setCurrentPage(pageNumber)
     }
+    const [activeModal, setActiveModal] = React.useState(false)
+    const [dataForModal, setDataForModal] = React.useState({})
+
+
+    const openModal = (arr) => {
+        setActiveModal(true)
+        setDataForModal(arr)
+    }
 
     const renderItemsHome = () => {
         return (
@@ -26,6 +35,7 @@ function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNo
             )) : items.length > 0 && currentGoods
                 .map((item, index) => (
                     <Cart onPlus={onPlus}
+                          openModal={openModal}
                           addToFavorite={addToFavorite}
                           setFavorites={setFavorites}
                           setIsLoading={setIsLoading}
@@ -33,6 +43,7 @@ function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNo
                           added={cartItems.some(obj => Number(obj.parentId) === Number(item.parentId))}
                           {...item}
                           key={item.imageUrl}
+                          item={item}
                           imageUrl={item.imageUrl}
                           isLoading={isLoading}/>
                 ))
@@ -54,6 +65,7 @@ function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNo
             <div className="main-block__goods goods">
                 {renderItemsHome()}
                 {notFound}
+                <Modal dataForModal={dataForModal} activeModal={activeModal} setActiveModal={setActiveModal} />
             </div>
             <ul className="main-block__pagination pagination">
                 {

@@ -7,6 +7,7 @@ import Favorites from "./Pages/Favorites";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SearchEmpty from "./components/SearchEmpty/SearchEmpty";
 import AppContext from "./Pages/context";
+import Modal from './components/Modal/Modal'
 
 
 function App() {
@@ -43,7 +44,6 @@ function App() {
         } else {
             setNotFound('')
         }
-
     }
 
     // отслеживаем фильтрацию чтобы выводить "Такой товар не найден"
@@ -56,7 +56,6 @@ function App() {
         }
 
     }, [items]);
-
 
     React.useEffect(() => {
         async function fetchData() {
@@ -95,8 +94,6 @@ function App() {
             console.error(error);
         }
     };
-
-
 
     const onPlus = async (obj) => {
 

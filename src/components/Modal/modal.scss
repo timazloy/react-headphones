@@ -1,0 +1,81 @@
+.custom-modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .4s ease, opacity .4s ease;
+
+  &__image {
+    max-width: 400px;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 50px;
+    padding: 30px;
+    border-radius: 12px;
+    background-color: white;
+    transform: translateY(-60px);
+    transition: transform .4s ease, opacity .4s ease;
+    pointer-events: none;
+    opacity: 0;
+    width: 100%;
+    max-width: 60%;
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__list li{
+    display: flex;
+  }
+
+  &__list li .custom-modal__name{
+    order: 1;
+  }
+
+  &__list li .custom-modal__item{
+    order: 3;
+  }
+
+  &__list li::after{
+    background-image: radial-gradient(circle, currentcolor 1px, transparent 1.5px);
+    background-position: bottom;
+    background-size: 1ex 4.5px;
+    background-repeat: space no-repeat;
+    content: "";
+    flex-grow: 1;
+    height: 1em;
+    order: 2;
+  }
+
+}
+
+.active-background {
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+.active {
+  transform: translateY(0px);
+  opacity: 1;
+  pointer-events: all;
+  //transform: scale(1);
+}

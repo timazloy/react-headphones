@@ -1,18 +1,18 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 import AppContext from "../../Pages/context";
+import axios from "axios";
 
-function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus}) {
+
+function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus, openModal}) {
 
     const {isItemAdded} = React.useContext(AppContext);
 
     const [favorite, setFavorite] = React.useState(isFavorite);
-    const [isAdded, setIsAdded] = React.useState(added);
 
     const addToFavoriteIcon = () => {
         setFavorite(!favorite)
         addToFavorite({id, parentId, title, price, imageUrl})
-
     }
 
     const onClickPlus = () => {
@@ -40,7 +40,7 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
                     <div className="item__wrapper">
                         <img className="item__image" src={imageUrl} alt="image"/>
                     </div>
-                    <div className="item__title">
+                    <div className="item__title" onClick={() => openModal(item)}>
                         {title}
                     </div>
                     <div className="item__price item-price">
