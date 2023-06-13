@@ -8,6 +8,7 @@ const Modal = ({dataForModal, activeModal, setActiveModal}) => {
         <div className={activeModal ? "custom-modal active-background" : "custom-modal"} onClick={() => setActiveModal(false)} >
             <div className={activeModal ? "custom-modal__content active" : "custom-modal__content"} onClick={e => e.stopPropagation()}>
                 <img className="custom-modal__image" src={dataForModal.imageUrl} alt="image"/>
+                <img className="custom-modal__close" src="/img/btn-remove.svg" alt="close" onClick={() => setActiveModal(false)}/>
                 <div className="custom-modal__wrapper">
                     <h3 className="custom-modal__title">{dataForModal.title}</h3>
                     <ul className="custom-modal__list">
