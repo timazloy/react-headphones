@@ -1,21 +1,21 @@
 import React from "react";
 import './modal.scss'
-import AppContext from "../../Pages/context";
+// import AppContext from "../../Pages/context";
 
-const Modal = ({dataForModal, activeModal, setActiveModal, addToFavorite, onPlus, favorites, isFavorite}) => {
+const Modal = ({dataForModal, activeModal, setActiveModal, addToFavorite, isFavorite}) => {
 
-    const {isItemAdded} = React.useContext(AppContext);
+    // const {isItemAdded} = React.useContext(AppContext);
 
     // React.useEffect(() => {
     //     console.log(isFavorite)
     //     // favorites.some(obj => Number(obj.parentId) === Number(dataForModal.parentId))
     //
-    // }, [])
+    // }, [])x
 
-    const [favorite, setFavorite] = React.useState(favorites.some(obj => Number(obj.parentId) === Number(dataForModal.parentId)));
-
+    const [favorite, setFavorite] = React.useState(isFavorite);
+    //
     const addToFavoriteIcon = () => {
-        console.log(favorites)
+        // console.log(favorites)
         setFavorite(!favorite)
         addToFavorite(dataForModal)
     }
@@ -63,7 +63,7 @@ const Modal = ({dataForModal, activeModal, setActiveModal, addToFavorite, onPlus
                             <img src={favorite ? "/img/like.svg" : "/img/btn-favorite.svg"  } alt="button-favorite"/>
                             <span>{favorite ? "Добавлено" : "Добавить в избранное"}</span>
                         </button>
-                        <button type="button" className="custom-modal__button" onClick={addToFavorite}>
+                        <button type="button" className="custom-modal__button">
                             <img src="/img/btn-add.svg" alt="button-favorite"/>
                             <span>Добавить в корзину</span>
                         </button>

@@ -2,9 +2,10 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import AppContext from "../../Pages/context";
 import axios from "axios";
+import Modal from "../Modal/Modal";
 
 
-function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus, openModal}) {
+function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus}) {
 
     const {isItemAdded} = React.useContext(AppContext);
 
@@ -17,6 +18,15 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
 
     const onClickPlus = () => {
         onPlus({id, parentId, title, price, imageUrl})
+    }
+
+    const [activeModal, setActiveModal] = React.useState(false)
+    const [dataForModal, setDataForModal] = React.useState({})
+
+
+    const openModal = (arr) => {
+        setActiveModal(true)
+        setDataForModal(arr)
     }
 
     return (
@@ -43,6 +53,16 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
                     <div className="item__title" onClick={() => openModal(item)}>
                         {title}
                     </div>
+                    <Modal
+                        // isFavorite={favorites.some(obj => Number(obj.parentId) === Number(dataForModal.parentId))}
+                        // favorites={favorites}
+                        // setFavorites={setFavorites}
+                        isFavorite={isFavorite}
+                        addToFavorite={addToFavorite}
+                        // onPlus={onPlus}
+                        dataForModal={dataForModal}
+                        activeModal={activeModal}
+                        setActiveModal={setActiveModal} />
                     <div className="item__price item-price">
                         <div className="item-price__section">
                             <div className="item-price__title">Цена:</div>
