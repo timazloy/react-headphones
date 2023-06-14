@@ -1,22 +1,10 @@
 import React from "react";
 import './modal.scss'
-// import AppContext from "../../Pages/context";
 
-const Modal = ({dataForModal, activeModal, setActiveModal, addToFavorite, isFavorite}) => {
+const Modal = ({dataForModal, activeModal, setActiveModal, addToFavorite, isFavorite, addToFavoriteIcon2, favorite}) => {
 
-    // const {isItemAdded} = React.useContext(AppContext);
-
-    // React.useEffect(() => {
-    //     console.log(isFavorite)
-    //     // favorites.some(obj => Number(obj.parentId) === Number(dataForModal.parentId))
-    //
-    // }, [])x
-
-    const [favorite, setFavorite] = React.useState(isFavorite);
-    //
     const addToFavoriteIcon = () => {
-        // console.log(favorites)
-        setFavorite(!favorite)
+        addToFavoriteIcon2()
         addToFavorite(dataForModal)
     }
 

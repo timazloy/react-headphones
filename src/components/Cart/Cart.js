@@ -16,6 +16,10 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
         addToFavorite({id, parentId, title, price, imageUrl})
     }
 
+    const addToFavoriteIcon2 = () => {
+        setFavorite(!favorite)
+    }
+
     const onClickPlus = () => {
         onPlus({id, parentId, title, price, imageUrl})
     }
@@ -59,6 +63,8 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
                         // setFavorites={setFavorites}
                         isFavorite={isFavorite}
                         addToFavorite={addToFavorite}
+                        favorite={favorite}
+                        addToFavoriteIcon2={addToFavoriteIcon2}
                         // onPlus={onPlus}
                         dataForModal={dataForModal}
                         activeModal={activeModal}
