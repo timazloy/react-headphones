@@ -58,6 +58,7 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
                         {title}
                     </div>
                     <Modal
+                        onClickPlus={onClickPlus}
                         // isFavorite={favorites.some(obj => Number(obj.parentId) === Number(dataForModal.parentId))}
                         // favorites={favorites}
                         // setFavorites={setFavorites}
