@@ -20,6 +20,7 @@ function Favorites({onPlus, addToFavorite, isLoading}) {
                                       isFavorite={true}
                                       key={item.id}
                                       {...item}
+                                      item={item}
                                       isLoading={isLoading}
                                 />
                             ))

@@ -96,8 +96,6 @@ function App() {
     };
 
     const onPlus = async (obj) => {
-        console.log(obj)
-
         const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.parentId));
         if (findItem) {
             setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.parentId)));

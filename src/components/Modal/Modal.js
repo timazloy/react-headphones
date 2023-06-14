@@ -1,6 +1,7 @@
 import React from "react";
 import './modal.scss'
 import AppContext from "../../Pages/context";
+import {logDOM} from "@testing-library/react";
 
 const Modal = ({dataForModal, activeModal, setActiveModal, addToFavorite, favorite, onClickPlus, setFavorite}) => {
 

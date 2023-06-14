@@ -3,7 +3,6 @@ import ContentLoader from "react-content-loader";
 import AppContext from "../../Pages/context";
 import Modal from "../Modal/Modal";
 
-
 function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus}) {
 
     const {isItemAdded} = React.useContext(AppContext);
@@ -17,8 +16,7 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
 
     const onClickPlus = () => {
         onPlus({id, parentId, title, price, imageUrl})
-        console.log(id)
-        console.log(parentId)
+        console.log(dataForModal)
     }
 
     const [activeModal, setActiveModal] = React.useState(false)
