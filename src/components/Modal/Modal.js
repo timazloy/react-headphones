@@ -2,7 +2,7 @@ import React from "react";
 import './modal.scss'
 import AppContext from "../../Pages/context";
 
-const Modal = ({dataForModal, activeModal, setActiveModal, addToFavorite, isFavorite, addToFavoriteIcon2, favorite, onClickPlus, setFavorite}) => {
+const Modal = ({dataForModal, activeModal, setActiveModal, addToFavorite, favorite, onClickPlus, setFavorite}) => {
 
     const {isItemAdded} = React.useContext(AppContext);
 

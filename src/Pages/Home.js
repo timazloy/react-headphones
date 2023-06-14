@@ -19,14 +19,6 @@ function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNo
         event.preventDefault()
         setCurrentPage(pageNumber)
     }
-    // const [activeModal, setActiveModal] = React.useState(false)
-    // const [dataForModal, setDataForModal] = React.useState({})
-    //
-    //
-    // const openModal = (arr) => {
-    //     setActiveModal(true)
-    //     setDataForModal(arr)
-    // }
 
     const renderItemsHome = () => {
         return (

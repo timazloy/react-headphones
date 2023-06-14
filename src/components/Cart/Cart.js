@@ -1,7 +1,6 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 import AppContext from "../../Pages/context";
-import axios from "axios";
 import Modal from "../Modal/Modal";
 
 
@@ -16,12 +15,10 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
         addToFavorite({id, parentId, title, price, imageUrl})
     }
 
-    // const addToFavoriteIcon2 = () => {
-    //     setFavorite(!favorite)
-    // }
-
     const onClickPlus = () => {
         onPlus({id, parentId, title, price, imageUrl})
+        console.log(id)
+        console.log(parentId)
     }
 
     const [activeModal, setActiveModal] = React.useState(false)
@@ -59,7 +56,6 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
                     </div>
                     <Modal
                         onClickPlus={onClickPlus}
-                        isFavorite={isFavorite}
                         addToFavorite={addToFavorite}
                         favorite={favorite}
                         setFavorite={setFavorite}

@@ -96,10 +96,11 @@ function App() {
     };
 
     const onPlus = async (obj) => {
+        console.log(obj)
 
-        const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.id));
+        const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.parentId));
         if (findItem) {
-            setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.id)));
+            setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.parentId)));
             await axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/cart/${findItem.id}`);
         } else {
             setCartItems((prev) => [...prev, obj]);
