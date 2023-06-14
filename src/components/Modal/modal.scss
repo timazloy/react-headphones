@@ -36,6 +36,10 @@
     max-width: 60%;
   }
 
+  &__wrapper {
+    width: 100%;
+  }
+
   &__close {
     position: absolute;
     cursor: pointer;
@@ -43,11 +47,34 @@
     right: 15px;
   }
 
+  &__buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #e9e6e6;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 190px;
+    width: 100%;
+
+    & span {
+      font-size: 11px;
+    }
+  }
+
   &__list {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 25px;
+    margin-bottom: 20px;
   }
 
   &__list li{
@@ -86,4 +113,9 @@
   opacity: 1;
   pointer-events: all;
   //transform: scale(1);
+}
+
+.active-favorite {
+  border: 1px solid #f3cccc;
+  color: #f3cccc;
 }
