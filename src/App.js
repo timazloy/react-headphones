@@ -7,8 +7,7 @@ import Favorites from "./Pages/Favorites";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SearchEmpty from "./components/SearchEmpty/SearchEmpty";
 import AppContext from "./Pages/context";
-import Modal from './components/Modal/Modal'
-
+import Order from './Pages/Order/Order'
 
 function App() {
     const [items, setItems] = React.useState([]);
@@ -133,6 +132,7 @@ function App() {
                                 <Routes>
                                     <Route exact path="/" element={<Home cartItems={cartItems} onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
                                     <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading}/>}/>
+                                    <Route exact path="/order" element={<Order/>}/>
                                 </Routes>
                             </div>
                         </Router>

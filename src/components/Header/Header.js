@@ -42,9 +42,9 @@ function Header({isLoading, OnRemoveItem, cartItems}) {
                             {favorites.length ? <div className="basket-section__count counter">{favorites.length}</div> : <div className="basket-section__count basket-section__count--hide counter">{favorites.length}</div>}
                         </div>
                     </Link>
-                    <div className="personal-section__item">
-                        <img className="personal" src="/img/personal.svg" alt="personal"/>
-                    </div>
+                    <Link to="/order" className="personal-section__item">
+                        <img className="personal-link" src="/img/personal.svg" alt="personal"/>
+                    </Link>
                 </div>
             </div>
         </header>
