@@ -20,7 +20,7 @@ function ModalBasket({totalPrice, isLoading, OnRemoveItem, items, modalBasketAct
                     <div className="modal__goods basket-goods">
                         {
                             isLoading ? [...Array(3)].map((item, index) => (
-                                    <BasketItem isLoading={isLoading}/>
+                                    <BasketItem key={index} isLoading={isLoading}/>
                                 )) : items.length > 0 ? items.map((item, index) => (
                                 <BasketItem key={item.id} isLoading={isLoading} OnRemoveItem={OnRemoveItem} id={item.id} image={item.imageUrl} title={item.title} price={item.price}/>
                             )) : <div className="modal__empty basket-empty">
