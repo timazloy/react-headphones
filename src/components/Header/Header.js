@@ -5,7 +5,7 @@ import ModalBasket from "../ModalBasket";
 import AppContext from "../../Pages/context";
 
 
-function Header({isLoading, OnRemoveItem, cartItems}) {
+function Header({formOrder, isLoading, OnRemoveItem, cartItems}) {
     const [modalBasketActive, setModalBasketActive] = React.useState(false)
 
     const {favorites} = React.useContext(AppContext);
@@ -35,7 +35,7 @@ function Header({isLoading, OnRemoveItem, cartItems}) {
                         <p className="basket-section__text">{totalPrice} руб.</p>
                         {cartItems.length ? <div className="basket-section__count counter">{cartItems.length}</div> : <div className="basket-section__count basket-section__count--hide counter">{cartItems.length}</div>}
                     </button>
-                    <ModalBasket totalPrice={totalPrice} isLoading={isLoading} OnRemoveItem={OnRemoveItem} items={cartItems} modalBasketActive={modalBasketActive} setModalBasketActive={setModalBasketActive}/>
+                    <ModalBasket formOrder={formOrder} totalPrice={totalPrice} isLoading={isLoading} OnRemoveItem={OnRemoveItem} items={cartItems} modalBasketActive={modalBasketActive} setModalBasketActive={setModalBasketActive}/>
                     <Link to="/favorites">
                         <div className="personal-section__item basket-section">
                             <img className="favorites" src="/img/favorites.svg" alt="favorites"/>

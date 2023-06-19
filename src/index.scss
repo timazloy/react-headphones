@@ -716,6 +716,10 @@ body {
 
 .order-page {
 
+  &__order {
+    margin-bottom: 20px;
+  }
+
   &__personal {
     margin-bottom: 40px;
   }
@@ -770,6 +774,10 @@ body {
   padding: 20px;
   border-radius: 10px;
 
+  &__total {
+    font-weight: 600;
+  }
+
   &__wrapper {
     display: flex;
     flex-direction: column;
@@ -795,7 +803,7 @@ body {
   overflow: auto;
 
   &__img {
-    max-width: 85px;
+    max-width: 100px;
     object-fit: contain;
   }
 }

@@ -1,6 +1,6 @@
 
 
-function Order() {
+function Order({orders}) {
     return(
         <div className="order-page">
             <div className="order-page__title main-title">Профиль</div>
@@ -14,26 +14,25 @@ function Order() {
                 </div>
             </div>
             <div className="order-page__title main-title">Мои заказы</div>
-            <div className="order-page__order order">
-                <div className="order__wrapper">
-                    <div className="order__title">Заказ от 16.06.2023 19:24</div>
-                    <div className="order__status">В доставке</div>
-                    <div className="order__text">Ожидаемая дата 20 июня</div>
-                </div>
-                <div className="order__items">
-                    <div className="order__item order-item">
-                        <img src="/img/headphone/1.jpg" className="order-item__img"/>
-                        <img src="/img/headphone/2.jpg" className="order-item__img"/>
-                        <img src="/img/headphone/3.jpg" className="order-item__img"/>
-                        <img src="/img/headphone/9.jpg" className="order-item__img"/>
-                        <img src="/img/headphone/9.jpg" className="order-item__img"/>
-                        <img src="/img/headphone/9.jpg" className="order-item__img"/>
-                        <img src="/img/headphone/9.jpg" className="order-item__img"/>
-                        <img src="/img/headphone/9.jpg" className="order-item__img"/>
-                        <img src="/img/headphone/9.jpg" className="order-item__img"/>
+            {orders.map(item => (
+                <div className="order-page__order order">
+                    <div className="order__wrapper">
+                        <div className="order__title">Заказ от {item.currentDate}</div>
+                        <div className="order__status">В доставке</div>
+                        <div className="order__text">Ожидаемая {item.deliveryDate}</div>
+                        <div className="order__text">Итого: <span className="order__total">{item.total}</span></div>
+                    </div>
+
+                    <div className="order__items">
+                        <div className="order__item order-item">
+                            {item.images.map(img => (
+                                <img src={img} className="order-item__img"/>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
+            ))}
+
         </div>
     )
 }

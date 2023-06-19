@@ -1,7 +1,7 @@
 import React from "react";
 import BasketItem from "./BasketItem";
 
-function ModalBasket({totalPrice, isLoading, OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
+function ModalBasket({formOrder, totalPrice, isLoading, OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
 
     React.useEffect(() => {
         modalBasketActive ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto"
@@ -29,7 +29,7 @@ function ModalBasket({totalPrice, isLoading, OnRemoveItem, items, modalBasketAct
                                 </div>
                                 <div className="basket-empty__title">Корзина пуста</div>
                                 <div className="basket-empty__text">Добавьте хотя бы одну пару наушников, чтобы сделать заказ.</div>
-                                <button onClick={() => setModalBasketActive(false)} className="basket-empty__button button-back">
+                                <button onClick={() => setModalBasketActive(false)} className="basket-empty__button button-back" type="button">
                                     <img className="button-back__icon" src="/img/arrow-back.svg" alt="back"/>
                                     <p className="button-back__text">Вернуться назад</p>
                                 </button>
@@ -44,7 +44,7 @@ function ModalBasket({totalPrice, isLoading, OnRemoveItem, items, modalBasketAct
                             <div className="total-price__column">Итого: </div>
                             <div className="total-price__column">{totalPrice} руб. </div>
                         </div>
-                        <button className="favorites-empty__button button-back button-back--basket">
+                        <button onClick={formOrder} className="favorites-empty__button button-back button-back--basket" type="button">
                             <p className="button-back__text">Оформить заказ</p>
                             <img className="button-back__icon" src="/img/arrow-right.svg" alt="back"/>
                         </button>

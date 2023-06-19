@@ -25,6 +25,47 @@ function App() {
     const [sortPrice, setSortPrice] = React.useState('')
     const [sortBrand, setSortBrand] = React.useState([])
 
+    const [currentDate, setCurrentDate] = React.useState('')
+    const [deliveryDate, setDeliveryDate] = React.useState('')
+
+    const [orders, setOrders] = React.useState([
+        {
+        "id": "1",
+        "images": [
+            "/img/headphone/1.jpg",
+            "/img/headphone/3.jpg",
+            "/img/headphone/2.jpg",
+            "/img/headphone/8.jpg"
+        ],
+            "total": "28 920",
+            "currentDate": "19.06.2023",
+            "deliveryDate": "24.06.2023"
+        },
+        {
+            "id": "2",
+            "images": [
+                "/img/headphone/1.jpg",
+                "/img/headphone/3.jpg",
+                "/img/headphone/2.jpg",
+                "/img/headphone/8.jpg"
+            ],
+            "total": "28 920",
+            "currentDate": "19.06.2023",
+            "deliveryDate": "24.06.2023"
+        },
+        {
+            "id": "3",
+            "images": [
+                "/img/headphone/1.jpg",
+                "/img/headphone/3.jpg",
+                "/img/headphone/2.jpg",
+                "/img/headphone/8.jpg"
+            ],
+            "total": "28 920",
+            "currentDate": "19.06.2023",
+            "deliveryDate": "24.06.2023"
+        }])
+
     const [notFound, setNotFound] = React.useState('');
 
     const setNameValue = (e) =>{
@@ -67,13 +108,41 @@ function App() {
             setFavorites(favoriteResponse.data)
             setCartItems(cartResponse.data)
             setIsLoading(false)
-
         }
         fetchData();
         if (searchValue.length === 0) {
             setNotFound('')
         }
     }, [sortName,sortPrice,sortBrand]);
+
+    React.useEffect(() => {
+        const currentDate = new Date();
+
+        const deliveryDate = new Date(currentDate);
+        deliveryDate.setDate(deliveryDate.getDate() + 5);
+
+        const formattedCurrentDate = currentDate.toLocaleDateString('ru-RU', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        })
+
+        const formattedDeliveryDate = deliveryDate.toLocaleDateString('ru-RU', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        })
+
+        setCurrentDate(formattedCurrentDate)
+        setDeliveryDate(formattedDeliveryDate)
+
+        getOrders()
+
+    }, []);
+
+    React.useEffect(() => {
+
+    }, []);
 
     const addToFavorite = async (obj) => {
         try {
@@ -112,6 +181,30 @@ function App() {
         }
     }
 
+
+    const getOrders = () => {
+        const orderGoods = axios.get('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn');
+        // setOrders(orderGoods.data)
+
+    }
+
+
+    const formOrder = async () => {
+        const images = cartItems.map((item) => {
+            return item.imageUrl
+        })
+
+        const order = {
+            images: images,
+            currentDate: currentDate,
+            deliveryDate: deliveryDate
+        }
+
+        await axios.post('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn', order);
+        await getOrders()
+
+    }
+
     const OnRemoveItem = (id) => {
         axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/cart/${id}`)
         setCartItems(prev => prev.filter(item => item.id !== id));
@@ -127,12 +220,12 @@ function App() {
                 <div className="main-wrapper__goods main-block">
                     <div className="main-block__wrapper">
                         <Router>
-                            <Header isLoading={isLoading} OnRemoveItem={OnRemoveItem} cartItems={cartItems} />
+                            <Header formOrder={formOrder} isLoading={isLoading} OnRemoveItem={OnRemoveItem} cartItems={cartItems} />
                             <div className="main-block__body">
                                 <Routes>
                                     <Route exact path="/" element={<Home cartItems={cartItems} onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
                                     <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading}/>}/>
-                                    <Route exact path="/order" element={<Order/>}/>
+                                    <Route exact path="/order" element={<Order orders={orders}/>}/>
                                 </Routes>
                             </div>
                         </Router>
