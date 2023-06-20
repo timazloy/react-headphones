@@ -28,43 +28,7 @@ function App() {
     const [currentDate, setCurrentDate] = React.useState('')
     const [deliveryDate, setDeliveryDate] = React.useState('')
 
-    const [orders, setOrders] = React.useState([
-        {
-        "id": "1",
-        "images": [
-            "/img/headphone/1.jpg",
-            "/img/headphone/3.jpg",
-            "/img/headphone/2.jpg",
-            "/img/headphone/8.jpg"
-        ],
-            "total": "28 920",
-            "currentDate": "19.06.2023",
-            "deliveryDate": "24.06.2023"
-        },
-        {
-            "id": "2",
-            "images": [
-                "/img/headphone/1.jpg",
-                "/img/headphone/3.jpg",
-                "/img/headphone/2.jpg",
-                "/img/headphone/8.jpg"
-            ],
-            "total": "28 920",
-            "currentDate": "19.06.2023",
-            "deliveryDate": "24.06.2023"
-        },
-        {
-            "id": "3",
-            "images": [
-                "/img/headphone/1.jpg",
-                "/img/headphone/3.jpg",
-                "/img/headphone/2.jpg",
-                "/img/headphone/8.jpg"
-            ],
-            "total": "28 920",
-            "currentDate": "19.06.2023",
-            "deliveryDate": "24.06.2023"
-        }])
+    const [orders, setOrders] = React.useState([])
 
     const [notFound, setNotFound] = React.useState('');
 
@@ -104,10 +68,12 @@ function App() {
             const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName);
             const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
             const cartResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/cart');
+            const orderResponse = await axios.get('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn');
             setItems(itemsResponse.data)
             setFavorites(favoriteResponse.data)
             setCartItems(cartResponse.data)
             setIsLoading(false)
+            setOrders(orderResponse.data)
         }
         fetchData();
         if (searchValue.length === 0) {
@@ -136,11 +102,7 @@ function App() {
         setCurrentDate(formattedCurrentDate)
         setDeliveryDate(formattedDeliveryDate)
 
-        getOrders()
-
-    }, []);
-
-    React.useEffect(() => {
+        // getOrders()
 
     }, []);
 
@@ -181,28 +143,23 @@ function App() {
         }
     }
 
-
-    const getOrders = () => {
-        const orderGoods = axios.get('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn');
-        // setOrders(orderGoods.data)
-
-    }
-
-
     const formOrder = async () => {
         const images = cartItems.map((item) => {
             return item.imageUrl
         })
 
+        const sum = cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0);
+
         const order = {
             images: images,
+            total: sum,
             currentDate: currentDate,
             deliveryDate: deliveryDate
         }
 
-        await axios.post('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn', order);
-        await getOrders()
+        setOrders(prev => [...prev, order])
 
+        await axios.post('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn', order);
     }
 
     const OnRemoveItem = (id) => {
