@@ -160,6 +160,7 @@ function App() {
         setOrders(prev => [...prev, order])
 
         await axios.post('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn', order);
+        setItems([])
     }
 
     const OnRemoveItem = (id) => {
@@ -182,7 +183,7 @@ function App() {
                                 <Routes>
                                     <Route exact path="/" element={<Home cartItems={cartItems} onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
                                     <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading}/>}/>
-                                    <Route exact path="/order" element={<Order orders={orders}/>}/>
+                                    <Route exact path="/order" element={<Order currentDate={currentDate} orders={orders}/>}/>
                                 </Routes>
                             </div>
                         </Router>

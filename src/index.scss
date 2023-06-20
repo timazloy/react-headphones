@@ -775,6 +775,10 @@ body {
   padding: 20px;
   border-radius: 10px;
 
+  &__span {
+    font-weight: 600;
+  }
+
   &__total {
     font-weight: 600;
   }
@@ -794,6 +798,10 @@ body {
     width: fit-content;
     border-radius: 10px;
     color: white;
+
+    &--delivered {
+      background: #6abf45;
+    }
   }
 }
 

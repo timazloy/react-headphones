@@ -1,6 +1,6 @@
 
 
-function Order({orders}) {
+function Order({orders, currentDate}) {
     return(
         <div className="order-page">
             <div className="order-page__title main-title">Профиль</div>
@@ -18,9 +18,9 @@ function Order({orders}) {
                 <div className="order-page__order order">
                     <div className="order__wrapper">
                         <div className="order__title">Заказ от {item.currentDate}</div>
-                        <div className="order__status">В доставке</div>
+                        <div className={item.deliveryDate === currentDate ? "order__status order__status--delivered" : "order__status"}>{item.deliveryDate === currentDate ? "Доставлено" : "В доставке"}</div>
                         <div className="order__text">Ожидаемая дата доставки: <span className="order__span">{item.deliveryDate}</span></div>
-                        <div className="order__text">Итого: <span className="order__total">{item.total}</span></div>
+                        <div className="order__text">Итого: <span className="order__total">{item.total} руб.</span></div>
                     </div>
 
                     <div className="order__items">
