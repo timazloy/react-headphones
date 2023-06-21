@@ -19,7 +19,7 @@ function Order({orders, currentDate}) {
                     <div className="order__wrapper">
                         <div className="order__title">Заказ от {item.currentDate}</div>
                         <div className={item.deliveryDate === currentDate ? "order__status order__status--delivered" : "order__status"}>{item.deliveryDate === currentDate ? "Доставлено" : "В доставке"}</div>
-                        <div className="order__text">Ожидаемая дата доставки: <span className="order__span">{item.deliveryDate}</span></div>
+                        <div className="order__text">Дата доставки: <span className="order__span">{item.deliveryDate}</span></div>
                         <div className="order__text">Итого: <span className="order__total">{item.total} руб.</span></div>
                     </div>
 

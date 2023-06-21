@@ -160,7 +160,15 @@ function App() {
         setOrders(prev => [...prev, order])
 
         await axios.post('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn', order);
-        setItems([])
+
+        setCartItems([])
+
+        cartItems.forEach(item => {
+            console.log(item.id)
+            axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/cart/${item.id}`)
+
+        })
+
     }
 
     const OnRemoveItem = (id) => {

@@ -9,12 +9,14 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
 
     const [favorite, setFavorite] = React.useState(isFavorite);
 
-    const addToFavoriteIcon = () => {
+    const addToFavoriteIcon = (e) => {
+        e.stopPropagation()
         setFavorite(!favorite)
         addToFavorite({id, parentId, title, price, imageUrl})
     }
 
-    const onClickPlus = () => {
+    const onClickPlus = (e) => {
+        e.stopPropagation()
         onPlus({id, parentId, title, price, imageUrl})
         console.log(dataForModal)
     }
@@ -45,11 +47,11 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
                 <rect x="149" y="220" rx="8" ry="8" width="32" height="30" />
                 <rect x="28" y="220" rx="0" ry="0" width="95" height="30" />
             </ContentLoader></div> : <>
-                <div className="goods__item item">
+                <div className="goods__item item" onClick={() => openModal(item)}>
                     <div className="item__wrapper">
                         <img className="item__image" src={imageUrl} alt="image"/>
                     </div>
-                    <div className="item__title" onClick={() => openModal(item)}>
+                    <div className="item__title">
                         {title}
                     </div>
                     <Modal
@@ -65,11 +67,11 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
                             <div className="item-price__title">Цена:</div>
                             <div className="item-price__text">{price.toString().replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ')} руб.</div>
                         </div>
-                        <button onClick={onClickPlus} className="button-add">
+                        <button onClick={(e) => onClickPlus(e)} className="button-add">
                             <img src={isItemAdded(parentId) ? "/img/Add-basket.svg" : "/img/btn-add.svg"} alt="button-add"/>
                         </button>
-                        <button className="button-favorite" onClick={addToFavorite}>
-                            <img onClick={addToFavoriteIcon} src={favorite ? "/img/like.svg" : "/img/btn-favorite.svg"  } alt="button-favorite"/>
+                        <button className="button-favorite"  onClick={(e) => addToFavoriteIcon(e)}>
+                            <img src={favorite ? "/img/like.svg" : "/img/btn-favorite.svg"  } alt="button-favorite"/>
                         </button>
                     </div>
                 </div>
