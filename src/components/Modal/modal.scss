@@ -39,6 +39,13 @@
 
   &__wrapper {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+
+  &__info {
+    width: 100%;
   }
 
   &__close {

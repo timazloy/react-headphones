@@ -56,15 +56,6 @@ function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNo
             <div className="main-block__goods goods">
                 {renderItemsHome()}
                 {notFound}
-                {/*<Modal*/}
-                {/*    isFavorite={favorites.some(obj => Number(obj.parentId) === Number(dataForModal.parentId))}*/}
-                {/*    favorites={favorites}*/}
-                {/*    setFavorites={setFavorites}*/}
-                {/*    addToFavorite={addToFavorite}*/}
-                {/*    onPlus={onPlus}*/}
-                {/*    dataForModal={dataForModal}*/}
-                {/*    activeModal={activeModal}*/}
-                {/*    setActiveModal={setActiveModal} />*/}
             </div>
             <ul className="main-block__pagination pagination">
                 {

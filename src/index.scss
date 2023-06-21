@@ -161,8 +161,12 @@ body {
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
-    //transform: translateY(-5px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.06);
+    border: 1px solid #bcb7b7;
+
+    .item__title {
+      color: #56a6d7;
+    }
   }
 
 
