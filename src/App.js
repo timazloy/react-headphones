@@ -164,9 +164,7 @@ function App() {
         setCartItems([])
 
         cartItems.forEach(item => {
-            console.log(item.id)
             axios.delete(`https://62f2672bb1098f15081212c2.mockapi.io/cart/${item.id}`)
-
         })
 
     }

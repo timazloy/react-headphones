@@ -604,6 +604,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  &__order {
+    margin-top: 100px;
+  }
  }
 
 .basket-item {
@@ -819,5 +823,29 @@ body {
   &__img {
     max-width: 100px;
     object-fit: contain;
+  }
+}
+
+.order-success {
+
+  &__link {
+    text-align: center;
+    justify-content: center;
+    max-width: 250px;
+  }
+
+  &__img {
+    display: flex;
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #000000;
+    text-align: center;
+    margin: 20px 0 30px;
   }
 }
