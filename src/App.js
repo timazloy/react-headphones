@@ -29,6 +29,7 @@ function App() {
     const [deliveryDate, setDeliveryDate] = React.useState('')
 
     const [orders, setOrders] = React.useState([])
+    const [ordersPage, setOrdersPage] = React.useState(5)
 
     const [notFound, setNotFound] = React.useState('');
 
@@ -68,7 +69,8 @@ function App() {
             const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName);
             const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
             const cartResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/cart');
-            const orderResponse = await axios.get('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn');
+            const orderResponse = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn?completed=false&page=1&limit=${ordersPage}`);
+
             setItems(itemsResponse.data)
             setFavorites(favoriteResponse.data)
             setCartItems(cartResponse.data)
@@ -80,6 +82,18 @@ function App() {
             setNotFound('')
         }
     }, [sortName,sortPrice,sortBrand]);
+
+    React.useEffect(() => {
+        async function getPages() {
+            const orderResponse = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn?completed=false&page=1&limit=${ordersPage}`);
+            setOrders(orderResponse.data.reverse())
+        }
+        getPages();
+    }, [ordersPage]);
+
+    const getOrders = () => {
+        setOrdersPage(ordersPage + 5)
+    }
 
     React.useEffect(() => {
         const currentDate = new Date();
@@ -101,9 +115,6 @@ function App() {
 
         setCurrentDate(formattedCurrentDate)
         setDeliveryDate(formattedDeliveryDate)
-
-        // getOrders()
-
     }, []);
 
     const addToFavorite = async (obj) => {
@@ -189,7 +200,7 @@ function App() {
                                 <Routes>
                                     <Route exact path="/" element={<Home cartItems={cartItems} onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
                                     <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading}/>}/>
-                                    <Route exact path="/order" element={<Order currentDate={currentDate} orders={orders}/>}/>
+                                    <Route exact path="/order" element={<Order getOrders={getOrders} currentDate={currentDate} orders={orders}/>}/>
                                 </Routes>
                             </div>
                         </Router>

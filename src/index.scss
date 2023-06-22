@@ -162,7 +162,7 @@ body {
 
   &:hover {
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.06);
-    border: 1px solid #bcb7b7;
+    border: 1px solid #cfcece;
 
     .item__title {
       color: #56a6d7;
@@ -732,6 +732,15 @@ body {
 
   &__personal {
     margin-bottom: 40px;
+  }
+
+  &__show-more {
+    margin: 20px auto 0;
+    display: flex;
+    padding: 15px 50px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
   }
 
   &__title {

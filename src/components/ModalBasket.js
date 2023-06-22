@@ -1,6 +1,7 @@
 import React from "react";
 import BasketItem from "./BasketItem";
 import {Link, NavLink} from "react-router-dom";
+import axios from "axios";
 
 function ModalBasket({formOrder, totalPrice, isLoading, OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
 
@@ -15,7 +16,26 @@ function ModalBasket({formOrder, totalPrice, isLoading, OnRemoveItem, items, mod
     const orderFormClick = () => {
         formOrder()
         setOrderAdd(true)
-        // setModalBasketActive(false)
+
+        // const url = new URL('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn');
+        // url.searchParams.append('completed', false);
+        // url.searchParams.append('page', 2);
+        // url.searchParams.append('limit', 5);
+        //
+        // fetch(url, {
+        //     method: 'GET',
+        //     headers: {'content-type':'application/json'},
+        // }).then(res => {
+        //     if (res.ok) {
+        //         return res.json();
+        //     }
+        //     // handle error
+        // }).then(tasks => {
+        //     console.log(tasks)
+        //     // mockapi returns first 10 tasks that are not completed
+        // }).catch(error => {
+        //     // handle error
+        // })
     }
 
     return (
@@ -40,8 +60,6 @@ function ModalBasket({formOrder, totalPrice, isLoading, OnRemoveItem, items, mod
                                         <p className="button-back__text">Перейти в профиль</p>
                                         <img className="button-back__icon" src="/img/arrow-right.svg" alt="back"/>
                                     </Link>
-
-
                                 </div>
                             </> : <div className="modal__empty basket-empty">
                                 <div className="basket-empty__img">
