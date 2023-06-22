@@ -85,7 +85,6 @@ function App() {
             setFavorites(favoriteResponse.data)
             setCartItems(cartResponse.data)
             setOrdersPage(Math.ceil(orderPageLength.data.length / 5) - 1)
-            // setOrders(orderResponse.data.reverse())
             setIsLoading(false)
         }
         fetchData();
@@ -94,16 +93,7 @@ function App() {
         }
     }, [sortName,sortPrice,sortBrand]);
 
-    // React.useEffect(() => {
-    //     async function getPages() {
-    //         const orderResponse = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn?completed=false&page=1&limit=${ordersPage}`);
-    //         setOrders(orderResponse.data.reverse())
-    //     }
-    //     getPages();
-    // }, [ordersPage]);
-
     const getOrders = () => {
-        // setOrdersPage(ordersPage + 5)
         setOrdersPage(prevPage => prevPage - 1 )
         fetchProducts()
     }
@@ -213,7 +203,7 @@ function App() {
                                 <Routes>
                                     <Route exact path="/" element={<Home cartItems={cartItems} onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
                                     <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading}/>}/>
-                                    <Route exact path="/order" element={<Order getOrders={getOrders} currentDate={currentDate} orders={orders}/>}/>
+                                    <Route exact path="/order" element={<Order ordersPage={ordersPage} getOrders={getOrders} currentDate={currentDate} orders={orders}/>}/>
                                 </Routes>
                             </div>
                         </Router>

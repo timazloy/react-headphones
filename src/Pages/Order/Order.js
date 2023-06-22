@@ -1,6 +1,6 @@
 
 
-function Order({orders, currentDate, getOrders}) {
+function Order({orders, currentDate, getOrders, ordersPage}) {
     return(
         <div className="order-page">
             <div className="order-page__title main-title">Профиль</div>
@@ -32,7 +32,7 @@ function Order({orders, currentDate, getOrders}) {
                     </div>
                 </div>
             ))}
-            <button onClick={getOrders} className="order-page__show-more" type="button">Показать еще</button>
+            {ordersPage > 0 && <button onClick={getOrders} className="order-page__show-more" type="button">Показать еще</button>}
 
         </div>
     )
