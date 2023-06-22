@@ -72,8 +72,8 @@ function App() {
             setItems(itemsResponse.data)
             setFavorites(favoriteResponse.data)
             setCartItems(cartResponse.data)
+            setOrders(orderResponse.data.reverse())
             setIsLoading(false)
-            setOrders(orderResponse.data)
         }
         fetchData();
         if (searchValue.length === 0) {
@@ -157,7 +157,7 @@ function App() {
             deliveryDate: deliveryDate
         }
 
-        setOrders(prev => [...prev, order])
+        setOrders(prev => [order, ...prev])
 
         await axios.post('https://639f35a97aaf11ceb8954a67.mockapi.io/Learn', order);
 
