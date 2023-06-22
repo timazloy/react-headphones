@@ -28,9 +28,6 @@ function App() {
     const [currentDate, setCurrentDate] = React.useState('')
     const [deliveryDate, setDeliveryDate] = React.useState('')
 
-    const [orders, setOrders] = React.useState([])
-    const [ordersPage, setOrdersPage] = React.useState(5)
-
     const [notFound, setNotFound] = React.useState('');
 
     const setNameValue = (e) =>{
@@ -62,6 +59,18 @@ function App() {
 
     }, [items]);
 
+    const [orders, setOrders] = React.useState([])
+    const [ordersPage, setOrdersPage] = React.useState(5)
+
+    React.useEffect(() => {
+        fetchProducts();
+    }, []);
+
+    const fetchProducts = async () => {
+        const response = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn?completed=false&page=${ordersPage}&limit=5`);
+        setOrders(prevProducts => [...prevProducts, ...response.data.reverse()]);
+    };
+
     React.useEffect(() => {
         async function fetchData() {
             setIsLoading(true)
@@ -69,12 +78,14 @@ function App() {
             const itemsResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName);
             const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
             const cartResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/cart');
-            const orderResponse = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn?completed=false&page=1&limit=${ordersPage}`);
+            const orderPageLength = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn`);
+
 
             setItems(itemsResponse.data)
             setFavorites(favoriteResponse.data)
             setCartItems(cartResponse.data)
-            setOrders(orderResponse.data.reverse())
+            setOrdersPage(Math.ceil(orderPageLength.data.length / 5) - 1)
+            // setOrders(orderResponse.data.reverse())
             setIsLoading(false)
         }
         fetchData();
@@ -83,16 +94,18 @@ function App() {
         }
     }, [sortName,sortPrice,sortBrand]);
 
-    React.useEffect(() => {
-        async function getPages() {
-            const orderResponse = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn?completed=false&page=1&limit=${ordersPage}`);
-            setOrders(orderResponse.data.reverse())
-        }
-        getPages();
-    }, [ordersPage]);
+    // React.useEffect(() => {
+    //     async function getPages() {
+    //         const orderResponse = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn?completed=false&page=1&limit=${ordersPage}`);
+    //         setOrders(orderResponse.data.reverse())
+    //     }
+    //     getPages();
+    // }, [ordersPage]);
 
     const getOrders = () => {
-        setOrdersPage(ordersPage + 5)
+        // setOrdersPage(ordersPage + 5)
+        setOrdersPage(prevPage => prevPage - 1 )
+        fetchProducts()
     }
 
     React.useEffect(() => {
