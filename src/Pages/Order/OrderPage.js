@@ -1,8 +1,9 @@
 import ContentLoader from "react-content-loader";
 import React from "react";
+import Order from '../../components/Order/Order'
 
 
-function Order({orders, currentDate, getOrders, ordersPage, isLoading = true}) {
+function OrderPage({orders, currentDate, getOrders, ordersPage, isLoading}) {
 
     return(
         <div className="order-page">
@@ -30,23 +31,12 @@ function Order({orders, currentDate, getOrders, ordersPage, isLoading = true}) {
                     <rect x="273" y="21" rx="0" ry="0" width="650" height="120" />
                 </ContentLoader></div>
             ))   : orders.map(item => (
-                <div className="order-page__order order">
-                    <div className="order__wrapper">
-                        <div className="order__title">Заказ от {item.currentDate}</div>
-                        <div className={item.deliveryDate === currentDate ? "order__status order__status--delivered" : "order__status"}>{item.deliveryDate === currentDate ? "Доставлено" : "В доставке"}</div>
-                        <div className="order__text">Дата доставки: <span className="order__span">{item.deliveryDate}</span></div>
-                        <div className="order__text">Итого: <span className="order__total">{item.total} руб.</span></div>
-                    </div>
-
-                    <div className="order__items">
-                        <div className="order__item order-item">
-                            {item.images.map(img => (
-                                <img src={img} className="order-item__img"/>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                <Order item={item} currentDate={currentDate}/>
             ))}
+
+            {
+                
+            }
 
             {ordersPage > 0 && <button onClick={getOrders} className="order-page__show-more" type="button">Показать еще</button>}
 
@@ -54,4 +44,4 @@ function Order({orders, currentDate, getOrders, ordersPage, isLoading = true}) {
     )
 }
 
-export default Order
+export default OrderPage
