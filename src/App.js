@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SearchEmpty from "./components/SearchEmpty/SearchEmpty";
 import AppContext from "./Pages/context";
 import OrderPage from './Pages/Order/OrderPage'
+import Notification from "./components/Notification/Notification";
 
 function App() {
     const [items, setItems] = React.useState([]);
@@ -208,6 +209,7 @@ function App() {
                         </Router>
                     </div>
                 </div>
+                <Notification/>
 
             </div>
 
