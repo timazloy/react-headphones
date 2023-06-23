@@ -1,6 +1,9 @@
+import ContentLoader from "react-content-loader";
+import React from "react";
 
 
-function Order({orders, currentDate, getOrders, ordersPage}) {
+function Order({orders, currentDate, getOrders, ordersPage, isLoading = true}) {
+
     return(
         <div className="order-page">
             <div className="order-page__title main-title">Профиль</div>
@@ -14,7 +17,19 @@ function Order({orders, currentDate, getOrders, ordersPage}) {
                 </div>
             </div>
             <div className="order-page__title main-title">Мои заказы</div>
-            {orders.map(item => (
+            { isLoading ? orders.map(item => (
+                <div className="order-page__load-wrapper">  <ContentLoader
+                    speed={2}
+                    width={960}
+                    height={155}
+                    viewBox="0 0 960 160"
+                    backgroundColor="#f3f3f3"
+                    foregroundColor="#ecebeb"
+                >
+                    <rect x="20" y="20" rx="0" ry="0" width="230" height="120" />
+                    <rect x="273" y="21" rx="0" ry="0" width="650" height="120" />
+                </ContentLoader></div>
+            ))   : orders.map(item => (
                 <div className="order-page__order order">
                     <div className="order__wrapper">
                         <div className="order__title">Заказ от {item.currentDate}</div>
@@ -32,6 +47,7 @@ function Order({orders, currentDate, getOrders, ordersPage}) {
                     </div>
                 </div>
             ))}
+
             {ordersPage > 0 && <button onClick={getOrders} className="order-page__show-more" type="button">Показать еще</button>}
 
         </div>

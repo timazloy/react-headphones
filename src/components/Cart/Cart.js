@@ -18,7 +18,6 @@ function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, tit
     const onClickPlus = (e) => {
         e.stopPropagation()
         onPlus({id, parentId, title, price, imageUrl})
-        console.log(dataForModal)
     }
 
     const [activeModal, setActiveModal] = React.useState(false)

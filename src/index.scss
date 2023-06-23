@@ -129,7 +129,6 @@ body {
   position: relative;
   border: 1px solid #e9e6e6;
   border-radius: 10px;
-  padding: 13px 18px;
   display: flex;
   justify-content: space-between;
   gap: 13px;
@@ -138,11 +137,16 @@ body {
 
 
   &__input {
-    max-width: 150px;
+    width: 100%;
+    padding: 13px 18px;
     outline: none;
     background: none;
     border: none;
   }
+}
+
+.button-search {
+  padding-right: 20px;
 }
 
 .item {
@@ -726,6 +730,12 @@ body {
 
 .order-page {
 
+  &__load-wrapper {
+    border: 1px solid #b1a3a3;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+
   &__order {
     margin-bottom: 20px;
   }
@@ -738,9 +748,16 @@ body {
     margin: 20px auto 0;
     display: flex;
     padding: 15px 50px;
-    border: 1px solid black;
-    border-radius: 10px;
     cursor: pointer;
+    border: 1px solid #9babd0;
+    border-radius: 10px;
+    color: #9babd0;
+    transition: .3s;
+
+    &:hover {
+      color: white;
+      background: #9babd0;
+    }
   }
 
   &__title {
@@ -832,6 +849,22 @@ body {
   gap: 10px;
   width: 650px;
   overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #f9f9fd;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: linear-gradient(180deg, #E7F6FF,  #9babd0);
+  }
 
   &__img {
     max-width: 100px;

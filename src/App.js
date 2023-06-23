@@ -63,10 +63,10 @@ function App() {
     const [ordersPage, setOrdersPage] = React.useState(5)
 
     React.useEffect(() => {
-        fetchProducts();
+        fetchOrders();
     }, []);
 
-    const fetchProducts = async () => {
+    const fetchOrders = async () => {
         const response = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn?completed=false&page=${ordersPage}&limit=5`);
         setOrders(prevProducts => [...prevProducts, ...response.data.reverse()]);
     };
@@ -79,7 +79,6 @@ function App() {
             const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
             const cartResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/cart');
             const orderPageLength = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn`);
-
 
             setItems(itemsResponse.data)
             setFavorites(favoriteResponse.data)
@@ -95,7 +94,7 @@ function App() {
 
     const getOrders = () => {
         setOrdersPage(prevPage => prevPage - 1 )
-        fetchProducts()
+        fetchOrders()
     }
 
     React.useEffect(() => {
@@ -203,7 +202,7 @@ function App() {
                                 <Routes>
                                     <Route exact path="/" element={<Home cartItems={cartItems} onPlus={onPlus} addToFavorite={addToFavorite} setNameValue={setNameValue} clearValue={clearValue} setNotFound={setNotFound} searchValue={searchValue} setSearchValue={setSearchValue} setSortPrice={setSortPrice} sortPrice={sortPrice} setSortName={setSortName} sortName={sortName} notFound={notFound} favorites={favorites} setFavorites={setFavorites} selectedOption={selectedOption} setSelectedOption={setSelectedOption} items={items} isLoading={isLoading} setIsLoading={setIsLoading} setItems={setItems}/>}/>
                                     <Route exact path="/favorites" element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading}/>}/>
-                                    <Route exact path="/order" element={<Order ordersPage={ordersPage} getOrders={getOrders} currentDate={currentDate} orders={orders}/>}/>
+                                    <Route exact path="/order" element={<Order isLoading={isLoading} ordersPage={ordersPage} getOrders={getOrders} currentDate={currentDate} orders={orders}/>}/>
                                 </Routes>
                             </div>
                         </Router>
