@@ -1,7 +1,8 @@
 import React from "react";
-import Cart from "../components/Cart/Cart";
-import FavoritesEmpty from "../components/FavoritesEmpty";
-import AppContext from "./context";
+import Cart from "../../components/Cart/Cart";
+import FavoritesEmpty from "../../components/FavoritesEmpty/FavoritesEmpty";
+import AppContext from "../context";
+import './favorites.scss'
 
 function Favorites({onPlus, addToFavorite, isLoading}) {
     const {favorites} = React.useContext(AppContext);

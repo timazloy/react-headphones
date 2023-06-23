@@ -1,7 +1,6 @@
-import ContentLoader from "react-content-loader";
 import React from "react";
 import Order from '../../components/Order/Order'
-import Cart from "../../components/Cart/Cart";
+import './order-page.scss'
 
 
 function OrderPage({orders, currentDate, getOrders, ordersPage, isLoading}) {

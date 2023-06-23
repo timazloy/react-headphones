@@ -1,5 +1,6 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
+import './basket-item.scss'
 
 function BasketItem({isLoading, OnRemoveItem, id, price, title, image}) {
 

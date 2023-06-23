@@ -1,0 +1,9 @@
+.goods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+
+  &__favorite-title {
+    margin-bottom: 40px;
+  }
+}

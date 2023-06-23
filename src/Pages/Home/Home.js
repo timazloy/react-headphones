@@ -1,9 +1,9 @@
-import '../App.css';
-import Swiper from '../components/Swiper'
+import '../../App.css';
+import Swiper from '../../components/Swiper'
 import React from "react";
-import Cart from '../components/Cart/Cart'
-import SearchGoods from "../components/SearchGoods";
-// import Modal from "../components/Modal/Modal";
+import Cart from '../../components/Cart/Cart'
+import SearchGoods from "../../components/SearchGoods/SearchGoods";
+import './home.scss'
 
 function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNotFound, setSearchValue, searchValue, sortPrice, setSortPrice, sortName, setSortName, notFound, favorites, setFavorites, items, isLoading, setSelectedOption, selectedOption, setIsLoading, setFixedFilter, showBrandMenu, setItems}) {
 
@@ -66,7 +66,7 @@ function Home({cartItems, onPlus, addToFavorite, setNameValue, clearValue, setNo
                                     "pagination__link",
                                     paginationClasses(number)
                                 ].join(' ')}
-                                href="#"
+                                href="src/Pages/Home/Home#"
                                 onClick={(event) => paginate(event, number)}
                             >
                                 {number}

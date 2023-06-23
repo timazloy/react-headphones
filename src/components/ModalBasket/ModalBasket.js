@@ -1,7 +1,7 @@
 import React from "react";
-import BasketItem from "./BasketItem";
+import BasketItem from "../BasketItem/BasketItem";
 import {Link, NavLink} from "react-router-dom";
-import axios from "axios";
+import './modal-basket.scss'
 
 function ModalBasket({formOrder, totalPrice, isLoading, OnRemoveItem, items, modalBasketActive, setModalBasketActive}) {
 

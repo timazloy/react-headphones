@@ -1,8 +1,8 @@
-import '../App.css';
+import '../../App.css';
 import React from "react";
-import SelectPrice from "./Select";
-import SearchName from "./SearchName";
-import axios from "axios";
+import SelectPrice from "../Select/Select";
+import SearchName from "../SearchName";
+import './search-goods.scss'
 
 function SearchGoods({setNameValue, clearValue, sortPrice, setSortPrice, setSortName, sortName, favorites, setFavorites, isLoading,  items, notFound, setIsLoading, setItems, setNotFound, onChangeSearchInput, searchValue, setSearchValue, selectedOption, setSelectedOption}) {
 

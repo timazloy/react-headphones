@@ -14,7 +14,6 @@ export default () => {
     SwiperCore.use([Autoplay])
     return (
         <Swiper
-            // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={50}
             slidesPerView={1}
@@ -22,11 +21,8 @@ export default () => {
                 delay: 4000,
             }}
             speed={1500}
-            // navigation
             pagination={{ clickable: true }}
             loop={true}
-            // onSwiper={(swiper) => console.log(swiper)}
-            // onSlideChange={() => console.log('slide change')}
         >
             <SwiperSlide>
                 <img src="img/slider/1.png" alt="slide"/>

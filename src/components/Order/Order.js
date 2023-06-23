@@ -1,5 +1,6 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
+import './order.scss'
 
 function Order({item, currentDate, isLoading}) {
     return (
@@ -17,7 +18,7 @@ function Order({item, currentDate, isLoading}) {
             </ContentLoader></div> : <div className="order-page__order order">
                 <div className="order__wrapper">
                     <div className="order__title">Заказ от {item.currentDate}</div>
-                    <div className={item.deliveryDate === currentDate ? "order__status order__status--delivered" : "order__status"}>{item.deliveryDate === currentDate ? "Доставлено" : "В доставке"}</div>
+                    <div className={item.deliveryDate <= currentDate ? "order__status order__status--delivered" : "order__status"}>{item.deliveryDate <= currentDate ? "Доставлено" : "В доставке"}</div>
                     <div className="order__text">Дата доставки: <span className="order__span">{item.deliveryDate}</span></div>
                     <div className="order__text">Итого: <span className="order__total">{item.total} руб.</span></div>
                 </div>

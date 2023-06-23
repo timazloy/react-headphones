@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './notification.scss'
 
 const Notification = () => {
     const [showNotification, setShowNotification] = useState(true);

@@ -1,7 +1,7 @@
 import {Link, NavLink} from "react-router-dom";
 import './Header.scss';
 import React from 'react'
-import ModalBasket from "../ModalBasket";
+import ModalBasket from "../ModalBasket/ModalBasket";
 import AppContext from "../../Pages/context";
 
 

@@ -2,6 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import AppContext from "../../Pages/context";
 import Modal from "../Modal/Modal";
+import './cart.scss'
 
 function Cart({parentId, added, id, setIsLoadingFavorite, setFavorites,item, title, price, imageUrl, isLoading=true, isFavorite, addToFavorite, onPlus}) {
 

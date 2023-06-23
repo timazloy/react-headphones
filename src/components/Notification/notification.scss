@@ -1,1 +1,33 @@
+.notification {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+  width: 100%;
+  background: white;
+  border-top: 2px solid #7676ed;
 
+  &__content {
+    max-width: 1080px;
+    width: 100%;
+    padding: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    border: 1px solid #9babd0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #9babd0;
+    transition: .3s;
+
+    &:hover {
+      background: #9babd0;
+      color: white;
+    }
+  }
+}

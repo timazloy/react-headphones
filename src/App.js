@@ -2,12 +2,12 @@ import './App.css';
 import React from "react";
 import axios from "axios";
 import Header from './components/Header/Header'
-import Home from './Pages/Home'
-import Favorites from "./Pages/Favorites";
+import Home from './Pages/Home/Home'
+import Favorites from "./Pages/Favorites/Favorites";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SearchEmpty from "./components/SearchEmpty/SearchEmpty";
 import AppContext from "./Pages/context";
-import OrderPage from './Pages/Order/OrderPage'
+import OrderPage from './Pages/OrderPage/OrderPage'
 import Notification from "./components/Notification/Notification";
 
 function App() {
