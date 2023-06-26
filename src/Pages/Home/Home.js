@@ -23,7 +23,7 @@ function Home({
    selectedOption,
    setIsLoading,
    setFixedFilter,
-   showBrandMenu,
+   showBrandMenu
 }) {
    const [currentPage, setCurrentPage] = React.useState(1);
    const [goodsPage] = React.useState(12);
@@ -65,7 +65,7 @@ function Home({
 
    return (
       <>
-         <div className="main-block__slider slider-swiper">
+         <div className='main-block__slider slider-swiper'>
             <Swiper />
          </div>
          <SearchGoods
@@ -81,16 +81,16 @@ function Home({
             selectedOption={selectedOption}
             searchValue={searchValue}
          />
-         <div className="main-block__goods goods">
+         <div className='main-block__goods goods'>
             {renderItemsHome()}
             {notFound}
          </div>
-         <ul className="main-block__pagination pagination">
+         <ul className='main-block__pagination pagination'>
             {pageNumbers.map((number) => (
-               <li className="pagination__item" key={number}>
+               <li className='pagination__item' key={number}>
                   <a
                      className={['pagination__link', paginationClasses(number)].join(' ')}
-                     href="src/Pages/Home/Home#"
+                     href='src/Pages/Home/Home#'
                      onClick={(event) => paginate(event, number)}
                   >
                      {number}

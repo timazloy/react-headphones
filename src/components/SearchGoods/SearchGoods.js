@@ -14,15 +14,15 @@ function SearchGoods({
    onChangeSearchInput,
    searchValue,
    selectedOption,
-   setSelectedOption,
+   setSelectedOption
 }) {
    return (
       <>
-         <div className="main-block__search search">
-            <h1 className="search__title main-title">{searchValue ? `Поиск по запросу "${searchValue}"` : 'Все наушники'}</h1>
-            <div className="search__block">
-               <div className="search__section">
-                  <div className="search__input search-input">
+         <div className='main-block__search search'>
+            <h1 className='search__title main-title'>{searchValue ? `Поиск по запросу "${searchValue}"` : 'Все наушники'}</h1>
+            <div className='search__block'>
+               <div className='search__section'>
+                  <div className='search__input search-input'>
                      <SearchName
                         setNameValue={setNameValue}
                         sortName={sortName}
@@ -33,7 +33,7 @@ function SearchGoods({
                      />
                   </div>
                </div>
-               <div className="search__section">
+               <div className='search__section'>
                   <SelectPrice
                      sortPrice={sortPrice}
                      setSortPrice={setSortPrice}

@@ -9,8 +9,8 @@ function Favorites({ onPlus, addToFavorite, isLoading }) {
 
    return (
       <>
-         <div className="goods__favorite-title main-title">Избранное</div>
-         <div className="main-block__goods goods">
+         <div className='goods__favorite-title main-title'>Избранное</div>
+         <div className='main-block__goods goods'>
             {isLoading
                ? [...Array(12)].map((item, index) => <Cart key={index} isFavorite={true} />)
                : favorites.map((item, index) => (

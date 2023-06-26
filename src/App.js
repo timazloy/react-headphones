@@ -25,7 +25,7 @@ function App() {
 
    const [sortName, setSortName] = React.useState('');
    const [sortPrice, setSortPrice] = React.useState('');
-   const [sortBrand, setSortBrand] = React.useState([]);
+   const [sortBrand] = React.useState([]);
 
    const [currentDate, setCurrentDate] = React.useState([]);
    const [deliveryDate, setDeliveryDate] = React.useState([]);
@@ -73,7 +73,7 @@ function App() {
 
    const fetchOrders = async () => {
       const response = await axios.get(
-         `https://639f35a97aaf11ceb8954a67.mockapi.io/Learn?completed=false&page=${ordersPage}&limit=5`,
+         `https://639f35a97aaf11ceb8954a67.mockapi.io/Learn?completed=false&page=${ordersPage}&limit=5`
       );
       setOrders((prevProducts) => [...prevProducts, ...response.data.reverse()]);
       setIsLoadingOrders(false);
@@ -84,7 +84,7 @@ function App() {
          setIsLoading(true);
 
          const itemsResponse = await axios.get(
-            'https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName,
+            'https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName
          );
          const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
          const cartResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/cart');
@@ -120,13 +120,13 @@ function App() {
       const formattedCurrentDate = currentDate.toLocaleDateString('ru-RU', {
          day: '2-digit',
          month: '2-digit',
-         year: 'numeric',
+         year: 'numeric'
       });
 
       const formattedDeliveryDate = deliveryDate.toLocaleDateString('ru-RU', {
          day: '2-digit',
          month: '2-digit',
-         year: 'numeric',
+         year: 'numeric'
       });
 
       setCurrentDate([formattedCurrentDate, currentDateMilliseconds]);
@@ -162,7 +162,7 @@ function App() {
                   return { ...item, id: data.id };
                }
                return item;
-            }),
+            })
          );
       }
    };
@@ -178,7 +178,7 @@ function App() {
          images: images,
          total: sum,
          currentDate: currentDate,
-         deliveryDate: deliveryDate,
+         deliveryDate: deliveryDate
       };
 
       setOrders((prev) => [order, ...prev]);
@@ -203,16 +203,16 @@ function App() {
 
    return (
       <AppContext.Provider value={{ cartItems, favorites, items, isItemAdded }}>
-         <div className="main-wrapper">
-            <div className="main-wrapper__goods main-block">
-               <div className="main-block__wrapper">
+         <div className='main-wrapper'>
+            <div className='main-wrapper__goods main-block'>
+               <div className='main-block__wrapper'>
                   <Router>
                      <Header formOrder={formOrder} isLoading={isLoading} OnRemoveItem={OnRemoveItem} cartItems={cartItems} />
-                     <div className="main-block__body">
+                     <div className='main-block__body'>
                         <Routes>
                            <Route
                               exact
-                              path="/"
+                              path='/'
                               element={
                                  <Home
                                     cartItems={cartItems}
@@ -241,12 +241,12 @@ function App() {
                            />
                            <Route
                               exact
-                              path="/favorites"
+                              path='/favorites'
                               element={<Favorites onPlus={onPlus} addToFavorite={addToFavorite} isLoading={isLoading} />}
                            />
                            <Route
                               exact
-                              path="/order"
+                              path='/order'
                               element={
                                  <OrderPage
                                     isLoadingOrders={isLoadingOrders}

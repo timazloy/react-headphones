@@ -19,15 +19,15 @@ const Notification = () => {
    return (
       <>
          {showNotification && (
-            <div className="notification">
-               <div className="notification__content">
+            <div className='notification'>
+               <div className='notification__content'>
                   <p>
                      GitHub:{' '}
-                     <a href="https://github.com/timazloy/react-headphones" target="_blank">
+                     <a href='https://github.com/timazloy/react-headphones' target='_blank' rel='noreferrer'>
                         https://github.com/timazloy/react-headphones
                      </a>
                   </p>
-                  <button className="notification__button" onClick={handleCloseNotification}>
+                  <button className='notification__button' onClick={handleCloseNotification}>
                      Ok
                   </button>
                </div>
