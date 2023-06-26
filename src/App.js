@@ -31,6 +31,8 @@ function App() {
   const [deliveryDate, setDeliveryDate] = React.useState([]);
 
   const [notFound, setNotFound] = React.useState("");
+  const [orders, setOrders] = React.useState([]);
+  const [ordersPage, setOrdersPage] = React.useState(0);
 
   const setNameValue = (e) => {
     setSortName(e.target.value);
@@ -44,13 +46,7 @@ function App() {
   // условие для картинки "Такой товар не найден"
   const showNotFound = () => {
     if (items.length === 0) {
-      setNotFound(
-        <SearchEmpty
-          setSearchValue={setSearchValue}
-          setNotFound={setNotFound}
-          clearValue={clearValue}
-        />
-      );
+      setNotFound(<SearchEmpty />);
     } else {
       setNotFound("");
     }
@@ -64,9 +60,6 @@ function App() {
       showNotFound();
     }
   }, [items]);
-
-  const [orders, setOrders] = React.useState([]);
-  const [ordersPage, setOrdersPage] = React.useState(1);
 
   React.useEffect(() => {
     if (isInitialRender) {
