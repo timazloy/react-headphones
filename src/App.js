@@ -9,6 +9,7 @@ import SearchEmpty from './components/SearchEmpty/SearchEmpty';
 import AppContext from './Pages/context';
 import OrderPage from './Pages/OrderPage/OrderPage';
 import Notification from './components/Notification/Notification';
+import debounce from 'lodash.debounce';
 
 function App() {
    const [items, setItems] = React.useState([]);
@@ -83,16 +84,12 @@ function App() {
       async function fetchData() {
          setIsLoading(true);
 
-         const itemsResponse = await axios.get(
-            'https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName
-         );
          const favoriteResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/favorites');
          const cartResponse = await axios.get('https://62f2672bb1098f15081212c2.mockapi.io/cart');
          const orderPageLength = await axios.get(`https://639f35a97aaf11ceb8954a67.mockapi.io/Learn`);
 
          const ordersLength = Math.ceil(orderPageLength.data.length <= 5 ? 1 : orderPageLength.data.length / 5);
 
-         setItems(itemsResponse.data);
          setFavorites(favoriteResponse.data);
          setCartItems(cartResponse.data);
          setOrdersPage(ordersLength);
@@ -102,7 +99,25 @@ function App() {
       if (searchValue.length === 0) {
          setNotFound('');
       }
-   }, [sortName, sortPrice, sortBrand]);
+   }, [sortPrice, sortBrand]);
+
+   const fetchData = async () => {
+      const itemsResponse = await axios.get(
+         'https://62f2672bb1098f15081212c2.mockapi.io/headphones?' + sortPrice + '&search=' + sortName
+      );
+      setItems(itemsResponse.data);
+   };
+
+   // Применяем debounce к функции fetchData
+   const debouncedFetchData = debounce(fetchData, 500); // Задержка в миллисекундах
+
+   React.useEffect(() => {
+      debouncedFetchData();
+
+      return () => {
+         debouncedFetchData.cancel();
+      };
+   }, [sortName]);
 
    const getOrders = () => {
       setOrdersPage((prevPage) => prevPage - 1);

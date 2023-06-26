@@ -13,6 +13,7 @@
 - React Context
 - React Skeleton
 - Prettier
+- ESLint
 
 ### Функционал:
 
