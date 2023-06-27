@@ -1,9 +1,10 @@
 import Select from 'react-select';
 import './select.scss';
+import React from 'react';
 
 const options = [
    { value: 'sortBy=price&order=desc', label: 'Сначала дорогие' },
-   { value: 'sortBy=price&order=asc', label: 'Сначала недорогие' },
+   { value: 'sortBy=price&order=asc', label: 'Сначала недорогие' }
 ];
 
 function SelectPrice({ setSortPrice, sortPrice }) {
@@ -19,11 +20,11 @@ function SelectPrice({ setSortPrice, sortPrice }) {
 
    return (
       <Select
-         classNamePrefix="custom-select"
+         classNamePrefix='custom-select'
          currentValue={getValue}
          onChange={selectChange}
          options={options}
-         placeholder="Сортировка по цене"
+         placeholder='Сортировка по цене'
       />
    );
 }
