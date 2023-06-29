@@ -5,6 +5,10 @@
   padding: 20px;
   border-radius: 10px;
 
+  @media (max-width: 1070px) {
+    flex-direction: column;
+  }
+
   &__span {
     font-weight: 600;
   }
@@ -20,6 +24,22 @@
     max-width: 250px;
     width: 100%;
     border-right: 1px solid #b1a3a3;
+
+    @media (max-width: 1070px) {
+      max-width: unset;
+      flex-direction: unset;
+      justify-content: space-between;
+      border-bottom: 1px solid #b1a3a3;
+      align-items: center;
+      padding-bottom: 20px;
+      border-right: unset;
+    }
+
+    @media (max-width: 830px) {
+      flex-direction: column;
+    }
+
+
   }
 
   &__items {

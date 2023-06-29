@@ -110,6 +110,11 @@ body {
   margin: 85px auto;
   justify-content: center;
 
+  @media (max-width: 1075px) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   &__section {
     max-width: 300px;
     width: 100%;

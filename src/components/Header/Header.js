@@ -24,7 +24,7 @@ function Header({ formOrder, isLoading, OnRemoveItem, cartItems }) {
                   <div className='logo-section__column'>
                      <img className='logo-section__img logo' src='/img/logo.png' alt='logo' />
                   </div>
-                  <div className='logo-section__column'>
+                  <div className='logo-section__column logo-section__column--mobile'>
                      <div className='logo-section__title'>REACT HEADPHONES</div>
                      <div className='logo-section__text'>Магазин наушников</div>
                   </div>
