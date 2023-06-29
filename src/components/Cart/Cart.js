@@ -56,7 +56,9 @@ function Cart({ parentId, id, item, title, price, imageUrl, isLoading = true, is
                   </div>
                   <div className='item__title'>{title}</div>
                   <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
-                     <img className='custom-modal__image' src={dataForModal.imageUrl} alt='image' />
+                     <div className='custom-modal__cover'>
+                        <img className='custom-modal__image' src={dataForModal.imageUrl} alt='image' />
+                     </div>
 
                      <div className='custom-modal__info'>
                         <h3 className='custom-modal__title'>{dataForModal.title}</h3>
