@@ -10,6 +10,7 @@ import AppContext from './Pages/context';
 import OrderPage from './Pages/OrderPage/OrderPage';
 import Notification from './components/Notification/Notification';
 import debounce from 'lodash.debounce';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
    const [items, setItems] = React.useState([]);
@@ -272,6 +273,7 @@ function App() {
                                  />
                               }
                            />
+                           <Route exact path='*' element={<NotFound />} />
                         </Routes>
                      </div>
                   </Router>
