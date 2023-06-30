@@ -100,6 +100,10 @@ function App() {
       if (searchValue.length === 0) {
          setNotFound('');
       }
+   }, []);
+
+   React.useEffect(() => {
+      fetchData();
    }, [sortPrice, sortBrand]);
 
    const fetchData = async () => {
