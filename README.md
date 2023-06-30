@@ -12,6 +12,7 @@
 - SCSS
 - React Context
 - React Skeleton
+- Lodash.Debounce
 - Prettier
 - ESLint
 
