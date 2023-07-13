@@ -29,7 +29,7 @@ function Order({ item, currentDate, isLoading }) {
                         item.deliveryDate[1] <= currentDate[1] ? 'order__status order__status--delivered' : 'order__status'
                      }
                   >
-                     {item.deliveryDate[1] <= currentDate[1] ? 'Доставлено' : 'В доставке'}
+                     {item.deliveryDate[1] <= currentDate[1] ? 'Доставлен' : 'В доставке'}
                   </div>
                   <div className='order__text'>
                      Дата доставки: <span className='order__span'>{item.deliveryDate[0]}</span>
