@@ -31,6 +31,6 @@
 ### Описание:
 
 Интернет магазин наушников. Вместо бэкенда используется mockApi. У mockApi есть свои ограничения, поэтому местами пришлось делать костыли.
-Посмотреть можно тут: https://codesandbox.io/s/github/timazloy/react-headphones/tree/develop
+Посмотреть можно тут: https://h3y9qy.csb.app/
 
 
